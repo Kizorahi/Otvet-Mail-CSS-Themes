@@ -1,0 +1,1676 @@
+/* ==UserStyle==
+@name         Otvet MailRu Theme Customizer 
+@namespace    otvet.mail.ru
+@author       Rii Gii
+@version      2.34
+@license      CC BY
+@homepageURL https://userstyles.world/style/23509
+@supportURL https://t.me/glass_of_rain_water
+@preprocessor less
+@var select rii_gii-theme "Тёмная тема" [
+"Automatic", "Dark", "VKUI", "Amoled", "Elegant_dark", "Reddit_Edition", "Void", "Romdo", "Toxic_glow", "Poisoned_forest", "Swamp",
+"Midnight_candy", "Cyber_rust", "Frostbite", "Volcanic_ash", "Galactic_void", "Emerald_dream", "Citrus", "Dark_rose", "Light_rose",
+"Neon_rose", "Momoiro", "Crimson_night", "Blood_moon", "Hell_glow", "Retro_gold", "Vintage_sepia", "Violetta", "Violet_sky", "Akae",
+"Ocean", "Amber_haze", "Cinnamon_sky", "Fire", "Cyberpunk"
+]
+@var select rii_gii-theme-light "Светлая тема" [
+"Disable", "Golden_lime", "Scarlet_Bird", "Ocean_gold", "Emerald_forest", "Mossy_cover", "Lavender", "Meadow",
+"Pink_dawn", "Purple_heart", "Peach", "Concrete", "Snow-white", "Pearl", "Sand_storm", "Amber_honey"
+]
+@var checkbox rii_gii-disable "Скрыть рекламу" 0
+@var checkbox rii_gii-rubbish "Скрыть нежелательные элементы\nСкрывает: Блок категории в постах; Видео по теме (VKVideo); Кнопка подписки в постах; Все флуд посты VKVideo (НЕбаг. при сильном флуде, лента может не подгружаться. На самом деле подгружается, но тут же посты исчезают. Если попытаться снова и снова, то загрузит когда закончится флуд. Обычно это не заметно); Посты пользователя @dragon_0077 (тот что ддосит спрашивая что за налёт у него на языке); Посты Dzen; Блок ранга в боковой панели (на мобилках вообще вместе с шапкой съедают высоту);" 0
+@var checkbox rii_gii-hide "Раскрыть длинные ответы\nИли посты. В общем всё длинное. Я уже и сам запутался, то посты скрываются, то ответы" 1
+@var checkbox rii_gii-amoledPlus "Amoled+\nДолжна быть активна тема 'Amoled'" 0
+@var checkbox rii_gii-visited "Помечать посещённые посты" 0
+@var color rii_gii-visitedColor "Цвет посещённых постов" "#fba6a6"
+@var checkbox rii_gii-font-external "Внешний Шрифт" 0
+@var select rii_gii-font "" [
+"Lora", "IBM_Plex", "Sofia_Sans_Semi_Condensed", "Shantell_Sans",
+"Pattaya", "Orelega_One", "Poiret_One", "Chocolate_Classical_Sans",
+"Exo_2", "Chiron_GoRound_TC"
+]
+@var checkbox rii_gii-font-sys "Системный шрифт\nСписок шрифтов может быть неполным, если в браузере включена защита от цифровых отпечатков (fingerprinting). Браузер намеренно скрывает локальные шрифты" 0
+@var text rii_gii-font-sys-value "" "Calibri, Roboto, DejaVu Sans"
+@var checkbox rii_gii-filter-users--active "Скрыть посты пользователей" 0
+@var text rii_gii-filter-users "" "user1, user2, user3"
+@var checkbox rii_gii_ct "Своя тема" 0
+@var select rii_gii_theme_emulator "Эмуляция темы\nПерекрашивает некоторые иконки для соответствующей темы" ["Dark", "Light"]
+@var color rii_gii_ct_bg "Фон" "#222222"
+@var color rii_gii_ct_content "Основной блок" "#141414"
+@var color rii_gii_ct_otvet "Блок с ответами" "#1a1a1a"
+@var color rii_gii_ct_alpha "Кнопки/формы/скелет" "#ffffff54"
+@var color rii_gii_ct_rgb "Используется в небольших прозрачностях\nНе принимает прозрачность. По дефолту цвет такой же как и у кнопок" "#fff"
+@var color rii_gii_ct_noalpha "Разделители" "#363738"
+@var color rii_gii_ct_alpha_hover "Кнопки при наведении" "#ffffff80"
+@var color rii_gii_ct_white "Текст" "#fff"
+@var color rii_gii_ct_head "Шапка" "#292828"
+@var color rii_gii_ct_accent "Акцент кнопок" "#ffffff54"
+@var color rii_gii_ct_icon "Акцент иконок" "#fff"
+@var color rii_gii_ct_icon_inactive "Неактивные иконки" "#919399"
+@var color rii_gii_ct_modal "Модальное окно" "#242423"
+@var color rii_gii_ct_code "Блок кода" "#4e4e4e"
+@var color rii_gii_ct_link "Цвет ссылки" "#528fdf"
+@var color rii_gii_ct_logo "Логотип" #ffffff
+==/UserStyle== */
+
+@-moz-document url-prefix("https://otvet.mail.ru/") {
+  :root {
+    --rii_gii-bg: #222222;
+    --rii_gii-content: #141414;
+    --rii_gii-answer: #1a1a1a;
+    --rii_gii-alpha: #ffffff54;
+    --rii_gii-rgb: 255, 255, 255;
+    --rii_gii-noalpha: #373839;
+    --rii_gii-alpha-hover: #ffffff80;
+    --rii_gii-white: #fff;
+    --rii_gii-white-subhead: #828282;
+    --rii_gii-accent: var(--rii_gii-alpha);
+    --rii_gii-accent-hover: var(--rii_gii-alpha-hover);
+    --rii_gii-accent-tint: rgba(var(--rii_gii-rgb), 0.20);
+    --rii_gii-icon-accent: var(--rii_gii-white);
+    --rii_gii-icon-inactive: #919399;
+    --rii_gii-head: #292828;
+    --rii_gii-modal: #242423;
+    --rii_gii-code: #4e4e4e;
+    --rii_gii-link: #5390df;
+    --rii_gii-gold: #ffd700;
+    --rii_gii-laminaria: #4E543E;
+    --rii_gii-theme-display: "Тёмная";
+    --vkui--color_background: var(--rii_gii-bg) !important;
+    --vkui--color_background_content: var(--rii_gii-content) !important;
+    --vkui--otvet_color_background_answer: var(--rii_gii-answer) !important;
+    --vkui--color_field_background: var(--rii_gii-bg) !important;
+    --vkui--color_background_nav_bar_otvetui: var(--rii_gii-head) !important;
+    --vkui--color_text_secondary: var(--rii_gii-white-subhead) !important;
+    --vkui--color_background_secondary: var(--rii_gii-bg) !important;
+    --vkui--color_background_accent: var(--rii_gii-accent) !important;
+    --vkui--color_background_accent--hover: var(--rii_gii-accent-hover) !important;
+    --vkui--color_background_accent--active: var(--rii_gii-accent-hover) !important;
+    --vkui--color_background_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_secondary_alpha--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_tertiary: var(--rii_gii-noalpha) !important;
+    --vkui--color_background_accent_tint_themed: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_alpha: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important;
+    --vkui--color_background_accent_tint_alpha--active: rgba(var(--rii_gii-rgb), 0.44) !important;
+    --vkui--color_background_accent_tint: var(--rii_gii-icon-accent) !important;
+    --vkui--color_text_primary_invariably: var(--rii_gii-white) !important;
+    --vkui--color_text_primary_invariably--hover: var(--rii_gii-white) !important;
+    --vkui--color_text_primary_invariably--active: var(--rii_gii-white) !important;
+    --vkui--color_background_contrast: var(--rii_gii-alpha) !important;
+    --vkui--color_background_contrast--active: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_contrast--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_contrast_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal--hover: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal--active: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal: var(--rii_gii-modal) !important;
+    --vkui--color_text_primary: var(--rii_gii-white) !important;
+    --vkui--color_text_accent_themed: var(--rii_gii-link) !important;
+    --vkui--color_text_subhead: var(--rii_gii-white-subhead) !important;
+    --vkui--color_text_tertiary: var(--rii_gii-white-subhead) !important;
+    --vkui--color_skeleton_from: var(--rii_gii-alpha) !important;
+    --vkui--color_transparent--active: var(--rii_gii-alpha) !important;
+    --vkui--gradient_content86: #ffffffdb !important;
+    --vkui--color_separator_primary_alpha: var(--rii_gii-noalpha) !important;
+    --otvetui--color_separator_light: var(--rii_gii-noalpha) !important;
+    --vkui--color_separator_primary: var(--rii_gii-noalpha) !important;
+    --vkui--color_field_border_alpha: var(--rii_gii-noalpha) !important;
+    --vkui--color_stroke_border_alpha--hover: var(--rii_gii-alpha) !important;
+    --vkui--color_separator_secondary: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_primary: var(--rii_gii-white) !important;
+    --vkui--color_icon_medium: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_secondary: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_accent_themed: var(--rii_gii-white) !important;
+    --vkui--color_icon_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_background_accent_themed: var(--rii_gii-accent) !important;
+    --vkui--color_background_accent_tint_themed_alpha: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_themed_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important;
+    --vkui--color_background_accent_tint_themed_alpha--active: rgba(var(--rii_gii-rgb), 0.44) !important;
+    --vkui--color_background_secondary--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_secondary--active: var(--rii_gii-alpha-hover) !important;
+    --otvetui--color_background_action_button: var(--rii_gii-alpha) !important;
+    --vkui--color_background_tertiary--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_stroke_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_background_secondary_alpha--active: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_warning_tint_themed: #57503ddb !important;
+    --vkui--color_background_warning_tint_alpha: #57503ddb !important;
+    --vkui--color_background_contrast_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important;
+    --vkui--color_background_modal_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important;
+    --vkui--color_text_link_visited: var(--rii_gii-link) !important;
+    --vkui--color_text_link: color-mix(in oklch, var(--rii_gii-link), #000 5%) !important;
+    --vkui--color_text_link_themed: var(--rii_gii-link) !important;
+    --vkui--color_text_accent_inverse: var(--rii_gii-link) !important;
+    --vkui--color_icon_accent--hover: var(--vkui--color_text_link) !important;
+    --vkui--color_text_accent: var(--rii_gii-link) !important;
+    --vkui--color_accent_secondary: var(--rii_gii-accent) !important;
+    --vkui--color_background_negative_tint: var(--rii_gii-code) !important;
+    --vkui--color_icon_tertiary_alpha: rgb(var(--rii_gii-rgb), 0.2) !important;
+    --vkui--elevation3: 0 0 6px 0 rgba(var(--rii_gii-rgb), 0.02),0 6px 12px 0 rgba(var(--rii_gii-rgb), 0.02), 0 6px 20px 0 rgba(var(--rii_gii-rgb), 0.02),0 10px 36px 0 rgba(var(--rii_gii-rgb), 0.04) !important;
+    --vkui--elevation4: 0 2px 6px 0 rgba(var(--rii_gii-rgb), 0.03), 0 16px 48px 0 rgba(var(--rii_gii-rgb), 0.04), 0 24px 68px 0 rgba(var(--rii_gii-rgb), 0.08) !important;
+    --otvetui--color_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_sky: rgba(var(--rii_gii-rgb), 0.150) !important;
+    --vkui--color_background_sky--hover: rgba(var(--rii_gii-rgb), 0.311) !important;
+    --vkui--color_background_sky--active: rgba(var(--rii_gii-rgb), 0.367) !important;
+    --otvetui--color_sticker_counters_border: rgba(var(--rii_gii-rgb), 0.18) !important;
+    --vkui--color_transparent--hover: rgba(var(--rii_gii-rgb), 0.15) !important;
+    --vkui--color_accent_gray: var(--rii_gii-white-subhead) !important;
+    --otvetui--color_background_topic_card--active: rgba(var(--rii_gii-rgb), 0.04) !important;
+    --otvetui--color_icon_secondary--hover_contrast: color-mix(in oklch, var(--rii_gii-white-subhead), #fff 20%) !important;
+    --otvetui--color_background_onboarding_swiper_bullet--active: var(--rii_gii-accent) !important;
+    --vkui--color_text_contrast: #fff !important;
+    --vkui--color_text_contrast_themed: var(--rii_gii-white) !important;
+    --vkui--color_icon_contrast_themed: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_contrast_themed--hover: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_contrast_themed--active: var(--rii_gii-icon-inactive) !important;
+    --otvetui--color_progress_rang_blue: var(--rii_gii-accent) !important;
+    --otvetui--color_progress_rang_cyan: color-mix(in oklch, var(--rii_gii-accent), white 30%) !important;
+    --otvetui--color_progress_rang_green: color-mix(in oklch, var(--rii_gii-accent), var(--rii_gii-bg) 50%) !important;
+    --vkui--color_rang_higher_brain: var(--r-317, #be9e9f) !important;
+    --vkui--color_rang_ai: var(--r-318, #a7b47a) !important;
+    --vkui--color_rang_genius: var(--r-319, #c09e62) !important;
+    --vkui--color_rang_oracul: var(--r-320, #c0987c) !important;
+    --vkui--color_rang_pro_light: var(--r-321, #bd99b6) !important;
+    --vkui--color_rang_mudriy: var(--r-322, #8bb0c5) !important;
+    --vkui--color_rang_myslitel: var(--r-323, #be9c9f) !important;
+    --vkui--color_rang_guru: var(--r-324, #bab16e) !important;
+    --vkui--color_rang_master: var(--r-325, #8ab6c3) !important;
+    --vkui--color_rang_pro: var(--r-326, #be9860) !important;
+    --vkui--color_rang_expert: var(--r-327, #b9b177) !important;
+    --vkui--color_rang_student: var(--r-328, #94b4b5) !important;
+    color-scheme: dark;
+    transition: 
+    --rii_gii-bg 360ms ease,
+    --rii_gii-content 360ms ease,
+    --rii_gii-answer 360ms ease,
+    --rii_gii-alpha 360ms ease,
+    --rii_gii-noalpha 360ms ease,
+    --rii_gii-white 360ms ease,
+    --rii_gii-white-subhead 360ms ease,
+    --rii_gii-accent 360ms ease,
+    --rii_gii-icon-accent 360ms ease,
+    --rii_gii-icon-inactive 360ms ease,
+    --rii_gii-head 360ms ease,
+    --rii_gii-modal 360ms ease,
+    --rii_gii-code 360ms ease,
+    --rii_gii-link 360ms ease;
+  }
+
+  @property --rii_gii-bg { syntax: '<color>'; inherits: true; initial-value: #222222; }
+  @property --rii_gii-content { syntax: '<color>'; inherits: true; initial-value: #141414; }
+  @property --rii_gii-answer { syntax: '<color>'; inherits: true; initial-value: #1a1a1a; }
+  @property --rii_gii-alpha { syntax: '<color>'; inherits: true; initial-value: #ffffff54; }
+  @property --rii_gii-noalpha { syntax: '<color>'; inherits: true; initial-value: #373839; }
+  @property --rii_gii-white { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+  @property --rii_gii-white-subhead { syntax: '<color>'; inherits: true; initial-value: #828282; }
+  @property --rii_gii-accent { syntax: '<color>'; inherits: true; initial-value: #ffffff54; }
+  @property --rii_gii-icon-accent { syntax: '<color>'; inherits: true; initial-value: #ffffff; }
+  @property --rii_gii-icon-inactive { syntax: '<color>'; inherits: true; initial-value: #919399; }
+  @property --rii_gii-head { syntax: '<color>'; inherits: true; initial-value: #292828; }
+  @property --rii_gii-modal { syntax: '<color>'; inherits: true; initial-value: #242423; }
+  @property --rii_gii-code { syntax: '<color>'; inherits: true; initial-value: #4e4e4e; }
+  @property --rii_gii-link { syntax: '<color>'; inherits: true; initial-value: #5390df; }
+
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--rii_gii-alpha) var(--rii_gii-bg);
+    &::-webkit-scrollbar-track, body {
+      background: var(--rii_gii-bg) !important;
+      padding-right: 0px !important;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--rii_gii-alpha) !important;
+      &:hover { background: color-mix(in srgb, var(--rii_gii-alpha-hover), #000 15%) !important; }
+    }
+  }
+
+  html body header { background: var(--rii_gii-head) !important; }
+  header a[class^="_logo_"] {
+    --mask--logo: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D%22142%22%20height%3D%2252%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%3E%3Cpath%20d%3D%22m30.49%2C26c0%2C2.16-1.77%2C3.91-3.94%2C3.91c-2.18%2C0-3.94-1.75-3.94-3.91c0-2.16%201.76-3.91%203.94-3.91c2.17%2C0%203.94%2C1.75%203.94%2C3.91zm-3.94-13c-7.23%2C0-13.11%2C5.83-13.11%2C13c0%2C7.17%205.88%2C13%2013.11%2C13c2.65%2C0%205.2-0.78%207.38-2.26l0.04-0.03l-1.77-2.03l-0.03%2C0.02c-1.68%2C1.07-3.62%2C1.64-5.62%2C1.64c-5.75%2C0-10.42-4.64-10.42-10.34c0-5.7%204.67-10.34%2010.42-10.34c5.75%2C0%2010.42%2C4.64%2010.42%2C10.34c0%2C0.74-0.08%2C1.49-0.25%2C2.22c-0.33%2C1.34-1.27%2C1.75-1.98%2C1.7c-0.72-0.06-1.56-0.56-1.56-1.8l0-0.94l0-1.18c0-3.63-2.97-6.58-6.63-6.58c-3.66%2C0-6.63%2C2.95-6.63%2C6.58c0%2C3.63%202.97%2C6.58%206.63%2C6.58c1.78%2C0%203.44-0.69%204.7-1.95c0.73%2C1.13%201.92%2C1.84%203.27%2C1.95c0.12%2C0.01%200.24%2C0.01%200.35%2C0.01c0.96%2C0%201.9-0.32%202.66-0.89c0.79-0.59%201.38-1.45%201.7-2.48c0.05-0.16%200.15-0.54%200.15-0.54l0-0.02c0.19-0.82%200.28-1.64%200.28-2.66c0-7.17-5.88-13-13.11-13%22%20%2F%3E%3Cpath%20d%3D%22m55.09%2C32.6c-3.93%2C0-6.69-2.69-6.69-6.5c0-3.8%202.76-6.5%206.69-6.5c3.93%2C0%206.7%2C2.7%206.7%2C6.5c0%2C3.81-2.77%2C6.5-6.7%2C6.5zm0-2.52c2.26%2C0%203.81-1.62%203.81-3.98c0-2.36-1.55-3.97-3.81-3.97c-2.26%2C0-3.8%2C1.61-3.8%2C3.97c0%2C2.36%201.54%2C3.98%203.8%2C3.98z%22%20%2F%3E%3Cpath%20d%3D%22m69.62%2C32.36l-2.77%2C0l0-9.99l-4.33%2C0l0-2.53l11.44%2C0l0%2C2.53l-4.34%2C0l0%2C9.99z%22%20%2F%3E%3Cpath%20d%3D%22m84.5%2C25.86c1.23%2C0.39%202.22%2C1.52%202.22%2C3.04c0%2C1.99-1.88%2C3.46-4.58%2C3.46l-6.26%2C0l0-12.52l6%2C0c2.6%2C0%204.41%2C1.4%204.41%2C3.38c0%2C1.3-0.7%2C2.14-1.79%2C2.64zm-2.62-3.73l-3.23%2C0l0%2C2.72l3.23%2C0c0.96%2C0%201.64-0.55%201.64-1.35c0-0.79-0.68-1.37-1.64-1.37zm-3.23%2C7.95l3.49%2C0c1.09%2C0%201.81-0.61%201.81-1.52c0-0.92-0.72-1.54-1.81-1.54l-3.49%2C0l0%2C3.06z%22%20%2F%3E%3Cpath%20d%3D%22m101.29%2C25.96c0%2C0.34-0.02%2C0.63-0.05%2C0.89l-10.07%2C0c0.27%2C1.93%201.67%2C3.23%203.79%2C3.23c1.46%2C0%202.62-0.63%203.22-1.52l2.6%2C0.43c-0.94%2C2.39-3.39%2C3.61-5.99%2C3.61c-3.81%2C0-6.51-2.72-6.51-6.5c0-3.78%202.7-6.5%206.51-6.5c3.8%2C0%206.5%2C2.75%206.5%2C6.36zm-6.5-3.95c-1.69%2C0-2.99%2C1.06-3.45%2C2.67l6.94%2C0c-0.46-1.56-1.76-2.67-3.49-2.67z%22%20%2F%3E%3Cpath%20d%3D%22m108.88%2C32.36l-2.77%2C0l0-9.99l-4.34%2C0l0-2.53l11.44%2C0l0%2C2.53l-4.33%2C0l0%2C9.99z%22%20%2F%3E%3Cpath%20d%3D%22m119.86%2C32.36l-4.72%2C0l0-12.52l2.77%2C0l0%2C3.57l1.95%2C0c3.01%2C0%205.1%2C1.85%205.1%2C4.48c0%2C2.62-2.12%2C4.47-5.1%2C4.47zm9.37%2C0l-2.77%2C0l0-12.52l2.77%2C0l0%2C12.52zm-11.32-6.54l0%2C4.14l1.95%2C0c1.37%2C0%202.33-0.85%202.33-2.07c0-1.23-0.96-2.07-2.33-2.07l-1.95%2C0z%22%20%2F%3E%3Cpath%20d%3D%22m26.06%2C1.99l0.88%2C7.72l-3.26%2C0.36l-0.87-7.72l3.25-0.36z%22%20%2F%3E%3Cpath%20d%3D%22m11.61%2C6.13l5.02%2C5.91l-2.5%2C2.1l-5.03-5.91l2.51-2.1z%22%20%2F%3E%3Cpath%20d%3D%22m2.38%2C21.62l7.78%2C0.91l-0.39%2C3.23l-7.78-0.91l0.39-3.23z%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-color: var(--rii_gii-logo, var(--rii_gii-icon-accent));
+    -webkit-mask: var(--mask--logo) 0% center / contain no-repeat;
+    mask: var(--mask--logo) 0% center / contain no-repeat;
+    img { opacity: 0 !important; }
+  }
+  /************************ Interface ************************/
+  header button[class*="_button_"][size="m"] { border-radius: 12px !important; }
+  [class^="_menuItem_"]:active:not([class*="_menuItem_active_"]) { background-color: var(--vkui--color_transparent--hover) !important; }
+  [class*="_menuItem_active_"]:not([class*="_menuItem_mobile_active_"]) path:last-child { fill: var(--rii_gii-icon-accent) !important; }
+  ._popper_wu6jh_5 { overflow-x: hidden; }
+
+  div[class*="_CollapsibleTextToggler_more_"] { background: linear-gradient(0deg, var(--rii_gii-content) 46.96%, #fff0) !important; }
+  span[class*="_CollapsibleTextToggler_"] {
+    justify-content: center;
+    border-radius: 8px;
+    color: var(--rii_gii-white) !important;
+    background: var(--rii_gii-alpha) !important;
+  }
+  
+  nav[class*="_horizontal_wrapper_"] { background: var(--rii_gii-head) !important; }
+  div[class*="_AchieveBackground_"] { 
+    --vkui--color_background_negative: #fd3131 !important;
+    span {
+      color: #fff !important;
+      text-shadow: 0px 0.5px 5px #000;
+    }
+  }
+  [class^="_AwardsListsWrapper_"] > [class^="_Wrapper_"] {
+    background: var(--rii_gii-content) !important;
+    img:hover {
+      filter: none !important;
+      opacity: 0.8 !important;
+    }
+  }
+  button[class*="_Button_hover_"]:has(svg[data-icon="ShareOutline16"]) { background: var(--rii_gii-alpha-hover) !important; }
+  [class^="_SearchField_"] { background: var(--rii_gii-alpha) !important; }
+  #HeaderSearch::placeholder { color: var(--rii_gii-white) !important; }
+  blockquote::before { background: var(--rii_gii-icon-accent) !important; }
+
+  [class*="_CodeBlock_"] {
+    background: var(--rii_gii-code) !important;
+    color: var(--rii_gii-white) !important;
+  }
+
+  ._FormField_modeSecondary_l1o40_85 { background: var(--rii_gii-alpha) !important; }
+  form[class*="_VideoForm_"] > span[class*="_InputWrapper_"] { background: var(--rii_gii-alpha) !important; }
+  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
+  [class^="_Card_"] a[href="/profile/rii_gii"] { &, & span { color: var(--rii_gii-gold, #FF9F00) !important; } }
+  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 { background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) center 0px / cover no-repeat !important; }
+  [class*="_Notification_opened_"] [class*="_Notification_"]:hover { background: color-mix(in oklch, var(--rii_gii-modal), #c2b9b9 17%) !important; }
+  [class*="_Notification_opened_"] ::before, [class*="_NotificationItem_"]::before { background: linear-gradient(var(--rii_gii-icon-accent), color-mix(in oklch, var(--rii_gii-icon-accent), #000 22%)) !important; }
+  .vkuiInternalRepliesList * { animation: none !important; }
+
+  main div[class*="_Controls_"] > div[class^="_Wrapper_"]:first-child {
+    width: 100% !important;
+    background: var(--rii_gii-content) !important;
+    border-radius: 10px;
+    padding: 2px !important;
+  }
+
+  main div[class^="_Wrapper_"]:first-child > div[role="button"]:not(:hover) { background: transparent !important; }
+
+  [class*="_Tappable_sizeL_dotu5"] {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  [class^="_Tappable_"][role="button"] {
+    [class^="_Inner_"] {
+      background: linear-gradient(90deg, var(--vkui--color_background_sky), color-mix(in srgb, var(--vkui--color_background_sky), var(--rii_gii-accent) 30%)) !important;
+      background-size: 200% 100% !important;
+      transition: background-position 0.4s ease !important;
+    }
+    &:hover [class^="_Inner_"] { background-position: 100% 0 !important; }
+  }
+  
+  [class*="_Space_"][class*="_Item_"] {
+    transition: transform 0.2s ease !important;
+    padding: 8px !important;
+    margin: 0 -8px !important;
+    &:hover { transform: translateY(-4px) !important; }
+  }
+
+  [class*="_BannedWrapper_"] { border-top-color: var(--rii_gii-accent) !important; }
+  [class*="_Achievement_"][class*="_Achievement_img"]:hover {
+    transform: scale(1.2) translateY(-2px) !important;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
+  }
+  /************************ Icons & Illustrations ************************/
+  [class^="_DraftsEmpty_"] {
+    svg { opacity: 0 !important; }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      background-image: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><path d="M122.738 113c-2.276-8.114-4.078-18.462-5.148-27.809-.703-6.132-1.09-11.833-1.09-16.191-9.141 1.031-34.474 6.469-44.463 4.031-.03 1.598-.043 3.374-.034 5.29.009 2.053.043 4.268.107 6.596.505 18.348 2.893 43.747 9.916 53.083 11.969-2.812 14.474-7 24.974-8.5" stroke="%232c2d2e" stroke-width="4" style="stroke:%23fff;stroke-opacity:1"/><g stroke-linejoin="bevel" stroke-width="6"><path d="M61 93c3.423 4.72 11.297 8.368 19 0M91 93c3.423 4.72 11.297 8.368 19 0" style="stroke:%23c7b7c5;stroke-opacity:1"/></g></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) {
+    --mask--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M171.872 74c7.037 3.75 7.037 27.5-1.279 30l-74.156-6.645c-5.161-5.503-3.586-13.817-1.243-16.434z" style="fill:%23000;fill-opacity:1"/><path d="M158.835 80c7.088 3.875 7.088 28.417-1.289 31l-65.084-7.805c-5.2-5.687-3.612-14.278-1.252-16.982z" style="fill:%23000;fill-opacity:1"/></g></svg>');
+    --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9M72 74c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23fff;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27M153.507 189c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184M155.314 79s-6.195 13.182 1.686 29M73.5 118.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23fff;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23fff;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>');
+    position: relative;
+    img { opacity: 0 !important; }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 198px; height: 210px;
+      top: 20px;
+      @media (max-width: 767px) { top: 226px; }
+    }
+    &::before {
+      -webkit-mask: var(--mask--404) center / contain no-repeat;
+      mask: var(--mask--404) center / contain no-repeat;
+      background-color: color-mix(in oklch, var(--rii_gii-icon-accent), #000 20%);
+    }
+    &::after { background: var(--icon--404) center / contain no-repeat; }
+    @media (max-width: 767px) {
+      &::before, &::after {
+        @media (max-height: 767px) { top: calc(30vh - var(--header-mobile-height)) }
+      }
+    }
+  }
+
+  [class^="_Union_"] path { fill: var(--rii_gii-icon-accent) !important; } [class^="_Dashes_"] path { stroke: var(--rii_gii-icon-accent) !important; }
+  svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
+    --mask--moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-icon="MoonOutline20"><path fill-rule="evenodd" d="M10.606 1.987a.75.75 0 0 1-.217.835 5.795 5.795 0 0 0 6.387 9.58.75.75 0 0 1 1.031.965A8.502 8.502 0 0 1 1.5 10a8.5 8.5 0 0 1 8.395-8.5.75.75 0 0 1 .711.487M8.004 3.288a7 7 0 1 0 7.421 11.137A7.295 7.295 0 0 1 8.004 3.288" clip-rule="evenodd"/></svg>');
+    -webkit-mask: var(--mask--moon) center / contain no-repeat;
+    mask: var(--mask--moon) center / contain no-repeat;
+    background: var(--rii_gii-icon-inactive);
+    g { fill: none !important; }
+  }
+  
+  [class*="_ReplyItemMy_"] { background: var(--rii_gii-accent) !important; }
+  svg[data-icon="MinusCircle16"] path {fill: var(--rii_gii-icon-inactive) !important;} 
+  [class^="_Card_"] [class^="_Divider_"] {
+    path:first-child { fill: transparent !important; }
+    path:last-child {
+      fill: var(--rii_gii-icon-inactive) !important;
+      fill-opacity: 0.6 !important;
+    }
+  }
+  footer li:first-child {
+    a[href="/about"] :nth-child(2) path { fill: var(--rii_gii-white-subhead) !important; }
+    &:hover a[href="/about"] :nth-child(2) path { fill: var(--rii_gii-white) !important; }
+  }
+  footer svg:is([data-icon="LogoVK24"], [data-icon="LogoTG24"]) {
+    path { fill: var(--rii_gii-icon-inactive) !important; }
+    &:hover path { fill: var(--rii_gii-white) !important; }
+  }
+
+  [class*="_ActionSheetItem_ellipsis_"] {
+    &:has([class*="_CurrentTheme_"]) {
+      span:nth-child(1) {
+        visibility: hidden;
+        width: 42px !important;
+        &::before {
+          content: "Тема:";
+          visibility: visible;
+        }
+      }
+    }
+  }
+  [class*="_CurrentTheme_"] {
+    visibility:hidden;
+    &::before {
+      content: var(--rii_gii-theme-display);
+      visibility: visible;
+      color: var(--rii_gii-link);
+    }
+  }
+  
+  & when not (@rii_gii-disable = 1) {
+    [class^="mailru"] *:not(center) {
+      background: color-mix(in oklch, var(--rii_gii-bg), #000 25%) !important;
+      color: var(--rii_gii-white) !important;
+      border-radius: 12px;
+    }
+    :is(.ya-theme-light, .ya-theme-dark) {
+      .unit-wrapper { background: color-mix(in oklch, var(--rii_gii-bg), #000 25%) !important; }
+      .title {color: var(--rii_gii-white) !important;}
+      .desk {color: var(--rii_gii-white-subhead) !important;}
+      .cta {
+        background: var(--rii_gii-alpha) !important;
+        color: var(--rii_gii-white) !important;
+      }
+    }
+    [id^="yandex_ad_"] { border-color: var(--rii_gii-noalpha) !important; }
+    div[data-name="adaptiveConstructorAd"] {
+      :nth-child(2) { background: color-mix(in oklch, var(--rii_gii-bg), #000 25%) !important; }
+      [data-asset-click] span { --text-color: var(--rii_gii-white) !important; }
+    }
+    div[data-name="adaptiveConstructorAd"] 
+    [data-name="adWrapper"] span[data-label] span { color: var(--rii_gii-white-subhead) !important; }
+  }
+
+  & when (@rii_gii-disable = 1) {
+    #app > div:nth-child(2) > :nth-child(1):not(header), [class^="adv-"],
+    [class*="_ReplyListWrapper_"]:has([class^="adv-"]) {
+      display: none !important;
+    }
+  }
+
+  & when (@rii_gii-rubbish = 1) {
+    ._Wrapper_2k5g9_1,
+    [class*="_VkVideoSwiper_"],
+    [class*="_PostUserSubscriptionButton_"],
+    [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
+    a[href="/profile/dragon_0077"],
+    [class^="_DzenPost_"])),
+    :is(section[class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) {
+      display: none !important;
+    }
+  }
+
+  & when (@rii_gii-hide = 1) {
+    [class^="_CollapsibleText_"] { max-height: 100% !important; }
+  }
+
+  & when (@rii_gii-visited = 1) {
+    ._CardGrid_1s5z8_1 a:visited:not(._UserUsername_1nwdr_1, ._ReplyItemNick_ypna7_1, ._PostItemTags_1nwdr_1 :is(a, span),
+    ._Button_modeSecondary_bjs87_1._Button_appearanceNeutral_bjs87_1) span {
+      color: @rii_gii-visitedColor !important;
+    }
+  }
+
+  & when (@rii_gii-filter-users--active = 1) {
+    .rii_gii-filter-users--function(@list; @index: 1) when (@index <= length(@list)) {
+    @username: extract(@list, @index);
+  
+    [class^="_Card_"]:has(a[href="/profile/@{username}"]) {
+      display: none !important;
+    }
+    .rii_gii-filter-users--function(@list; (@index + 1));
+    }
+    .rii_gii-filter-users--function(@rii_gii-filter-users);
+  }
+
+  & when (@rii_gii-font-external = 1) {
+    & when (@rii_gii-font = Lora) {
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+      :root { --rii_gii-face: "Lora"; }
+    }
+    & when (@rii_gii-font = IBM_Plex) {
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+      :root { --rii_gii-face: "IBM Plex Mono"; }
+    }
+    & when (@rii_gii-font = Sofia_Sans_Semi_Condensed) {
+      @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+      :root { --rii_gii-face: "Sofia Sans Semi Condensed"; }
+    }
+    & when (@rii_gii-font = Shantell_Sans) {
+      @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+      :root { --rii_gii-face: "Shantell Sans"; }
+    }
+    & when (@rii_gii-font = Pattaya) {
+      @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+      :root { --rii_gii-face: "Pattaya"; }
+    }
+    & when (@rii_gii-font = Orelega_One) {
+      @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+      :root { --rii_gii-face: "Orelega One"; }
+    }
+    & when (@rii_gii-font = Poiret_One) {
+      @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+      :root { --rii_gii-face: "Poiret One"; }
+    }
+    & when (@rii_gii-font = Chocolate_Classical_Sans) {
+      @import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap');
+      :root { --rii_gii-face: "Chocolate Classical Sans"; }
+    }
+    & when (@rii_gii-font = Exo_2) {
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+      :root { --rii_gii-face: "Exo 2"; }
+    }
+    & when (@rii_gii-font = Chiron_GoRound_TC) {
+      @import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap');
+      :root { --rii_gii-face: "Chiron GoRound TC"; }
+    }
+    :root {
+      --otvetui--font_family_accent: var(--rii_gii-face) !important;
+      --otvetui--font_family_base: var(--rii_gii-face) !important;
+    }
+  }
+  
+  & when (@rii_gii-font-sys = 1) {
+    :root {
+      --otvetui--font_family_accent: @rii_gii-font-sys-value !important;
+      --otvetui--font_family_base: @rii_gii-font-sys-value !important;
+    }
+  }
+
+  & when (@rii_gii-theme = VKUI) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #2a2a2b;
+      --rii_gii-content: #191919;
+      --rii_gii-answer: #252525;
+      --rii_gii-rgb: 255, 255, 255;
+      --rii_gii-alpha: rgba(255, 255, 255, 0.12);
+      --rii_gii-alpha-hover: rgba(255, 255, 255, 0.16);
+      --rii_gii-accent-tint: #2b2b2c;
+      --rii_gii-icon-accent: #0077ff;
+      --rii_gii-accent: #fff;
+      --rii_gii-accent-hover: #EBEDF0;
+      --rii_gii-head: #19191a;
+      --rii_gii-modal: #303030;
+      --rii_gii-theme-display: "VKUI";
+      --rii_gii-logo: #fff;
+      --vkui--color_text_contrast: #2c2d2e !important;
+    }
+  }
+
+  & when (@rii_gii-theme = Amoled) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #080808;
+      --rii_gii-content: #000000;
+      --rii_gii-answer: #050505;
+      --rii_gii-alpha: #ffffff0d;
+      --rii_gii-rgb: 255, 255, 255;
+      --rii_gii-noalpha: #1e1e1e;
+      --rii_gii-alpha-hover: #ffffff1a;
+      --rii_gii-white: #e0e0e0;
+      --rii_gii-white-subhead: #a0a0a0;
+      --rii_gii-icon-inactive: #424242;
+      --rii_gii-head: #0b0b0b;
+      --rii_gii-modal: #0f0f0f;
+      --rii_gii-code: #0a0a0a;
+      --rii_gii-theme-display: "Амолед";
+    }
+    & when (@rii_gii-amoledPlus = 1) {
+      :root {
+        --rii_gii-bg: #000;
+        --rii_gii-content: #000;
+        --rii_gii-answer: #000;
+        --rii_gii-alpha: #ffffff0d;
+        --rii_gii-rgb: 15, 15, 15;
+        --rii_gii-head: #000;
+        --rii_gii-modal: #000;
+        --rii_gii-theme-display: "Амолед+";
+      } 
+    }
+  }
+  & when (@rii_gii-theme = Elegant_dark) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0a0c10;
+      --rii_gii-content: #111316;
+      --rii_gii-answer: #181b20;
+      --rii_gii-alpha: #2a2e3680;
+      --rii_gii-rgb: 42, 46, 54;
+      --rii_gii-noalpha: #2a2e36;
+      --rii_gii-alpha-hover: #3a3f4880;
+      --rii_gii-white: #f0f3f8;
+      --rii_gii-white-subhead: #b0b8c5;
+      --rii_gii-accent: #7aa9ff;
+      --rii_gii-accent-hover: #a0c0ff;
+      --rii_gii-icon-accent: #cbd5e1;
+      --rii_gii-icon-inactive: #5f6b7a;
+      --rii_gii-head: var(--rii_gii-content);
+      --rii_gii-modal: #1a1d24;
+      --rii_gii-code: #13161c;
+      --rii_gii-link: #7aa9ff;
+      --rii_gii-theme-display: "Элегантная тёмная";
+      --vkui--color_background_nav_bar_otvetui: var(--rii_gii-content) !important;
+    }
+  }
+  & when (@rii_gii-theme = Reddit_Edition) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0e1113;
+      --rii_gii-content: #1a1d1f;
+      --rii_gii-answer: #333d42;
+      --rii_gii-alpha: #5a6c7354;
+      --rii_gii-rgb: 90, 108, 115;
+      --rii_gii-noalpha: #2a3033;
+      --rii_gii-alpha-hover: #5a6c7380;
+      --rii_gii-white: #d7dadc;
+      --rii_gii-white-subhead: #a0a3a6;
+      --rii_gii-accent: #ff4500;
+      --rii_gii-accent-hover: #ff6633;
+      --rii_gii-icon-accent: #d7dadc;
+      --rii_gii-icon-inactive: #5f6368;
+      --rii_gii-head: #1a1d1f;
+      --rii_gii-modal: #212527;
+      --rii_gii-code: #363a3d;
+      --rii_gii-link: #57a9ff;
+      --rii_gii-theme-display: "Reddit Edition";
+    }
+    header a[class^="_logo_"] {
+      mask-image: none;
+      -webkit-mask-image: none;
+      background: url('data:image/svg+xml,<svg width="142" height="52" version="1.1" id="svg1" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><defs id="defs1"><radialGradient id="snoo-radial-gradient" cx="169.75" cy="92.19" r="50.98" fx="169.75" fy="92.19" gradientTransform="matrix(1 0 0 .87 0 11.64)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23feffff" id="stop1"/><stop offset=".4" stop-color="%23feffff" id="stop2"/><stop offset=".51" stop-color="%23f9fcfc" id="stop3"/><stop offset=".62" stop-color="%23edf3f5" id="stop4"/><stop offset=".7" stop-color="%23dee9ec" id="stop5"/><stop offset=".72" stop-color="%23d8e4e8" id="stop6"/><stop offset=".76" stop-color="%23ccd8df" id="stop7"/><stop offset=".8" stop-color="%23c8d5dd" id="stop8"/><stop offset=".83" stop-color="%23ccd6de" id="stop9"/><stop offset=".85" stop-color="%23d8dbe2" id="stop10"/><stop offset=".88" stop-color="%23ede3e9" id="stop11"/><stop offset=".9" stop-color="%23ffebef" id="stop12"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-2" cx="47.31" r="50.98" fx="47.31"/><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-3" cx="109.61" cy="85.59" r="153.78" fx="109.61" fy="85.59" gradientTransform="matrix(1 0 0 .7 0 25.56)"/><radialGradient id="snoo-radial-gradient-4" cx="-6.01" cy="64.68" r="12.85" fx="-6.01" fy="64.68" gradientTransform="matrix(1.07 0 0 1.55 81.08 27.26)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23f60" id="stop13"/><stop offset=".5" stop-color="%23ff4500" id="stop14"/><stop offset=".7" stop-color="%23fc4301" id="stop15"/><stop offset=".82" stop-color="%23f43f07" id="stop16"/><stop offset=".92" stop-color="%23e53812" id="stop17"/><stop offset="1" stop-color="%23d4301f" id="stop18"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient-4" id="snoo-radial-gradient-5" cx="-73.55" cy="64.68" r="12.85" fx="-73.55" fy="64.68" gradientTransform="matrix(-1.07 0 0 1.55 62.87 27.26)"/><radialGradient id="snoo-radial-gradient-6" cx="107.93" cy="166.96" r="45.3" fx="107.93" fy="166.96" gradientTransform="matrix(1 0 0 .66 0 57.4)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23172e35" id="stop19"/><stop offset=".29" stop-color="%230e1c21" id="stop20"/><stop offset=".73" stop-color="%23030708" id="stop21"/><stop offset="1" id="stop22"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-7" cx="147.88" cy="32.94" r="39.77" fx="147.88" fy="32.94" gradientTransform="matrix(1 0 0 .98 0 .54)"/><radialGradient id="snoo-radial-gradient-8" cx="131.31" cy="73.08" r="32.6" fx="131.31" fy="73.08" gradientUnits="userSpaceOnUse"><stop offset=".48" stop-color="%237a9299" id="stop23"/><stop offset=".67" stop-color="%23172e35" id="stop24"/><stop offset=".75" id="stop25"/><stop offset=".82" stop-color="%23172e35" id="stop26"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="radialGradient4" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 .87 0 11.64)" cx="169.75" cy="92.19" fx="169.75" fy="92.19" r="50.98"/><radialGradient xlink:href="%23snoo-radial-gradient-4" id="radialGradient5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.07 0 0 1.55 81.08 27.26)" cx="-6.01" cy="64.68" fx="-6.01" fy="64.68" r="12.85"/><style id="style26"> .snoo-cls-11{stroke-width:0;fill:%23ffc49c} </style></defs><g id="g4" transform="translate(8.641 7.06) scale(.1697)"><path d="M108 0C48.35 0 0 48.35 0 108c0 29.82 12.09 56.82 31.63 76.37l-20.57 20.57C6.98 209.02 9.87 216 15.64 216H108c59.65 0 108-48.35 108-108S167.65 0 108 0Z" style="fill:%23ff4500;stroke-width:0" id="path26"/><circle cx="169.22" cy="106.98" r="25.22" style="fill:url(%23radialGradient4);stroke-width:0" id="circle26"/><circle cx="46.78" cy="106.98" r="25.22" style="fill:url(%23snoo-radial-gradient-2);stroke-width:0" id="circle27"/><ellipse cx="108.06" cy="128.64" rx="72" ry="54" style="fill:url(%23snoo-radial-gradient-3);stroke-width:0" id="ellipse27"/><path d="M86.78 123.48c-.42 9.08-6.49 12.38-13.56 12.38s-12.46-4.93-12.04-14.01c.42-9.08 6.49-15.02 13.56-15.02s12.46 7.58 12.04 16.66z" style="fill:url(%23radialGradient5);stroke-width:0" id="path27"/><path d="M129.35 123.48c.42 9.08 6.49 12.38 13.56 12.38s12.46-4.93 12.04-14.01c-.42-9.08-6.49-15.02-13.56-15.02s-12.46 7.58-12.04 16.66z" style="fill:url(%23snoo-radial-gradient-5);stroke-width:0" id="path28"/><ellipse cx="79.63" cy="116.37" class="snoo-cls-11" rx="2.8" ry="3.05" id="ellipse28"/><ellipse cx="146.21" cy="116.37" class="snoo-cls-11" rx="2.8" ry="3.05" id="ellipse29"/><path d="M108.06 142.92c-8.76 0-17.16.43-24.92 1.22-1.33.13-2.17 1.51-1.65 2.74 4.35 10.39 14.61 17.69 26.57 17.69s22.23-7.3 26.57-17.69c.52-1.23-.33-2.61-1.65-2.74-7.77-.79-16.16-1.22-24.92-1.22z" style="fill:url(%23snoo-radial-gradient-6);stroke-width:0" id="path29"/><circle cx="147.49" cy="49.43" r="17.87" style="fill:url(%23snoo-radial-gradient-7);stroke-width:0" id="circle29"/><path d="M107.8 76.92c-2.14 0-3.87-.89-3.87-2.27 0-16.01 13.03-29.04 29.04-29.04 2.14 0 3.87 1.73 3.87 3.87s-1.73 3.87-3.87 3.87c-11.74 0-21.29 9.55-21.29 21.29 0 1.38-1.73 2.27-3.87 2.27z" style="fill:url(%23snoo-radial-gradient-8);stroke-width:0" id="path30"/><path d="M62.82 122.65c.39-8.56 6.08-14.16 12.69-14.16 6.26 0 11.1 6.39 11.28 14.33.17-8.88-5.13-15.99-12.05-15.99-6.92 0-13.14 6.05-13.56 15.2-.42 9.15 4.97 13.83 12.04 13.83h.52c-6.44-.16-11.3-4.79-10.91-13.2zm90.48 0c-.39-8.56-6.08-14.16-12.69-14.16-6.26 0-11.1 6.39-11.28 14.33-.17-8.88 5.13-15.99 12.05-15.99 7.07 0 13.14 6.05 13.56 15.2.42 9.15-4.97 13.83-12.04 13.83h-.52c6.44-.16 11.3-4.79 10.91-13.2z" id="path31" style="fill:%23842123;stroke-width:0"/></g><g style="fill:%23fff;fill-opacity:1" id="g6" transform="matrix(.14717 0 0 .14717 52.884 12.85)"><path d="M71.62 45.92 59.61 74.48c-1.51-.76-5.11-1.61-8.51-1.61-3.4 0-6.81.85-10.12 2.46-6.53 3.31-11.35 9.93-11.35 19.48v52.3H-.26V45.35h29.04v14.28h.57c6.81-9.08 17.21-15.79 30.74-15.79 4.92 0 9.65.95 11.54 2.08z" id="path1" style="fill:%23fff;fill-opacity:1"/><path d="M65.84 96.52c0-29.41 20.15-52.68 50.32-52.68 27.33 0 46.91 19.96 46.91 48.05 0 4.92-.47 9.55-1.51 14H93.08c3.12 10.69 12.39 19.01 26.29 19.01 7.66 0 18.54-2.74 24.4-7.28l9.27 22.32c-8.61 5.86-21.75 8.7-33.29 8.7-32.25 0-53.91-20.81-53.91-52.11zm26.67-9.36h43.03c0-13.05-8.89-19.96-19.77-19.96-12.3 0-20.62 7.94-23.27 19.96z" id="path2" style="fill:%23fff;fill-opacity:1"/><path d="M419.53-.37c10.03 0 18.25 8.23 18.25 18.25s-8.23 18.25-18.25 18.25-18.25-8.23-18.25-18.25S409.51-.37 419.53-.37zm14.94 147.49h-29.89V45.35h29.89z" id="path3" style="fill:%23fff;fill-opacity:1"/><path d="M246 1.47 245.91 55h-.57c-8.23-7.85-17.12-11.07-28.75-11.07-28.66 0-47.67 23.08-47.67 52.3s17.78 52.4 46.72 52.4c12.11 0 23.55-4.16 30.93-13.62h.85v12.11h28.47V1.47Zm1.42 121.39h-.99l-6.67-6.93c-4.34 4.33-10.28 6.93-17.22 6.93-14.64 0-24.88-11.58-24.88-26.6 0-15.02 10.24-26.6 24.88-26.6 14.64 0 24.88 11.58 24.88 26.6z" id="path4" style="fill:%23fff;fill-opacity:1"/><path d="M360.15 1.47 360.06 55h-.57c-8.23-7.85-17.12-11.07-28.75-11.07-28.66 0-47.67 23.08-47.67 52.3s17.78 52.4 46.72 52.4c12.11 0 23.55-4.16 30.93-13.62h.85v12.11h28.47V1.47Zm1.28 121.39h-.99l-6.67-6.93c-4.34 4.33-10.28 6.93-17.22 6.93-14.64 0-24.88-11.58-24.88-26.6 0-15.02 10.24-26.6 24.88-26.6 14.64 0 24.88 11.58 24.88 26.6z" id="path5" style="fill:%23fff;fill-opacity:1"/><path d="M492.44 45.35h21.85v25.44h-21.85v76.33h-29.89V70.79H440.8V45.35h21.75V17.69h29.89z" id="path6" style="fill:%23fff;fill-opacity:1"/></g></svg>') 0px center / 142px no-repeat !important;
+    }
+  }
+  & when (@rii_gii-theme = Void) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #030303;
+      --rii_gii-content: #080808;
+      --rii_gii-answer: #0d0d0d;
+      --rii_gii-alpha: #1a1a3354;
+      --rii_gii-rgb: 26, 26, 51;
+      --rii_gii-noalpha: #121222;
+      --rii_gii-alpha-hover: #2a2a4480;
+      --rii_gii-white: #a3a3c2;
+      --rii_gii-white-subhead: #666688;
+      --rii_gii-icon-inactive: #555577;
+      --rii_gii-head: #080808;
+      --rii_gii-modal: #05050d;
+      --rii_gii-code: #181820;
+      --rii_gii-link: #5566cc;
+      --rii_gii-theme-display: "Пустота";
+    }
+  }
+  & when (@rii_gii-theme = Romdo) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #050606;
+      --rii_gii-content: #0d0f0f;
+      --rii_gii-answer: #141717;
+      --rii_gii-alpha: rgba(115, 128, 115, 0.1);
+      --rii_gii-rgb: 115, 128, 115;
+      --rii_gii-noalpha: #1f2424;
+      --rii_gii-alpha-hover: rgba(115, 128, 115, 0.18);
+      --rii_gii-white: #d5dad5;
+      --rii_gii-white-subhead: #596161;
+      --rii_gii-accent: #738073;
+      --rii_gii-accent-hover: #576157;
+      --rii_gii-icon-accent: #738073;
+      --rii_gii-icon-inactive: #2b3030;
+      --rii_gii-head: #0d0f0f;
+      --rii_gii-modal: #141717;
+      --rii_gii-code: #020303;
+      --rii_gii-link: #738073;
+      --rii_gii-logo: #738073;
+      --rii_gii-theme-display: "Romdo";
+      --vkui--color_background_page: #050606 !important;
+      --vkui--color_background_content: #0d0f0f !important;
+      --vkui--color_background_secondary: #141717 !important;
+      --vkui--color_stroke_border: #1f2424 !important;
+      --vkui--color_stroke_border_alpha: rgba(115, 128, 115, 0.15) !important;
+      --vkui--color_background_accent: #1f2424 !important;
+      --vkui--color_background_accent_themed: #738073 !important;
+      --vkui--color_text_contrast: #d5dad5 !important;
+    }
+  }
+  & when (@rii_gii-theme = Toxic_glow) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0d1411;
+      --rii_gii-content: #12211a;
+      --rii_gii-answer: #1e352a;
+      --rii_gii-alpha: #a3ff0054;
+      --rii_gii-rgb: 163, 255, 0;
+      --rii_gii-noalpha: #2a4a2a;
+      --rii_gii-alpha-hover: #a3ff0080;
+      --rii_gii-white: #e0ffe0;
+      --rii_gii-white-subhead: #a3c3a3;
+      --rii_gii-icon-inactive: #829a82;
+      --rii_gii-head: #12211a;
+      --rii_gii-modal: #0d1411;
+      --rii_gii-code: #3a4a3a;
+      --rii_gii-link: #a3ff00;
+      --rii_gii-theme-display: "Токсичное свечение";
+    }
+  }
+  & when (@rii_gii-theme = Poisoned_forest) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #000a00;
+      --rii_gii-content: #000000;
+      --rii_gii-answer: #021202;
+      --rii_gii-alpha: #00ff6633;
+      --rii_gii-rgb: 0, 255, 102;
+      --rii_gii-noalpha: #003300;
+      --rii_gii-alpha-hover: #00ff6666;
+      --rii_gii-white: #d0f0d0;
+      --rii_gii-white-subhead: #4a7a4a;
+      --rii_gii-accent: #00ff88;
+      --rii_gii-accent-hover: #00ffaa;
+      --rii_gii-icon-accent: #00ffcc;
+      --rii_gii-icon-inactive: #3a6a3a;
+      --rii_gii-head: #000500;
+      --rii_gii-modal: #000300;
+      --rii_gii-code: #0a1a0a;
+      --rii_gii-link: #00ff66;
+      --rii_gii-theme-display: "Отравленный лес";
+      --vkui--color_text_contrast: #004a27 !important;
+    }
+  }
+  & when (@rii_gii-theme = Swamp) and (@rii_gii-theme-light = Disable) {
+      :root {
+      --rii_gii-bg: #141810;
+      --rii_gii-content: #0d100a;
+      --rii_gii-answer: #181d14;
+      --rii_gii-alpha: #8ba87280;
+      --rii_gii-rgb: 139, 168, 114;
+      --rii_gii-noalpha: #3a4230;
+      --rii_gii-alpha-hover: #8ba872bb;
+      --rii_gii-white: #e4f0d8;
+      --rii_gii-white-subhead: #8b9975;
+      --rii_gii-accent: #8bc34a;
+      --rii_gii-accent-hover: #9ccc65;
+      --rii_gii-icon-accent: #dcedc8;
+      --rii_gii-icon-inactive: #6b7b5a;
+      --rii_gii-head: #1e2218;
+      --rii_gii-modal: #191d13;
+      --rii_gii-code: #2e3327;
+      --rii_gii-link: #aed581;
+      --rii_gii-theme-display: "Болото";
+    }
+  }
+  & when (@rii_gii-theme = Midnight_candy) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a0d1a;
+      --rii_gii-content: #2a122a;
+      --rii_gii-answer: #3a1e3a;
+      --rii_gii-alpha: #ff00aa54;
+      --rii_gii-rgb: 255, 0, 170;
+      --rii_gii-noalpha: #3a1e3a;
+      --rii_gii-alpha-hover: #ff00aa80;
+      --rii_gii-white: #ffe0ff;
+      --rii_gii-white-subhead: #c3a3c3;
+      --rii_gii-icon-inactive: #9a829a;
+      --rii_gii-head: #2a122a;
+      --rii_gii-modal: #1a0d1a;
+      --rii_gii-code: #4a3a4a;
+      --rii_gii-link: #ff66ff;
+      --rii_gii-theme-display: "Полночная конфетка";
+    }
+  }
+  & when (@rii_gii-theme = Cyber_rust) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a120d;
+      --rii_gii-content: #2a2212;
+      --rii_gii-answer: #3a321e;
+      --rii_gii-alpha: #ff770054;
+      --rii_gii-rgb: 255, 119, 0;
+      --rii_gii-noalpha: #3a321e;
+      --rii_gii-alpha-hover: #ff770080;
+      --rii_gii-white: #ffebd2;
+      --rii_gii-white-subhead: #c3b3a3;
+      --rii_gii-icon-inactive: #9a8a7a;
+      --rii_gii-head: #2a2212;
+      --rii_gii-modal: #1a120d;
+      --rii_gii-code: #4a3a2a;
+      --rii_gii-link: #ff8800;
+      --rii_gii-theme-display: "Кибер-ржавчина";
+    }
+  }
+  & when (@rii_gii-theme = Frostbite) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0d1a22;
+      --rii_gii-content: #122a33;
+      --rii_gii-answer: #1e3a44;
+      --rii_gii-alpha: #00ffff54;
+      --rii_gii-rgb: 0, 255, 255;
+      --rii_gii-noalpha: #1e3a44;
+      --rii_gii-alpha-hover: #00ffff80;
+      --rii_gii-white: #e0ffff;
+      --rii_gii-white-subhead: #a3c3d3;
+      --rii_gii-icon-inactive: #829aa3;
+      --rii_gii-head: #122a33;
+      --rii_gii-modal: #0d1a22;
+      --rii_gii-code: #3a4a5a;
+      --rii_gii-link: #00eeff;
+      --rii_gii-theme-display: "Обморожение";
+    }
+  }
+  & when (@rii_gii-theme = Volcanic_ash) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a1212;
+      --rii_gii-content: #2a1e1e;
+      --rii_gii-answer: #3a2a2a;
+      --rii_gii-alpha: #ff4d0054;
+      --rii_gii-rgb: 255, 77, 0;
+      --rii_gii-noalpha: #3a2a2a;
+      --rii_gii-alpha-hover: #ff4d0080;
+      --rii_gii-white: #ffd9b3;
+      --rii_gii-white-subhead: #c3b3a3;
+      --rii_gii-icon-inactive: #9a8a7a;
+      --rii_gii-head: #2a1e1e;
+      --rii_gii-modal: #1a1212;
+      --rii_gii-code: #423a3a;
+      --rii_gii-link: #ff6600;
+      --rii_gii-theme-display: "Вулканический пепел";
+    }
+  }
+  & when (@rii_gii-theme = Galactic_void) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #05001a;
+      --rii_gii-content: #0f002a;
+      --rii_gii-answer: #1a003a;
+      --rii_gii-alpha: #6a00ff54;
+      --rii_gii-rgb: 106, 0, 255;
+      --rii_gii-noalpha: #1a003a;
+      --rii_gii-alpha-hover: #6a00ff80;
+      --rii_gii-white: #e6d5ff;
+      --rii_gii-white-subhead: #a3a3d3;
+      --rii_gii-icon-inactive: #82829a;
+      --rii_gii-head: #0f002a;
+      --rii_gii-modal: #05001a;
+      --rii_gii-code: #35354a;
+      --rii_gii-link: #6600ff;
+      --rii_gii-theme-display: "Галактическая пустота";
+    }
+  }
+  & when (@rii_gii-theme = Emerald_dream) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #001a10;
+      --rii_gii-content: #002a1e;
+      --rii_gii-answer: #003a2a;
+      --rii_gii-alpha: #00ff8854;
+      --rii_gii-rgb: 0, 255, 136;
+      --rii_gii-noalpha: #003a2a;
+      --rii_gii-alpha-hover: #00ff8880;
+      --rii_gii-white: #e6fff2;
+      --rii_gii-white-subhead: #a3d3c3;
+      --rii_gii-icon-inactive: #82a39a;
+      --rii_gii-head: #002a1e;
+      --rii_gii-modal: #001a10;
+      --rii_gii-code: #30443a;
+      --rii_gii-link: #00ffcc;
+      --rii_gii-theme-display: "Изумрудная мечта";
+    }
+  }
+  & when (@rii_gii-theme = Citrus) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #4a5c1a;
+      --rii_gii-content: #6a7c2a;
+      --rii_gii-answer: #3a4c16;
+      --rii_gii-alpha: #b6d86b70;
+      --rii_gii-rgb: 182, 216, 107;
+      --rii_gii-noalpha: #2a3c11;
+      --rii_gii-alpha-hover: #d4ff8f90;
+      --rii_gii-white: #fffff0;
+      --rii_gii-white-subhead: #e8f8b0;
+      --rii_gii-accent: #cddc39;
+      --rii_gii-accent-hover: #afb42b;
+      --rii_gii-icon-accent: var(--rii_gii-accent);
+      --rii_gii-icon-inactive: #b0bf7f;
+      --rii_gii-head: #2a3c11;
+      --rii_gii-modal: #1d2d0d;
+      --rii_gii-code: #060d05;
+      --rii_gii-link: var(--rii_gii-accent);
+      --rii_gii-theme-display: "Цитрус";
+    }
+  }
+  & when (@rii_gii-theme = Dark_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a0a12;
+      --rii_gii-content: #22121a;
+      --rii_gii-answer: #2a1a22;
+      --rii_gii-alpha: #ff66b354;
+      --rii_gii-rgb: 255, 102, 179;
+      --rii_gii-noalpha: #2a1a22;
+      --rii_gii-alpha-hover: #ff66b380;
+      --rii_gii-white: #ffe6f0;
+      --rii_gii-white-subhead: #d3a3c3;
+      --rii_gii-icon-inactive: #a3829a;
+      --rii_gii-head: #22121a;
+      --rii_gii-modal: #1a0a12;
+      --rii_gii-code: #4a3a42;
+      --rii_gii-link: #ff66cc;
+      --rii_gii-theme-display: "Тёмная роза";
+    }
+  }
+  & when (@rii_gii-theme = Light_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #7a5a5a;
+      --rii_gii-content: #8a6a6a;
+      --rii_gii-answer: #705050;
+      --rii_gii-alpha: #ffb0b070;
+      --rii_gii-rgb: 255, 176, 176;
+      --rii_gii-noalpha: #604040;
+      --rii_gii-alpha-hover: #ffc0c090;
+      --rii_gii-white: #fff8f8;
+      --rii_gii-white-subhead: #e0d0d0;
+      --rii_gii-accent: #ff8080;
+      --rii_gii-accent-hover: #ff6060;
+      --rii_gii-icon-accent: #ffb0b0;
+      --rii_gii-icon-inactive: #d0b0b0;
+      --rii_gii-head: #604040;
+      --rii_gii-modal: #5a4040;
+      --rii_gii-code: #3a2020;
+      --rii_gii-link: var(--rii_gii-accent);
+      --rii_gii-theme-display: "Светлая роза";
+    }
+  }
+  & when (@rii_gii-theme = Neon_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #5a3a4a;
+      --rii_gii-content: #6a4a5a;
+      --rii_gii-answer: #503040;
+      --rii_gii-alpha: #ff005d70;
+      --rii_gii-rgb: 255, 0, 93;
+      --rii_gii-noalpha: #4a2a3a;
+      --rii_gii-alpha-hover: #ff005d90;
+      --rii_gii-white: #fff8f8;
+      --rii_gii-white-subhead: #d0c0c0;
+      --rii_gii-accent: #ff005d;
+      --rii_gii-accent-hover: #ff3377;
+      --rii_gii-icon-accent: #ff80a0;
+      --rii_gii-icon-inactive: #b08090;
+      --rii_gii-head: #4a2a3a;
+      --rii_gii-modal: #402030;
+      --rii_gii-code: #2a101a;
+      --rii_gii-link: #ff005d;
+      --rii_gii-theme-display: "Неоновая роза";
+    }
+  }
+  & when (@rii_gii-theme = Momoiro) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a0b0b;
+      --rii_gii-content: #2a1212;
+      --rii_gii-answer: #3a1e1e;
+      --rii_gii-alpha: #b38a9554;
+      --rii_gii-rgb: 255, 158, 181;
+      --rii_gii-noalpha: #5a3636;
+      --rii_gii-alpha-hover: #b38a9580;
+      --rii_gii-white: #f8f0e8;
+      --rii_gii-white-subhead: #d8c0b0;
+      --rii_gii-accent: #ff9eb5;
+      --rii_gii-accent-hover: #ff7a95;
+      --rii_gii-accent-tint: #ff9eb533;
+      --rii_gii-icon-accent: #ff9eb5;
+      --rii_gii-icon-inactive: #8a6b6b;
+      --rii_gii-head: #3a1e1e;
+      --rii_gii-modal: #2a1212;
+      --rii_gii-code: #1a0b0b;
+      --rii_gii-link: #d85a5a;
+      --rii_gii-theme-display: "Момоиро";
+    }
+  }
+  & when (@rii_gii-theme = Crimson_night) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #120a0a;
+      --rii_gii-content: #1a0f0f;
+      --rii_gii-answer: #221414;
+      --rii_gii-alpha: #ff003354;
+      --rii_gii-rgb: 255, 0, 51;
+      --rii_gii-noalpha: #221414;
+      --rii_gii-alpha-hover: #ff003380;
+      --rii_gii-white: #ffe6e6;
+      --rii_gii-white-subhead: #d3a3a3;
+      --rii_gii-icon-inactive: #a38282;
+      --rii_gii-head: #1a0f0f;
+      --rii_gii-modal: #120a0a;
+      --rii_gii-code: #443a3a;
+      --rii_gii-link: #ff3333;
+      --rii_gii-theme-display: "Багровая ночь";
+    }
+  }
+  & when (@rii_gii-theme = Blood_moon) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0a0000;
+      --rii_gii-content: #140000;
+      --rii_gii-answer: #1e0000;
+      --rii_gii-alpha: #ff000054;
+      --rii_gii-rgb: 255, 0, 0;
+      --rii_gii-noalpha: #1e0000;
+      --rii_gii-alpha-hover: #ff000080;
+      --rii_gii-white: #ffcccc;
+      --rii_gii-white-subhead: #d38282;
+      --rii_gii-icon-inactive: #a35a5a;
+      --rii_gii-head: #140000;
+      --rii_gii-modal: #0a0000;
+      --rii_gii-code: #423a3a;
+      --rii_gii-link: #ff0033;
+      --rii_gii-theme-display: "Кровавая луна";
+      --vkui--color_icon_negative: #fd4a4a !important;
+    }
+  }
+  & when (@rii_gii-theme = Hell_glow) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #330000;
+      --rii_gii-content: #550000;
+      --rii_gii-answer: #770000;
+      --rii_gii-alpha: #ff330054;
+      --rii_gii-rgb: 255, 51, 0;
+      --rii_gii-noalpha: #ff3300;
+      --rii_gii-alpha-hover: #ff330080;
+      --rii_gii-white: #fff5f0;
+      --rii_gii-white-subhead: #ffe0d6;
+      --rii_gii-accent: #ff5500;
+      --rii_gii-accent-hover: #ff7700;
+      --rii_gii-icon-accent: #ff7744;
+      --rii_gii-icon-inactive: #aa5544;
+      --rii_gii-head: #440000;
+      --rii_gii-modal: #4a0000;
+      --rii_gii-code: #2a0000;
+      --rii_gii-link: #ff5500;
+      --rii_gii-theme-display: "Адское свечение";
+    }
+  }
+  & when (@rii_gii-theme = Retro_gold) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #121005;
+      --rii_gii-content: #221e0a;
+      --rii_gii-answer: #2c2810;
+      --rii_gii-alpha: #ffd70054;
+      --rii_gii-rgb: 255, 215, 0;
+      --rii_gii-noalpha: #3c3015;
+      --rii_gii-alpha-hover: #ffd70080;
+      --rii_gii-white: #fff9d7;
+      --rii_gii-white-subhead: #d7c499;
+      --rii_gii-icon-inactive: #b3a377;
+      --rii_gii-head: #221e0a;
+      --rii_gii-modal: #171205;
+      --rii_gii-code: #443a1a;
+      --rii_gii-link: #ffd700;
+      --rii_gii-theme-display: "Ретро золото";
+    }
+  }
+  & when (@rii_gii-theme = Vintage_sepia) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #18120a;
+      --rii_gii-content: #201a0f;
+      --rii_gii-answer: #282214;
+      --rii_gii-alpha: #99774454;
+      --rii_gii-rgb: 153, 119, 68;
+      --rii_gii-noalpha: #664411;
+      --rii_gii-alpha-hover: #bb995580;
+      --rii_gii-white: #f0e6d9;
+      --rii_gii-white-subhead: #b3a388;
+      --rii_gii-icon-inactive: #887755;
+      --rii_gii-head: #201a0f;
+      --rii_gii-modal: #181208;
+      --rii_gii-code: #302a1a;
+      --rii_gii-link: #ccaa77;
+      --rii_gii-theme-display: "Винтажный сепия";
+    }
+  }
+  & when (@rii_gii-theme = Violetta) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #5c5ca3;
+      --rii_gii-content: #7070ae;
+      --rii_gii-answer: #5a4f86;
+      --rii_gii-alpha: #9696d870;
+      --rii_gii-rgb: 150, 150, 216;
+      --rii_gii-noalpha: #5b5597;
+      --rii_gii-alpha-hover: #b0a0ff90;
+      --rii_gii-white: #f8f8ff;
+      --rii_gii-white-subhead: #b0a0d0;
+      --rii_gii-accent: #ff60ff;
+      --rii_gii-Violetta-accent1: #ff60ff;
+      --rii_gii-Violetta-accent2: #ff33cc;
+      --rii_gii-accent-hover: #ff33cc;
+      --rii_gii-icon-accent: var(--rii_gii-accent);
+      --rii_gii-icon-inactive: #a09bc0;
+      --rii_gii-head: #4a457a;
+      --rii_gii-modal: #45406a;
+      --rii_gii-code: #302a4a;
+      --rii_gii-link: var(--rii_gii-accent);
+      --rii_gii-theme-display: "Виолетта";
+    }
+  }
+  & when (@rii_gii-theme = Violet_sky) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #1a0522;
+      --rii_gii-content: #2d0f3a;
+      --rii_gii-answer: #421b52;
+      --rii_gii-alpha: #d4a5ff80;
+      --rii_gii-rgb: 212, 165, 255;
+      --rii_gii-noalpha: #6a4c8a;
+      --rii_gii-alpha-hover: #d4a5ffcc;
+      --rii_gii-white: #ffffff;
+      --rii_gii-white-subhead: #e0d0ff;
+      --rii_gii-accent: #d4a5ff80;
+      --rii_gii-accent-hover: #d4a5ffcc;
+      --rii_gii-icon-accent: #ffffff;
+      --rii_gii-icon-inactive: #b399d4;
+      --rii_gii-head: #120318;
+      --rii_gii-modal: #220a2e;
+      --rii_gii-code: #4a2b5a;
+      --rii_gii-link: #c084fc;
+      --rii_gii-theme-display: "Фиолетовое небо";
+    }
+  }
+  & when (@rii_gii-theme = Akae) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #120f2a;
+      --rii_gii-content: #1e1a3a;
+      --rii_gii-answer: #2a254a;
+      --rii_gii-alpha: #fff0e654;
+      --rii_gii-rgb: 225, 240, 230;
+      --rii_gii-noalpha: #4a456a;
+      --rii_gii-alpha-hover: #fff0e680;
+      --rii_gii-white: #f0e8d8;
+      --rii_gii-white-subhead: #d0c8b8;
+      --rii_gii-accent: #e06b4a;
+      --rii_gii-accent-hover: #d05a3a;
+      --rii_gii-accent-tint: #e06b4a33;
+      --rii_gii-icon-accent: #e06b4a;
+      --rii_gii-icon-inactive: #8a6a5a;
+      --rii_gii-head: #1e1a3a;
+      --rii_gii-modal: #120f2a;
+      --rii_gii-code: #0d0a1a;
+      --rii_gii-link: #ffb87a;
+      --rii_gii-theme-display: "Акаэ";
+    }
+  }
+  & when (@rii_gii-theme = Ocean) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #0a1128;
+      --rii_gii-content: #0f193a;
+      --rii_gii-answer: #121d42;
+      --rii_gii-alpha: #4d79ff54;
+      --rii_gii-rgb: 77, 121, 255;
+      --rii_gii-noalpha: #2a365a;
+      --rii_gii-alpha-hover: #4d79ff80;
+      --rii_gii-white: #e0e0e0;
+      --rii_gii-white-subhead: #a0a0a0;
+      --rii_gii-accent: #4d79ff;
+      --rii_gii-accent-hover: #3a63e0;
+      --rii_gii-accent-tint: #4d79ff33;
+      --rii_gii-icon-accent: #4d79ff;
+      --rii_gii-icon-inactive: #555;
+      --rii_gii-head: #121d42;
+      --rii_gii-modal: #0f193a;
+      --rii_gii-code: #0a1128;
+      --rii_gii-link: #5da9ff;
+      --rii_gii-theme-display: "Океан";
+    }
+  }
+  & when (@rii_gii-theme = Amber_haze) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #7a6a4a;
+      --rii_gii-content: #8a7a5a;
+      --rii_gii-answer: #706040;
+      --rii_gii-alpha: #ffd08070;
+      --rii_gii-rgb: 255, 208, 128;
+      --rii_gii-noalpha: #605030;
+      --rii_gii-alpha-hover: #ffe0a090;
+      --rii_gii-white: #fff8f0;
+      --rii_gii-white-subhead: #e0d8c8;
+      --rii_gii-accent: #ffb060;
+      --rii_gii-accent-hover: #ffc070;
+      --rii_gii-icon-accent: #ffd090;
+      --rii_gii-icon-inactive: #d0b898;
+      --rii_gii-head: #605030;
+      --rii_gii-modal: #5a4a30;
+      --rii_gii-code: #3a2a10;
+      --rii_gii-link: #ffa050;
+      --rii_gii-theme-display: "Янтарный туман";
+    }
+  }
+  & when (@rii_gii-theme = Cinnamon_sky) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #2c1810;
+      --rii_gii-content: #5a452c;
+      --rii_gii-answer: #6a4d3b;
+      --rii_gii-alpha: #ff8c66b3;
+      --rii_gii-rgb: 255, 140, 102;
+      --rii_gii-noalpha: #d4815b;
+      --rii_gii-accent: #ff9a57;
+      --rii_gii-accent-hover: #ffb366;
+      --rii_gii-white: #f8f0e8;
+      --rii_gii-white-subhead: #e0c5b0;
+      --rii_gii-icon-accent: #ffd166;
+      --rii_gii-icon-inactive: #c4a580;
+      --rii_gii-head: #4a351d;
+      --rii_gii-modal: #5a452c;
+      --rii_gii-code: #3a2e1e;
+      --rii_gii-link: #ffa36c;
+      --rii_gii-theme-display: "Коричное небо";
+    }
+  }
+  & when (@rii_gii-theme = Fire) and (@rii_gii-theme-light = Disable) {
+    :root {
+      --rii_gii-bg: #ff8f00;
+      --rii_gii-content: #ff6f00;
+      --rii_gii-answer: #e65100;
+      --rii_gii-alpha: #ffcc80aa;
+      --rii_gii-rgb: 255, 204, 128;
+      --rii_gii-noalpha: #ff8f00;
+      --rii_gii-alpha-hover: #ffcc80cc;
+      --rii_gii-white: #fff8e1;
+      --rii_gii-white-subhead: #ffecb3;
+      --rii_gii-accent: #ffcc80aa;
+      --rii_gii-accent-hover: #ffcc80cc;
+      --rii_gii-icon-accent: #fff8e1;
+      --rii_gii-icon-inactive: #ffb74d;
+      --rii_gii-head: #bf360c;
+      --rii_gii-modal: #ff9800;
+      --rii_gii-code: var(--rii_gii-head);
+      --rii_gii-link: #fffb00;
+      --rii_gii-theme-display: "Пожар";
+      --otvetui--tooltip_color_text_negative: #ff0000 !important;
+    }
+  }
+  & when (@rii_gii-theme = Cyberpunk) and (@rii_gii-theme-light = Disable) {
+      :root {
+      --rii_gii-bg: #0a0a12;
+      --rii_gii-content: #05050a;
+      --rii_gii-answer: #0f0f1a;
+      --rii_gii-alpha: #ff00ff80;
+      --rii_gii-rgb: 255, 0, 255;
+      --rii_gii-noalpha: #3a1f3a;
+      --rii_gii-alpha-hover: #ff00ffbb;
+      --rii_gii-white: #f0e6ff;
+      --rii_gii-white-subhead: #b366b3;
+      --rii_gii-accent: #ff00ff;
+      --rii_gii-accent-hover: #ff66ff;
+      --rii_gii-icon-accent: #ffccff;
+      --rii_gii-icon-inactive: #664466;
+      --rii_gii-head: #151522;
+      --rii_gii-modal: #11111a;
+      --rii_gii-code: #222233;
+      --rii_gii-link: #cc00cc;
+      --rii_gii-theme-display: "Киберпанк";
+    }
+  }
+
+  .rii_gii-light() {
+    :root {
+      --rii_gii-gold: initial;
+      --vkui--color_background_nav_bar_otvetui: var(--rii_gii-content) !important;
+      --r-317: #fcd6d6; --r-318: #e1f0a9; --r-319: #ffd38b;
+      --r-320: #ffcaa7; --r-321: #facbf1; --r-322: #bee9ff;
+      --r-323: #fed2d7; --r-324: #f9eb98; --r-325: #bdeffd;
+      --r-326: #fdcc89; --r-327: #f7eaa7; --r-328: #c9edee;
+    }
+    div[class*="_AchieveBackground_"] span {
+      color: #222 !important;
+      text-shadow: none;
+    }
+    [class^="_DraftsEmpty_"]::before { background-image: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><path d="M122.738 113c-2.276-8.114-4.078-18.462-5.148-27.809-.703-6.132-1.09-11.833-1.09-16.191-9.141 1.031-34.474 6.469-44.463 4.031-.03 1.598-.043 3.374-.034 5.29.009 2.053.043 4.268.107 6.596.505 18.348 2.893 43.747 9.916 53.083 11.969-2.812 14.474-7 24.974-8.5" stroke="%232c2d2e" stroke-width="4" style="stroke:%231b1b1b;stroke-opacity:1"/><g stroke="%2307f" stroke-linejoin="bevel" stroke-width="6"><path d="M61 93c3.423 4.72 11.297 8.368 19 0M91 93c3.423 4.72 11.297 8.368 19 0" style="stroke:%23c7b7c5;stroke-opacity:1"/></g></svg>'); }
+    [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) { --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9m12-11c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23000;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27m-17.493 89c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184m5.314-37s-6.195 13.182 1.686 29m-83.5 10.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23000;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23000;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>'); }
+    svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
+      --mask--sun: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" data-icon="SunOutline20"><clipPath id="a"><path d="M0 0h20v20H0z"/></clipPath><g clip-path="url(%23a)"><path d="M12.482 16.007c.37-.153.808 0 .961.37l.875 2.12a.75.75 0 0 1-1.387.572l-.875-2.12c-.153-.37.056-.79.426-.942m-5.943.36c.154-.37.592-.521.962-.367s.578.573.425.942l-.88 2.115a.75.75 0 0 1-1.385-.575z"/><path fill-rule="evenodd" d="M10 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4" clip-rule="evenodd"/><path d="M15.999 12.5c.154-.369.574-.578.944-.424l2.12.882a.75.75 0 0 1-.576 1.386l-2.121-.882c-.37-.154-.521-.592-.367-.961m-12.946-.439c.37-.152.789.058.942.427.153.37 0 .808-.37.961l-2.113.872a.75.75 0 0 1-.573-1.387zm15.449-6.376a.75.75 0 0 1 .572 1.387l-2.123.876c-.37.153-.79-.058-.941-.428-.153-.37 0-.806.37-.959zM.538 6.07a.75.75 0 0 1 .98-.405l2.112.878c.37.153.521.591.368.96-.154.37-.574.579-.944.426L.944 7.05a.75.75 0 0 1-.406-.98M12.954.937a.75.75 0 0 1 1.386.576l-.881 2.119c-.154.37-.593.52-.962.367-.37-.154-.578-.575-.424-.945zM6.09.527a.75.75 0 0 1 .98.406l.872 2.118c.153.37-.057.788-.427.941s-.808 0-.96-.37l-.873-2.115a.75.75 0 0 1 .408-.98"/></g></svg>');
+      -webkit-mask: var(--mask--sun) center / contain no-repeat;
+      mask: var(--mask--sun) center / contain no-repeat;
+      background: var(--rii_gii-icon-inactive);
+    }
+  }
+
+  & when not (@rii_gii-theme-light = Disable) and not (@rii_gii_ct = 1) {
+    .rii_gii-light();
+    & when not (@rii_gii-theme-light = Snow-white) and not (@rii_gii-theme-light = Peach) { header * { fill: #fff !important; } }
+    & when not (@rii_gii-theme-light = Snow-white) and not (@rii_gii-theme-light = Peach) and not (@rii_gii-theme-light = Concrete) { [class*="_menuItem_bottom_"] { &, & svg, & span { color: #fff !important; } } }
+  }
+  
+  & when (@rii_gii-theme = Automatic) and not (@rii_gii_ct = 1) {
+    @media (prefers-color-scheme: light) {
+    :root {
+      --rii_gii-bg: #fefefe;
+      --rii_gii-content: #fafafa;
+      --rii_gii-answer: #f5f5f5;
+      --rii_gii-alpha: #e0e0e090;
+      --rii_gii-rgb: 224, 224, 224;
+      --rii_gii-noalpha: #e0e0e0;
+      --rii_gii-alpha-hover: #d0d0d090;
+      --rii_gii-white: #333333;
+      --rii_gii-white-subhead: #555555;
+      --rii_gii-accent: #38bdf8;
+      --rii_gii-accent-hover: #0ea5e9;
+      --rii_gii-icon-accent: var(--rii_gii-accent);
+      --rii_gii-icon-inactive: #aaaaaa;
+      --rii_gii-head: var(--rii_gii-content);
+      --rii_gii-modal: #ffffff;
+      --rii_gii-code: #fefefe;
+      --rii_gii-link: #666666;
+      --rii_gii-theme-display: "[A] Светлая";
+      }
+      .rii_gii-light();
+    }
+    @media (prefers-color-scheme: dark) { :root { --rii_gii-theme-display: "[A] Тёмная"; } }
+  }
+   
+  & when (@rii_gii-theme-light = Golden_lime) {
+    :root {
+    --rii_gii-bg: #fffbf0;
+    --rii_gii-content: #f8f4d8;
+    --rii_gii-answer: #f0e8b8;
+    --rii_gii-alpha: #d8d86b90;
+    --rii_gii-rgb: 216, 216, 107;
+    --rii_gii-noalpha: #d8d8a8;
+    --rii_gii-alpha-hover: #ffff8f90;
+    --rii_gii-white: #393939;
+    --rii_gii-white-subhead: #3c3c11;
+    --rii_gii-accent: #dccc39;
+    --rii_gii-accent-hover: #b4af2b;
+    --rii_gii-icon-accent: #b4a017;
+    --rii_gii-icon-inactive: #bfb07f;
+    --rii_gii-head: #8bc34a;
+    --rii_gii-modal: #f8f8d8;
+    --rii_gii-code: #fffbf0;
+    --rii_gii-link: #689f38;
+    --rii_gii-logo: #fff;
+    --rii_gii-theme-display: "Золотой лайм";
+    }
+  }
+  & when (@rii_gii-theme-light = Scarlet_Bird) {
+    :root {
+      --rii_gii-bg: #fff5f5;
+      --rii_gii-content: #ffebee;
+      --rii_gii-answer: #ffcdd2;
+      --rii_gii-alpha: #ef9a9a70;
+      --rii_gii-rgb: 239, 154, 154;
+      --rii_gii-noalpha: #e57373;
+      --rii_gii-alpha-hover: #ef535090;
+      --rii_gii-white: #393939;
+      --rii_gii-white-subhead: #3c0a0a;
+      --rii_gii-accent: #f44336;
+      --rii_gii-accent-hover: #e53935;
+      --rii_gii-icon-accent: #c62828;
+      --rii_gii-icon-inactive: #ff8a80;
+      --rii_gii-head: #d32f2f;
+      --rii_gii-modal: #ffebee;
+      --rii_gii-code: #fff5f5;
+      --rii_gii-link: #b71c1c;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Алая птица";
+    }
+  }
+  & when (@rii_gii-theme-light = Ocean_gold) {
+    :root {
+      --rii_gii-bg: #f0fbff;
+      --rii_gii-content: #d8f4ff;
+      --rii_gii-answer: #b3e8ff;
+      --rii_gii-alpha: #0077ff50;
+      --rii_gii-rgb: 0, 119, 255;
+      --rii_gii-noalpha: #66a3ff;
+      --rii_gii-alpha-hover: #3399ff90;
+      --rii_gii-white: #393939;
+      --rii_gii-white-subhead: #5a7a9a;
+      --rii_gii-accent: #ffa726;
+      --rii_gii-accent-hover: #fb8c00;
+      --rii_gii-icon-accent: #f57c00;
+      --rii_gii-icon-inactive: #455c74;
+      --rii_gii-head: #0055aa;
+      --rii_gii-modal: #d8f4ff;
+      --rii_gii-code: #f0fbff;
+      --rii_gii-link: #003d77;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Океанское золото";
+    }
+  }
+  & when (@rii_gii-theme-light = Emerald_forest) {
+    :root {
+      --rii_gii-bg: #f1f8f4;
+      --rii_gii-content: #e0f0e8;
+      --rii_gii-answer: #c8e6d1;
+      --rii_gii-alpha: #4caf5050;
+      --rii_gii-rgb: 76, 175, 80;
+      --rii_gii-noalpha: #81c784;
+      --rii_gii-alpha-hover: #4caf5090;
+      --rii_gii-white: #2d2d2d;
+      --rii_gii-white-subhead: #2e7d32;
+      --rii_gii-accent: #ff9800;
+      --rii_gii-accent-hover: #f57c00;
+      --rii_gii-icon-accent: #ffb74d;
+      --rii_gii-icon-inactive: #558b2f;
+      --rii_gii-head: #2e7d32;
+      --rii_gii-modal: #e0f0e8;
+      --rii_gii-code: #f1f8f4;
+      --rii_gii-link: #1b5e20;
+      --rii_gii-theme-display: "Изумрудный лес";
+    }
+  }
+  & when (@rii_gii-theme-light = Mossy_cover) {
+    :root {
+      --rii_gii-bg: #f0f4f0;
+      --rii_gii-content: #e5ebe5;
+      --rii_gii-answer: #d9e1d9;
+      --rii_gii-alpha: #a8c8a850;
+      --rii_gii-rgb: 168, 200, 168;
+      --rii_gii-noalpha: #a8c8a8;
+      --rii_gii-alpha-hover: #a8c8a890;
+      --rii_gii-white: #2d2d2d;
+      --rii_gii-white-subhead: #5a7a5a;
+      --rii_gii-accent: #8b9f8b;
+      --rii_gii-accent-hover: #6b8e6b;
+      --rii_gii-icon-accent: #7bae7b;
+      --rii_gii-icon-inactive: #5d735d;
+      --rii_gii-head: #556b55;
+      --rii_gii-modal: #e5ebe5;
+      --rii_gii-code: #f0f4f0;
+      --rii_gii-link: #3a5f3a;
+      --rii_gii-theme-display: "Мшистый покров";
+    }
+  }
+  & when (@rii_gii-theme-light = Lavender) {
+    :root {
+      --rii_gii-bg: #f4f0f8;
+      --rii_gii-content: #eae4f0;
+      --rii_gii-answer: #e0d9e8;
+      --rii_gii-alpha: #b8a8d450;
+      --rii_gii-rgb: 184, 168, 212;
+      --rii_gii-noalpha: #b8a8d4;
+      --rii_gii-alpha-hover: #b8a8d490;
+      --rii_gii-white: #2d2d2d;
+      --rii_gii-white-subhead: #6a5a8a;
+      --rii_gii-accent: #8a6b9a;
+      --rii_gii-accent-hover: #7a5b8a;
+      --rii_gii-icon-accent: #9a7bae;
+      --rii_gii-icon-inactive: #6a5a7a;
+      --rii_gii-head: #7a5b8a;
+      --rii_gii-modal: #eae4f0;
+      --rii_gii-code: #f4f0f8;
+      --rii_gii-link: #5a3a7a;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Лаванда";
+    }
+  }
+  & when (@rii_gii-theme-light = Meadow) {
+    :root {
+      --rii_gii-bg: #f0fff0;
+      --rii_gii-content: #d8ffd8;
+      --rii_gii-answer: #b3ffb3;
+      --rii_gii-alpha: #00cc4450;
+      --rii_gii-rgb: 0, 204, 68;
+      --rii_gii-noalpha: #66ff99;
+      --rii_gii-alpha-hover: #33dd6680;
+      --rii_gii-white: #2d4a2d;
+      --rii_gii-white-subhead: #5a8a5a;
+      --rii_gii-accent: #ffb74d;
+      --rii_gii-accent-hover: #ffa726;
+      --rii_gii-icon-accent: #ff9800;
+      --rii_gii-icon-inactive: #7a9c7a;
+      --rii_gii-head: #008844;
+      --rii_gii-modal: #d8ffd8;
+      --rii_gii-code: #f0fff0;
+      --rii_gii-link: #006622;
+      --rii_gii-theme-display: "Луг";
+    }
+  }
+  & when (@rii_gii-theme-light = Pink_dawn) {
+    :root {
+      --rii_gii-bg: #fff0f5;
+      --rii_gii-content: #ffd8e8;
+      --rii_gii-answer: #ffb3d1;
+      --rii_gii-alpha: #ff336650;
+      --rii_gii-rgb: 255, 51, 102;
+      --rii_gii-noalpha: #ff6699;
+      --rii_gii-alpha-hover: #ff668080;
+      --rii_gii-white: #4a2d35;
+      --rii_gii-white-subhead: #8a5a6a;
+      --rii_gii-accent: #ff8a65;
+      --rii_gii-accent-hover: #ff7043;
+      --rii_gii-icon-accent: #ff5722;
+      --rii_gii-icon-inactive: #c28a9c;
+      --rii_gii-head: #cc3366;
+      --rii_gii-modal: #ffd8e8;
+      --rii_gii-code: #fff0f5;
+      --rii_gii-link: #993366;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Розовый рассвет";
+    }
+  }
+  & when (@rii_gii-theme-light = Purple_heart) {
+    :root {
+      --rii_gii-bg: #f5f0ff;
+      --rii_gii-content: #e8d8ff;
+      --rii_gii-answer: #d1b3ff;
+      --rii_gii-alpha: #9933ff50;
+      --rii_gii-rgb: 153, 51, 255;
+      --rii_gii-noalpha: #b366ff;
+      --rii_gii-alpha-hover: #aa66ff80;
+      --rii_gii-white: #3d2d4a;
+      --rii_gii-white-subhead: #7a5a8a;
+      --rii_gii-accent: #ba68c8;
+      --rii_gii-accent-hover: #ab47bc;
+      --rii_gii-icon-accent: #9c27b0;
+      --rii_gii-icon-inactive: #a38ac2;
+      --rii_gii-head: #6633cc;
+      --rii_gii-modal: #e8d8ff;
+      --rii_gii-code: #f5f0ff;
+      --rii_gii-link: #5500aa;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Пурпурное сердце";
+    }
+  }
+  & when (@rii_gii-theme-light = Peach) {
+    :root {
+      --rii_gii-bg: #ffe4cc;
+      --rii_gii-content: #ffd5b3;
+      --rii_gii-answer: #ffc699;
+      --rii_gii-alpha: #ffb38090;
+      --rii_gii-rgb: 255, 179, 128;
+      --rii_gii-noalpha: #ffa366;
+      --rii_gii-alpha-hover: #ff996690;
+      --rii_gii-white: #8b4513;
+      --rii_gii-white-subhead: #a0522d;
+      --rii_gii-accent: #ff8c42;
+      --rii_gii-accent-hover: #e67e3a;
+      --rii_gii-icon-accent: #d2691e;
+      --rii_gii-icon-inactive: #ffa859;
+      --rii_gii-head: var(--rii_gii-content);
+      --rii_gii-modal: #fff5e6;
+      --rii_gii-code: #fffaf0;
+      --rii_gii-link: #ff8c42;
+      --rii_gii-theme-display: "Персик";
+    }
+  }
+  & when (@rii_gii-theme-light = Concrete) {
+    :root {
+      --rii_gii-bg: #e5e7eb;
+      --rii_gii-content: #d1d5db;
+      --rii_gii-answer: #9ca3af;
+      --rii_gii-alpha: #6b728090;
+      --rii_gii-rgb: 107, 114, 128;
+      --rii_gii-noalpha: #6b7280;
+      --rii_gii-alpha-hover: #4b556390;
+      --rii_gii-white: #374151;
+      --rii_gii-white-subhead: #4b5563;
+      --rii_gii-accent: #6b7280;
+      --rii_gii-accent-hover: #4b5563;
+      --rii_gii-icon-accent: #4b5563;
+      --rii_gii-icon-inactive: #9ca3af;
+      --rii_gii-head: var(--rii_gii-content);
+      --rii_gii-modal: #f3f4f6;
+      --rii_gii-code: #f9fafb;
+      --rii_gii-link: #6b7280;
+      --rii_gii-theme-display: "Бетон";
+    }
+  }
+  & when (@rii_gii-theme-light = Snow-white) {
+    :root {
+      --rii_gii-bg: #fefefe;
+      --rii_gii-content: #fafafa;
+      --rii_gii-answer: #f5f5f5;
+      --rii_gii-alpha: #e0e0e090;
+      --rii_gii-rgb: 224, 224, 224;
+      --rii_gii-noalpha: #e0e0e0;
+      --rii_gii-alpha-hover: #d0d0d090;
+      --rii_gii-white: #333333;
+      --rii_gii-white-subhead: #555555;
+      --rii_gii-accent: #38bdf8;
+      --rii_gii-accent-hover: #0ea5e9;
+      --rii_gii-icon-accent: var(--rii_gii-accent);
+      --rii_gii-icon-inactive: #aaaaaa;
+      --rii_gii-head: var(--rii_gii-content);
+      --rii_gii-modal: #ffffff;
+      --rii_gii-code: #fefefe;
+      --rii_gii-link: #666666;
+      --rii_gii-theme-display: "Белоснежная";
+    }
+  }
+  & when (@rii_gii-theme-light = Pearl) {
+    :root {
+      --rii_gii-bg: #ffffff;
+      --rii_gii-content: #f2f2f2;
+      --rii_gii-answer: #e8e8e8;
+      --rii_gii-alpha: #d4d4d454;
+      --rii_gii-rgb: 212, 212, 212;
+      --rii_gii-noalpha: #d4d4d4;
+      --rii_gii-alpha-hover: #c4c4c480;
+      --rii_gii-white: #1a1a1a;
+      --rii_gii-white-subhead: #4d4d4d;
+      --rii_gii-accent: #2b95d6;
+      --rii_gii-accent-hover: #1e7ab3;
+      --rii_gii-icon-accent: #1e3b5a;
+      --rii_gii-icon-inactive: #8f8f8f;
+      --rii_gii-head: #1e3b5a;
+      --rii_gii-modal: #ffffff;
+      --rii_gii-code: #f5f5f5;
+      --rii_gii-link: #1e7ab3;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Жемчужна";
+    }
+  }
+  & when (@rii_gii-theme-light = Sand_storm) {
+    :root {
+      --rii_gii-bg: #faf7f2;
+      --rii_gii-content: #f2ede4;
+      --rii_gii-answer: #e8ddd0;
+      --rii_gii-alpha: #b8a48c90;
+      --rii_gii-rgb: 184, 164, 140;
+      --rii_gii-noalpha: #c4b4a0;
+      --rii_gii-alpha-hover: #a0907890;
+      --rii_gii-white: #3d352b;
+      --rii_gii-white-subhead: #5e5346;
+      --rii_gii-accent: #c87941;
+      --rii_gii-accent-hover: #b06531;
+      --rii_gii-icon-accent: #9c5727;
+      --rii_gii-icon-inactive: #a89b8c;
+      --rii_gii-head: #8b735b;
+      --rii_gii-modal: #f2ede4;
+      --rii_gii-code: #fdfbf9;
+      --rii_gii-link: #7a5d46;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Песчаный ветер";
+    }
+  }
+  & when (@rii_gii-theme-light = Amber_honey) {
+    :root {
+      --rii_gii-bg: #fff8e7;
+      --rii_gii-content: #ffefc8;
+      --rii_gii-answer: #ffe4a0;
+      --rii_gii-alpha: #ffb30070;
+      --rii_gii-rgb: 255, 179, 0;
+      --rii_gii-noalpha: #e6a800;
+      --rii_gii-alpha-hover: #ffaa0090;
+      --rii_gii-white: #4d2e00;
+      --rii_gii-white-subhead: #664400;
+      --rii_gii-accent: #cc7a00;
+      --rii_gii-accent-hover: #b36b00;
+      --rii_gii-icon-accent: #995500;
+      --rii_gii-icon-inactive: #c9a96b;
+      --rii_gii-head: #8b5e00;
+      --rii_gii-modal: #fff4d4;
+      --rii_gii-code: #fffcf2;
+      --rii_gii-link: #7a4d00;
+      --rii_gii-logo: #fff;
+      --rii_gii-theme-display: "Янтарный мёд";
+    }
+  }
+                         
+ & when (@rii_gii_ct = 1) {
+    & when (@rii_gii_theme_emulator = Light) { .rii_gii-light(); }
+    .hex-to-rgb(@rii_gii_ct_rgb) {
+      @rgb: color(@rii_gii_ct_rgb);
+      @r: red(@rgb);
+      @g: green(@rgb);
+      @b: blue(@rgb);
+
+      @rgb-string: "@{r},@{g},@{b}";
+    }
+    .hex-to-rgb(@rii_gii_ct_rgb);
+    svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
+      --mask--sphere: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-icon="SmoothPureBalance20"><circle cx="10" cy="10" r="7.5"></circle><path d="M10 2.5a3.75 3.75 0 0 1 0 7.5 3.75 3.75 0 0 0 0 7.5"></path></svg>');
+      -webkit-mask: var(--mask--sphere) center / contain no-repeat;
+      mask: var(--mask--sphere) center / contain no-repeat;
+      background: var(--rii_gii-icon-inactive);
+    }
+    :root {
+      --rii_gii-bg: @rii_gii_ct_bg;
+      --rii_gii-content: @rii_gii_ct_content;
+      --rii_gii-answer: @rii_gii_ct_otvet;
+      --rii_gii-alpha: @rii_gii_ct_alpha;
+      --rii_gii-rgb: @r, @g, @b;
+      --rii_gii-noalpha: @rii_gii_ct_noalpha;
+      --rii_gii-alpha-hover: color-mix(in oklch, var(--rii_gii-alpha), #000 15%);
+      --rii_gii-white: @rii_gii_ct_white;
+      --rii_gii-white-subhead: color-mix(in oklch, var(--rii_gii-white), #000 27%);
+      --rii_gii-icon-inactive: @rii_gii_ct_icon_inactive;
+      --rii_gii-head: @rii_gii_ct_head;
+      --rii_gii-accent: @rii_gii_ct_accent;
+      --rii_gii-accent-hover: color-mix(in oklch, var(--rii_gii-accent), #000 15%);
+      --rii_gii-accent-tint: rgba(var(--rii_gii-rgb), 0.20);
+      --rii_gii-icon-accent: @rii_gii_ct_icon;
+      --rii_gii-modal: @rii_gii_ct_modal;
+      --rii_gii-code: @rii_gii_ct_code;
+      --rii_gii-link: @rii_gii_ct_link;
+      --rii_gii-logo: @rii_gii_ct_logo;
+      --rii_gii-theme-display: "Своя";
+      transition: none;
+    }
+  }
+}
