@@ -1,0 +1,678 @@
+@-moz-document url-prefix("https://otvet.mail.ru/") {
+  :root {
+    --rii_gii-bg: var(--rii_gii-content);
+    --rii_gii-content: rgba(255, 255, 255, 0.70);
+    --rii_gii-rgb: 200, 40, 140;
+    --rii_gii-radius: 0px;
+    --rii_gii-radius-ten: 0px;
+    --rii_gii-radius-twelve: 0px;
+    --rii_gii-radius-twenty-four: 0px;
+    --rii_gii-icon-accent: #c8288c;
+    --rii_gii-white: #2c2d2e;
+    --rii_gii-white-subhead: #797a80;
+    --rii_gii-alpha: #8b8b8b54;
+    --rii_gii-alpha-hover: #8b8b8b80;
+    --rii_gii-modal: #fff;
+    --rii_gii-img-ichi: url("../images/88.jpg");
+    --LOGO--FONT--HELLO_PINK: url("../images/gayhub.png");
+    --rii_gii-img-san: url("../images/tsumugi.png");
+    --rii_gii-img-yon: url("../images/imagenewbg.jpg");
+    --rii_gii-img-daily: url("https://bing.shangzhenyang.com/api/1080p");
+    --vkui--color_background_content: var(--rii_gii-content) !important; /* контент */
+    --vkui--color_background_nav_bar_otvetui: rgba(0, 0, 0, 0.70) !important; /* выбор в бок меню */
+    --vkui--color_background_sky: rgba(var(--rii_gii-rgb), 0.302) !important; /* новые вопросы */
+    --vkui--color_background_sky--hover: rgba(var(--rii_gii-rgb), 0.461) !important;
+    --vkui--color_background_sky--active: rgba(var(--rii_gii-rgb), 0.592) !important;
+    --vkui--otvet_color_background_answer: #fff0 !important;
+    --vkui--color_background: var(--rii_gii-bg) !important; /* фон */
+    --vkui--color_text_primary: var(--rii_gii-white) !important; /* большая часть текста */
+    --vkui--color_background_secondary: var(--rii_gii-bg) !important; /* бг опросов + поиска, задний фон иконок */
+    --vkui--color_background_secondary_alpha: var(--rii_gii-alpha) !important; /* большинство кнопок, уведомления, изм.проф, покинуть */
+    --vkui--color_background_secondary_alpha--hover: var(--rii_gii-alpha-hover) !important; /* кнопки/hover */
+    --vkui--color_background_secondary_alpha--active: var(--rii_gii-alpha-hover) !important; /* кнопки при нажатии active */
+    --vkui--color_background_accent_tint_alpha: rgba(var(--rii_gii-rgb), 0.20) !important; /* кнопки "вступить[в пространстве]" */
+    --vkui--color_background_accent_tint_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important; /* hover выше */
+    --vkui--color_background_accent_tint_alpha--active: rgba(var(--rii_gii-rgb), 0.44) !important;
+    --vkui--color_background_accent_tint_themed: rgba(var(--rii_gii-rgb), 0.20) !important; /* кнопка создать пост именно в пространстве ВАЖНО, только если втупил в пространство!!! */
+    --vkui--color_background_modal: var(--rii_gii-modal) !important; /* модальное окно */
+    --vkui--color_background_modal--hover: var(--rii_gii-alpha) !important; /* эффект наведения блоков в: "варианты поиска", "уведомления" */
+    --vkui--color_background_modal--active: var(--rii_gii-alpha) !important; /* переход кнопками на варианты поиска */
+    --otvetui--color_background_action_button: var(--rii_gii-alpha) !important; /* активные кнопки в форматировании текста */
+    --vkui--color_icon_primary: var(--rii_gii-white) !important; /* иконки в поле ввода???? + иконка уведомления */
+    --vkui--color_text_subhead: var(--rii_gii-white-subhead) !important; /* подзаголовок */
+    --otvetui--color_background_topic_card--active: var(--rii_gii-content) !important; /* активные выбор категории мнения\знания */
+    --vkui--color_background_tertiary: var(--rii_gii-noalpha) !important; /* новые сообщение/всплывающиеся */
+    --otvetui--size_border_radius--regular: 0px !important;
+    --otvetui--size_border_radius--small: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--compact: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--skeleton: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--skeleton--big: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--editorpopper--big: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--codeblock: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--imageblock: var(--rii_gii-radius) !important;
+    --otvetui--size_border_radius--big: var(--rii_gii-radius) !important;
+    --vkui--size_card_border_radius--regular: var(--rii_gii-radius) !important;
+    --vkui--size_border_radius--regular: var(--rii_gii-radius) !important;
+    --vkui--size_check_border_radius--regular: var(--rii_gii-radius) !important;
+    --vkui--size_border_radius_paper--regular: var(--rii_gii-radius) !important;
+    --vkui--size_border_radius_promo--regular: var(--rii_gii-radius) !important;
+    --vkui--size_border_radius_rounded--regular: var(--rii_gii-radius) !important;
+    --vkui--color_skeleton_from: var(--rii_gii-alpha) !important; /* предзагрузка */
+    --vkui--color_transparent--active: var(--rii_gii-alpha) !important; /* новая предзагрузка / фон предзагрузки */
+    --vkui--gradient_content86: #ffffffdb !important; /* градиент предзагрузки */
+    --vkui--color_text_accent_themed: var(--rii_gii-icon-accent) !important; /* текст кнопок "вступить" */
+    --vkui--color_icon_medium: #a5a7ad !important; /* неактивные иконки боковой панели + иконки комментов */
+    --otvetui--color_accent_violet: #cc00ff !important;
+    --otvetui--color_accent_aqua: #00ffff !important;
+    --vkui--color_background_accent_themed: #005ff9 !important;
+    --vkui--color_icon_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_stroke_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_background_accent_tint: var(--rii_gii-icon-accent) !important;
+    --vkui--color_icon_accent_themed: var(--rii_gii-accent) !important;
+    --vkui--color_rang_higher_brain: #fcd6d6 !important;
+    --vkui--color_rang_ai: #e1f0a9 !important;
+    --vkui--color_rang_genius: #ffd38b !important;
+    --vkui--color_rang_oracul: #ffcaa7 !important;
+    --vkui--color_rang_pro_light: #facbf1 !important;
+    --vkui--color_rang_mudriy: #bee9ff !important;
+    --vkui--color_rang_myslitel: #fed2d7 !important;
+    --vkui--color_rang_guru: #f9eb98 !important;
+    --vkui--color_rang_master: #bdeffd !important;
+    --vkui--color_rang_pro: #fdcc89 !important;
+    --vkui--color_rang_expert: #f7eaa7 !important;
+    --vkui--color_rang_student: #c9edee !important;
+  }
+
+  *::-moz-selection {
+    background: deeppink !important;
+    color: ghostwhite !important;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--rii_gii-alpha) var(--rii_gii-bg);
+    &::-webkit-scrollbar-track {
+      background: var(--rii_gii-bg) !important; 
+    }
+    &::-webkit-scrollbar-thumb { background: var(--rii_gii-alpha) !important; }
+  }
+
+  body { padding-right: 0px !important; }
+  #app > div:nth-child(2) > :nth-child(1):not(header), [class^="adv-"],
+  [class*="_ReplyListWrapper_"]:has([class^="adv-"]),
+  [class*="_Floating_"], /* категория при скроле в посте */
+  [class*="_VkVideoSwiper_"], /* видео по теме */
+  [class*="_PostUserSubscriptionButton_"], /* кнопка подписаться посты юзеров */
+  [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
+  [class^="_DzenPost_"])),
+  :is([class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) /* отображение достижения справа */ {
+    display: none !important;
+  }
+
+  #app > div:nth-child(2) { background: transparent !important; }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    transform: scale(1.01);
+    background: var(--rii_gii-bg) var(--rii_gii-img-ichi) no-repeat center center / cover fixed !important;
+  }
+
+  ._ReplyListWrapper_m9l0m_38, /* модаль карточки в ответах контент */
+  ._Wrapper_12pdc_1 :is(._FormField_modeDefault_l1o40_77, ._FormLayout_modeDefault_zggdr_19), [class*="_ActionRow_"], /* textarea ответов */
+  ._Wrapper_18lkg_1 :is(._FormField_modeDefault_l1o40_77, ._FormLayout_modeDefault_zggdr_19, ._RightActions_1wcl3_26), /* textarea задать вопрос */
+  ._Poll_1u5lb_1 ._FormField_modeDefault_l1o40_77, /* заголовок опросов */
+  ._Poll_1u5lb_1, /* фон опросов в задать вопрос */
+  ._CopyButton_1swnx_68, /* кнопка копирования codeblock */
+  ._Card_modeOutline_yamy2_28, /* не ебу. фон новых ответов, хз поч */
+  [class^="_slotwrapper_"] > [class*="_Wrapper_Mobile_"] /* отображение достижений в профиле мобилки */ {
+    background: transparent !important;
+  }
+
+  [class^="_SearchField_"] { background: #fff !important; } /* поиск в шапке */
+  ._Topics_5zjdb_1 ._Card_active_5zjdb_21:hover { background: rgba(var(--rii_gii-rgb), 0.3) !important; } /* активные выбор категории мнения\знания */
+
+  [class*="_column_left_"] > *, [class*="_burger_mobile_"] > * { /* цвет текста боковой панели */
+    --vkui--color_text_primary: #f8f8ff !important;
+    --vkui--color_text_secondary: #f8f8ff !important;
+    --vkui--color_text_subhead: #f8f8ff !important;
+  } 
+
+  :is(._CardGrid_1s5z8_1, ._popper_wu6jh_5) :is(a, span):not([class*="_Tag_"]) { /* +vidited +остальное +25dec */
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+  }
+  :is(._CardGrid_1s5z8_1) a:hover:not([class*="_Tag_"]) span, ._popper_wu6jh_5 span:hover a {
+    color: transparent !important;
+    background: linear-gradient(90deg, #ff1493, #c71585, #8a2be2) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    text-shadow: 0 0 8px rgba(255, 20, 147, 0.5), 0 0 12px rgba(199, 21, 133, 0.3), 0 0 16px rgba(138, 43, 226, 0.2) !important;
+  }
+  ._CardGrid_1s5z8_1 a:visited:not(._UserUsername_1nwdr_1, ._ReplyItemNick_ypna7_1, ._PostItemTags_1nwdr_1 :is(a, span), ._Button_modeSecondary_bjs87_1._Button_appearanceNeutral_bjs87_1) span { color: deeppink !important; }
+  
+  header {
+    background: #0060fa !important;
+    &[class] { border: none !important; }
+    & a[href^="/ask"], button:has(svg[data-icon="NotificationOutline20"]) { background: transparent !important; }
+    & * { fill: #fff !important; }
+    & [class^="_logo_"] {
+      background: var(--LOGO--FONT--HELLO_PINK) -10px -5px / 200px no-repeat !important;
+      height: 60px !important;
+      width: 90px !important;
+      & img { opacity: 0 !important; }
+      @media (min-width: 768px) { width: 180px !important; }
+      @media (min-width: 1210px) { width: 90px !important; }
+      @media (max-width: 767px) {
+        background-position-y: 2px !important;
+        width: 145px !important;
+        background-size: 160px !important;
+      }
+    }
+  }
+
+  img[alt="compactImg"], [class^="_ImageCropper_"][class*="_Cropper_"], /* изображения в ленте вопросов и самих вопросах */
+  [class^="_GalleryBaseImage_"], /* группировка изображений */
+  [class*="_Notification_"], [class*="_Notification_"]::before, /* выбор в уведомлениях */
+  [class^="_DownVote_"], [class^="_UpVote_"], /* кнопки оценки */
+  ._poll_1n9sx_1._vote_1n9sx_1._wrapper_1n9sx_1, ._poll_1n9sx_1._vote_1n9sx_1._wrapper_1n9sx_1 ._cell_1n9sx_1, /* блок опросов */
+  ._Card_annr2_1, /* блок найденных ответов */
+  ._wrapper_ofib4_1, /* создать пост при поиске */
+  [class*="_SearchInput_"], /* поиск в шапке */
+  [class^="_Viewer_desktop_"], /* уведомления */
+  header button[class*="_button_"][size="m"], /* кнопка профиля в шапке */
+  ._ActionSheet__contentWrapper_n1s8z_13, /* профиль */
+  ._Button_pvr1x_1, /* кнопка сортировки вп */
+  ._Topics_5zjdb_1 ._Card_5zjdb_6, ._Topics_1p4pj_7 ._TopicsCard_1p4pj_13, /* выбор пространств в задать вопрос + скелет */
+  div[class*="_Drafts_"], ._Wrapper_109rl_1, /* черновики + скелет */
+  ._Wrapper_18lkg_1, ._Wrapper_1ktnu_1, /* форма + скелет */
+  ._SkeletonBottom_1p4pj_1, /* скелет нижней части зад вопрос */
+  :is(div, button)[data-editor-action-name], [action="[object Object]"], /* кнопки форматирования текста */
+  ._poll_ky840_1._create_ky840_1._wrapper_ky840_1 ._cellInner_ky840_59, /* ввод опросы в задать вопрос */
+  ._Popper_5wyam_19, /* блок ссылки */
+  ._Select_tjwy5_26, /* выбор языка в codblock */
+  ._Card_110jc_1, ._Popper_8lzfq_1, ._Spaces_nhkjt_1 ._Search_nhkjt_6, ._Card_110jc_1 ._Chip_110jc_32, /* пространства */
+  ._Popper_1em0m_7, /* подсказка */
+  ._Wrapper_qmgya_29, /* блок с отчивками */
+  ._Snackbar__body_1yi7q_1, /* уведомление об ошибки */
+  [class^="_ModalPage_"] [class*="_InnerClass_"], /* модальные окна ред проф, подписки, подарки */
+  [class*="_ProfileForm_"] :is([class*="_InputWrapper_"], [class*="_TextareaWrapper_"]), /* формы ред проф */
+  [class*="ModalCardInnerContainer_"], /* модальные окна отчивки */
+  [class^="_Feed_"] [class^="_Header_"], /* шапка стр об ответах */
+  ._wrapper_rd09k_1, /* вопрос удалён */
+  ._ModalPage_p6h2e_1 ._ModalPageInner_p6h2e_5, /* модаль "что нового */
+  [class*="_ReplyListWrapper_pinned_"]::before, /* лучший ответ бок */
+  [class*="_BannedWrapper_"] /* бан пользователя */ {
+    border-radius: var(--rii_gii-radius) !important;
+  }
+
+  ._Tappable_dotu5_5, ._Inner_dotu5_23, /* кнопка переключения режима гл */
+  ._Tappable_1ed5j_1, /* сортировка новая */
+  ._Tappable_1gomx_1 ._Inner_1gomx_9 /* передний(цветной) фон "новые вопросы" */ {
+    border-radius: var(--rii_gii-radius-ten) !important;
+  }
+
+  [class*="_Tabs_"], [class*="_Tabs_"] a, /* сортировка старая, нужна даже с новой */
+  ._Popper_9sg8y_1, /* окно новой сортировки */
+  ._Tappable_1gomx_1 /* задний фон "новые вопросы" */ {
+    border-radius: var(--rii_gii-radius-twelve) !important;
+  }
+
+  [class^="_Popper_"]:has([class*="_Avatar_"]) /* всплывающие окна пользователей */ {
+    border-radius: var(--rii_gii-radius-twenty-four) !important;
+  }
+
+  [class^="_Wrapper_"] [class*="_FormLayout_modeDefault_"] { border: solid 2px var(--rii_gii-white) !important; }  /* textarea ответов + textarea задать вопрос */
+  
+  [class^="_ModalPopoutOverlay_"] {
+    background: transparent !important;
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: var(--rii_gii-img-san) 95% 97% / 13% no-repeat !important;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(130deg, #0a62d0 0%, #8126d3 50%, #d12550 100%);
+      background-size: 200% 200%;
+      animation: seamless-flow 3s ease-in-out infinite alternate;
+    }
+  }
+  @keyframes seamless-flow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+  }
+
+  ._Viewer_desktop_1bje9_2 {
+    inset: 64px auto auto auto !important;
+    position: fixed !important;
+    right: 0 !important;
+  }
+  
+  /* Блок с атчивками + бан (бан не проверено) */
+  ._Wrapper_qmgya_29,
+  main div[class*="_Controls_"] > div[class^="_Wrapper_"]:first-child [class^="_Tappable_"] /* новая сортировка на главной */ {
+    background: var(--rii_gii-content) !important;
+  }
+
+  div[class*="_CollapsibleTextToggler_more_"] { background: linear-gradient(0deg, var(--rii_gii-content) 46.96%, #fff0) !important; }
+  span[class*="_CollapsibleTextToggler_"] {
+    justify-content: center;
+    color: var(--rii_gii-white) !important;
+    background: var(--rii_gii-alpha) !important;
+  }
+  [class^="_CollapsibleText_"] { max-height: 100% !important; }
+
+  [class*="_Notification_opened_"] [class*="_Notification_"]:hover { background: var(--rii_gii-modal, #fff) !important; }
+
+  /* Расположения поля ввода снизу +25jan */
+  [class*="_Replies_"][class*="_List_"][class*="_Depth1_"] [class^="_Wrapper_"] { order: 2 !important; }
+
+  [class^="_Card_"][class*="_Card_bordered_"] { /* сообщение об удалении коммента */
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-radius: 0px !important;
+    background: transparent !important;
+  }
+  .vkuiInternalRepliesList * { animation: none !important; } /* "Подсвечивает" блок ответа когда переходишь с уведомлений */
+  [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) {
+    --mask--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M171.872 74c7.037 3.75 7.037 27.5-1.279 30l-74.156-6.645c-5.161-5.503-3.586-13.817-1.243-16.434z" style="fill:%23000;fill-opacity:1"/><path d="M158.835 80c7.088 3.875 7.088 28.417-1.289 31l-65.084-7.805c-5.2-5.687-3.612-14.278-1.252-16.982z" style="fill:%23000;fill-opacity:1"/></g></svg>');
+    --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9m12-11c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23000;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27m-17.493 89c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184m5.314-37s-6.195 13.182 1.686 29m-83.5 10.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23000;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23000;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>');
+    position: relative;
+    img { opacity: 0 !important; }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 198px; height: 210px;
+      top: 20px;
+      @media (max-width: 767px) { top: 226px; }
+    }
+    &::before {
+      -webkit-mask: var(--mask--404) center / contain no-repeat;
+      mask: var(--mask--404) center / contain no-repeat;
+      background-color: color-mix(in oklch, var(--rii_gii-icon-accent), #000 20%);
+    }
+    &::after { background: var(--icon--404) center / contain no-repeat; }
+    @media (max-width: 767px) {
+      &::before, &::after {
+        @media (max-height: 767px) { top: calc(30vh - var(--header-mobile-height)) }
+      }
+    }
+  }
+  [class^="_DraftsEmpty_"] {
+    & svg{ opacity: 0 !important; }
+    &::before {
+      content:"";
+      position:absolute;
+      inset: 0;
+      width:100%; height:100%;
+      background-image:url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8" standalone="no"%3F><svg fill="none" height="210" viewBox="0 0 198 210" width="198" version="1.1" id="svg3" sodipodi:docname="1.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs3" /><sodipodi:namedview id="namedview3" pagecolor="%23505050" bordercolor="%23eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="%23505050" inkscape:zoom="5.1714286" inkscape:cx="99.102209" inkscape:cy="104.51657" inkscape:window-width="1303" inkscape:window-height="745" inkscape:window-x="59" inkscape:window-y="-4" inkscape:window-maximized="1" inkscape:current-layer="svg3" /><path d="M 122.738,113 C 120.4621,104.88581 118.66022,94.538243 117.58976,85.191231 116.88748,79.059139 116.5,73.357682 116.5,69 c -9.141,1.0312 -34.4736,6.4688 -44.4632,4.0312 -0.02985,1.597816 -0.04279,3.37373 -0.03426,5.289438 0.0091,2.053728 0.04297,4.268119 0.107091,6.595978 C 72.61506,103.26549 75.00299,128.6642 82.0264,138 93.9949,135.188 96.5,131 107,129.5" stroke="%232c2d2e" stroke-width="4" id="path1" sodipodi:nodetypes="csccsscc" style="stroke:%23000000;stroke-opacity:1" /><g stroke="%2307f" stroke-linejoin="bevel" stroke-width="6" id="g3" style="stroke:%230060fa;stroke-opacity:1"><path d="m 61,93 c 3.4234,4.7204 11.2973,8.368 19,0" id="path2" sodipodi:nodetypes="cc" style="stroke:%230060fa;stroke-opacity:1" /><path d="m91 93c3.4234 4.7204 11.297 8.368 19 0" id="path3" style="stroke:%230060fa;stroke-opacity:1" /></g></svg>');
+      background-size:contain;
+      background-repeat:no-repeat;
+    }
+  }
+
+  [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) {
+    --mask--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M171.872 74c7.037 3.75 7.037 27.5-1.279 30l-74.156-6.645c-5.161-5.503-3.586-13.817-1.243-16.434z" style="fill:%23000;fill-opacity:1"/><path d="M158.835 80c7.088 3.875 7.088 28.417-1.289 31l-65.084-7.805c-5.2-5.687-3.612-14.278-1.252-16.982z" style="fill:%23000;fill-opacity:1"/></g></svg>');
+    --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9m12-11c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23000;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27m-17.493 89c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184m5.314-37s-6.195 13.182 1.686 29m-83.5 10.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23000;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23000;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>');
+    position: relative;
+    & img { opacity: 0 !important; }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      width: 198px; height: 210px;
+      top: 20px;
+      @media (max-width: 767px) { top: 226px; }
+    }
+    &::before {
+      -webkit-mask: var(--mask--404) center / contain no-repeat;
+      mask: var(--mask--404) center / contain no-repeat;
+      background-color: color-mix(in oklch, var(--rii_gii-icon-accent), #000 20%);
+    }
+    &::after { background: var(--icon--404) center / contain no-repeat; }
+    @media (max-width: 767px) {
+      &::before, &::after {
+        @media (max-height: 767px) { top: calc(30vh - var(--header-mobile-height)) }
+      }
+    }
+  }
+
+  svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
+    --mask--sun: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="_Icon_66yqe_1 _Icon_p9mot_19" data-icon="SunOutline20"><clipPath id="a"><path d="M0 0h20v20H0z"></path></clipPath><g clip-path="url(%23a)"><path d="M12.482 16.007c.37-.153.808 0 .961.37l.875 2.12a.75.75 0 0 1-1.387.572l-.875-2.12c-.153-.37.056-.79.426-.942M6.539 16.367c.154-.37.592-.521.962-.367s.578.573.425.942l-.88 2.115a.75.75 0 0 1-1.385-.575z"></path><path fill-rule="evenodd" d="M10 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10m0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4" clip-rule="evenodd"></path><path d="M15.999 12.5c.154-.369.574-.578.944-.424l2.12.882a.75.75 0 0 1-.576 1.386l-2.121-.882c-.37-.154-.521-.592-.367-.961M3.053 12.062c.37-.152.789.058.942.427.153.37 0 .808-.37.961l-2.113.872a.75.75 0 0 1-.573-1.387zM18.502 5.686a.75.75 0 0 1 .572 1.387l-2.123.876c-.37.153-.79-.058-.941-.428-.153-.37 0-.806.37-.959zM.538 6.07a.75.75 0 0 1 .98-.405l2.112.878c.37.153.521.591.368.96-.154.37-.574.579-.944.426L.944 7.05a.75.75 0 0 1-.406-.98M12.954.937a.75.75 0 0 1 1.386.576l-.881 2.119c-.154.37-.593.52-.962.367-.37-.154-.578-.575-.424-.945zM6.09.527a.75.75 0 0 1 .98.406l.872 2.118c.153.37-.057.788-.427.941s-.808 0-.96-.37l-.873-2.115a.75.75 0 0 1 .408-.98"></path></g></svg>');
+    mask: var(--mask--sun);
+    -webkit-mask: var(--mask--sun);
+    background: var(--vkui--color_icon_secondary);
+  }
+  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
+  [class^="_Card_"] a[href="/profile/rii_gii"]:not([class*="_Avatar_"]) {
+    &, & span {
+      background: fuchsia !important;
+      color: #fff !important;
+      border-radius: 3px !important;
+      width: 52px;
+      text-align: center;
+      padding: 0 4px !important;
+    }
+  }
+
+  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 {background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) center 0px / cover no-repeat !important;}
+
+  blockquote::before { background: deeppink !important; }
+  [class*="_menuItem_"] > * { color: #fff !important; } /* моб меню нижнее иконки +25dec */
+  nav[class*="_horizontal_wrapper_"], [class^="_burger_"] { background: #005ff9  !important; }
+  
+
+  /* & when (@rii_gii-font-external = 1) {
+    & when (@rii_gii-font = Lora) {
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+      :root { --rii_gii-face: "Lora"; }
+    }
+    & when (@rii_gii-font = IBM_Plex) {
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+      :root { --rii_gii-face: "IBM Plex Mono"; }
+    }
+    & when (@rii_gii-font = Sofia_Sans_Semi_Condensed) {
+      @import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+      :root { --rii_gii-face: "Sofia Sans Semi Condensed"; }
+    }
+    & when (@rii_gii-font = Shantell_Sans) {
+      @import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+      :root { --rii_gii-face: "Shantell Sans"; }
+    }
+    & when (@rii_gii-font = Pattaya) {
+      @import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+      :root { --rii_gii-face: "Pattaya"; }
+    }
+    & when (@rii_gii-font = Orelega_One) {
+      @import url('https://fonts.googleapis.com/css2?family=Orelega+One&display=swap');
+      :root { --rii_gii-face: "Orelega One"; }
+    }
+    & when (@rii_gii-font = Poiret_One) {
+      @import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+      :root { --rii_gii-face: "Poiret One"; }
+    }
+    & when (@rii_gii-font = Chocolate_Classical_Sans) {
+      @import url('https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&display=swap');
+      :root { --rii_gii-face: "Chocolate Classical Sans"; }
+    }
+    & when (@rii_gii-font = Exo_2) {
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+      :root { --rii_gii-face: "Exo 2"; }
+    }
+    & when (@rii_gii-font = Chiron_GoRound_TC) {
+      @import url('https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@200..900&display=swap');
+      :root { --rii_gii-face: "Chiron GoRound TC"; }
+    }
+    :root {
+      --otvetui--font_family_accent: var(--rii_gii-face) !important;
+      --otvetui--font_family_base: var(--rii_gii-face) !important;
+    }
+  }
+  & when (@rii_gii-font-sys = 1) {
+    :root {
+      --otvetui--font_family_accent: @rii_gii-font-sys-value !important;
+      --otvetui--font_family_base: @rii_gii-font-sys-value !important;
+    }
+  } */
+
+  /* & when (@rii_gii- = 1) { * { border-radius: 0 !important; } } */
+
+  /* & when (@rii_gii-backdrop = 1) {
+    [class*="_ListItem_"],
+    [class*="_Card_modeShadowTint_"],
+    main div[class*="_Controls_"] > div[class^="_Wrapper_"]:first-child [class^="_Tappable_"], [class*="_Tappable_dotu5"],
+    form[editor-class], [class^="_Poll_"] {
+      backdrop-filter: blur(@backdropValue);
+      -webkit-backdrop-filter: blur(@backdropValue);
+    }
+  } */
+
+  & when (@rii_gii-dark = 1) {
+    :root {
+      --rii_gii-bg: var(--rii_gii-content);
+      --rii_gii-content: rgba(34, 34, 34, 0.70);
+      --rii_gii-radius: 0px;
+      --rii_gii-white: #fff;
+      --rii_gii-white-subhead: #c9c9c9;
+      --rii_gii-alpha: #ffffff54;
+      --rii_gii-alpha-hover: #ffffff80;
+      --rii_gii-modal: #242423;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgb(34, 34, 34) var(--rii_gii-img-yon) no-repeat center 0px / cover fixed !important;
+    }
+    /* body { background: url(../images/acerola.jpg) no-repeat center 0% / cover fixed !important; } */
+    header { background: #222 !important; }
+    #app > div:nth-child(2) { background: #00000030 !important; }
+    nav[class*="_horizontal_wrapper_"], [class^="_burger_"] { background: #222 !important; } /* боковое + нижняя панель для мобилок +25dec */
+    div[class*="_AchieveBackground_"] { /* блок ученик, мастер и т.п */
+      --vkui--color_background_negative: #fd3131 !important;
+      background: color-mix(in oklch, var(--v2e56b5ff, var(--rii_gii-icon-accent)), #000 20%) !important;
+      & span { color: #fff !important; }
+    }
+    :is(._CardGrid_1s5z8_1) a:hover:not([class*="_Tag_"]) span, ._popper_wu6jh_5 span:hover a {
+        color: transparent !important;
+        background: linear-gradient(90deg, #00ffff, #00ff88, #7cfc00) !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        text-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 12px rgba(0, 255, 136, 0.4), 0 0 16px rgba(124, 252, 0, 0.2) !important;
+    }
+    [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) { --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9M72 74c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23fff;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27M153.507 189c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184M155.314 79s-6.195 13.182 1.686 29M73.5 118.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23fff;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23fff;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>'); }
+    [class^="_DraftsEmpty_"]::before {background-image:url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8" standalone="no"%3F><svg fill="none" height="210" viewBox="0 0 198 210" width="198" version="1.1" id="svg3" sodipodi:docname="rii_giiTrash.svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs3" /><sodipodi:namedview id="namedview3" pagecolor="%23505050" bordercolor="%23eeeeee" borderopacity="1" inkscape:showpageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:deskcolor="%23505050" inkscape:zoom="5.1714286" inkscape:cx="99.005525" inkscape:cy="104.90331" inkscape:window-width="1303" inkscape:window-height="745" inkscape:window-x="59" inkscape:window-y="-4" inkscape:window-maximized="1" inkscape:current-layer="svg3" /><path d="M 122.738,113 C 120.4621,104.88581 118.66022,94.538243 117.58976,85.191231 116.88748,79.059139 116.5,73.357682 116.5,69 c -9.141,1.0312 -34.4736,6.4688 -44.4632,4.0312 -0.02985,1.597816 -0.04279,3.37373 -0.03426,5.289438 0.0091,2.053728 0.04297,4.268119 0.107091,6.595978 C 72.61506,103.26549 75.00299,128.6642 82.0264,138 93.9949,135.188 96.5,131 107,129.5" stroke="%232c2d2e" stroke-width="4" id="path1" sodipodi:nodetypes="csccsscc" style="stroke:%23ffffff;stroke-opacity:1" /><g stroke="%2307f" stroke-linejoin="bevel" stroke-width="6" id="g3"><path d="m 61,93 c 3.4234,4.7204 11.2973,8.368 19,0" id="path2" sodipodi:nodetypes="cc" style="stroke:%23c7b7c5;stroke-opacity:1" /><path d="m91 93c3.4234 4.7204 11.297 8.368 19 0" id="path3" style="stroke:%23c7b7c5;stroke-opacity:1" /></g></svg>');}
+    [class^="_Content_"]:has(img[src="https://otvet.cdn-vk.net/pictures/notFound.svg"]) { --icon--404: url('data:image/svg+xml,<svg fill="none" height="210" width="198" xmlns="http://www.w3.org/2000/svg"><clipPath id="a"><path d="M0 0h198v210H0z"/></clipPath><g clip-path="url(%23a)"><path d="M66 65.581c-.641-22.365-11-67.58-31-61.58-5.5 1.65-22.433 23.817 18.186 63.497C46.198 37.638 24.159 8.86 7.5 21c-13.658 9.954 5.783 43.006 37.357 58M60 76v9M72 74c.333 1.026 1 4.061 1 8M40 202c11.14-13.369 11-36 11-36" stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6" style="stroke:%23fff;stroke-opacity:1"/><path d="M157.546 111C0 0 0 0 157.546 111Z"/><g stroke-linejoin="bevel" stroke-miterlimit="10" stroke-width="6"><path d="M169.532 73c-2.202 4.605-4.991 16.451 1.468 27M153.507 189c5.845-2.882 17.088-12.679 15.303-28.816-2.232-20.171-17.216-33.618-18.81-44.184M155.314 79s-6.195 13.182 1.686 29M73.5 118.5c5.077-.848 14.08 5.5 40 41-9.682-21.5-24.362-70.302-10.655-82.506 4.615-4.109 10.602-3.9 15.155.082" style="stroke:%23fff;stroke-opacity:1"/><path d="M51.27 123.382c-12.831 12.132-12.235 40.233 31.39 72.161 43.445 31.796 85.689-14.584 59.023-63.218C121.662 95.808 123.231 88 123.231 88" style="stroke:%23fff;stroke-opacity:1"/><path d="M183 72.091 192.114 67m-6.646 16.364 12.532.09m-13.766 10.182L194.962 100" style="fill:%23c9b5c9;fill-opacity:1;stroke:%23c9b5c9;stroke-opacity:1"/></g></g></svg>'); }
+    svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
+      --mask--moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="_Icon_66yqe_1 _Icon_p9mot_19" data-icon="MoonOutline20" style="--6f08a5e2: currentColor;"><path fill-rule="evenodd" d="M10.606 1.987a.75.75 0 0 1-.217.835 5.795 5.795 0 0 0 6.387 9.58.75.75 0 0 1 1.031.965A8.502 8.502 0 0 1 1.5 10a8.5 8.5 0 0 1 8.395-8.5.75.75 0 0 1 .711.487M8.004 3.288a7 7 0 1 0 7.421 11.137A7.295 7.295 0 0 1 8.004 3.288" clip-rule="evenodd"></path></svg>');
+      mask: var(--mask--moon);
+      -webkit-mask: var(--mask--moon);
+      background: var(--vkui--color_icon_secondary);
+    }
+    #HeaderSearch { color: #2c2d2e !important; }
+  }
+
+  [class*="_CodeBlock_"] {
+    background: var(--r-code-bg) !important;
+    color: var(--r-code-color) !important;
+  }
+  .hljs-subst { color: #ffffff !important; }
+  .hljs-comment {
+    color: var(--r-comment) !important;
+    font-style: italic !important;
+  }
+  .hljs-attr,
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-meta .hljs-keyword,
+  .hljs-section,
+  .hljs-selector-tag {
+    color: var(--r-tag) !important;
+  }
+  .hljs-attribute { color: var(--r-attribute) !important; }
+  .hljs-name,
+  .hljs-number,
+  .hljs-quote,
+  .hljs-selector-id,
+  .hljs-template-tag,
+  .hljs-type,
+  .hljs-title {
+    color: var(--r-type) !important;
+  }
+  
+  .hljs-selector-class {
+    color: var(--r-class) !important;
+  }
+  .hljs-link,
+  .hljs-regexp,
+  .hljs-selector-attr,
+  .hljs-symbol,
+  .hljs-template-variable,
+  .hljs-variable {
+    color: var(--r-regexp) !important;
+  }
+  
+  .hljs-meta,
+  .hljs-selector-pseudo { color: var(--r-pseudo) !important; }
+  .hljs-built_in,
+  .hljs-literal {
+    color: var(--r-title) !important;
+  }
+  .hljs-bullet,
+  .hljs-code {
+    color: var(--r-code);
+  }
+  .hljs-meta, .hljs-string { color: var(--r-string) !important; }
+  .hljs-deletion { color: var(--r-deletion) !important; }
+  .hljs-addition { color: var(--r-add) !important; }
+  .hljs-emphasis { font-style: italic !important; }
+  .hljs-strong { font-weight: 700 !important; }
+  
+  :root {
+    --r-code-bg: #030d22;
+    --r-code-color: #fff;
+    --r-comment: #0098df;
+    --r-tag: #ff2cf1;
+    --r-attribute: #f1a8a6;
+    --r-type: #ffd400;
+    --r-class: #ff2cf1;
+    --r-regexp: #0ef3ff;
+    --r-pseudo: #ff2e97;
+    --r-title: #ff2e97;
+    --r-code: #ccc;
+    --r-string: #0ef3ff;
+    --r-deletion: #e700d8;
+    --r-add: #dbcd00;
+  }
+  /* & when (@rii_gii-code = Monokai) {
+    :root {
+      --r-code-bg: #272822;
+      --r-code-color: #f8f8f2;
+      --r-comment: #75715e;
+      --r-tag: #f92672;
+      --r-attribute: #fd971f;
+      --r-type: #66d9ef;
+      --r-class: #f92672;
+      --r-regexp: #a6e22e;
+      --r-pseudo: #ae81ff;
+      --r-title: #ae81ff;
+      --r-code: #a6a6a6;
+      --r-string: #e6db74;
+      --r-deletion: #f92672;
+      --r-add: #a6e22e;
+    }
+  }
+  & when (@rii_gii-code = Dracula) {
+    :root {
+      --r-code-bg: #282a36;
+      --r-code-color: #f8f8f2;
+      --r-comment: #6272a4;
+      --r-tag: #ff79c6;
+      --r-attribute: #ffb86c;
+      --r-type: #8be9fd;
+      --r-class: #50fa7b;
+      --r-regexp: #f1fa8c;
+      --r-pseudo: #bd93f9;
+      --r-title: #bd93f9;
+      --r-code: #6272a4;
+      --r-string: #f1fa8c;
+      --r-deletion: #ff5555;
+      --r-add: #50fa7b;
+    }
+  }
+  & when (@rii_gii-code = Solarized) {
+    :root {
+      --r-code-bg: #002b36;
+      --r-code-color: #93a1a1;
+      --r-comment: #586e75;
+      --r-tag: #268bd2;
+      --r-attribute: #cb4b16;
+      --r-type: #2aa198;
+      --r-class: #b58900;
+      --r-regexp: #859900;
+      --r-pseudo: #d33682;
+      --r-title: #d33682;
+      --r-code: #839496;
+      --r-string: #2aa198;
+      --r-deletion: #dc322f;
+      --r-add: #859900;
+    }
+  }
+  & when (@rii_gii-code = Nord) {
+    :root {
+      --r-code-bg: #282828;
+      --r-code-color: #ebdbb2;
+      --r-comment: #928374;
+      --r-tag: #fb4934;
+      --r-attribute: #fe8019;
+      --r-type: #fabd2f;
+      --r-class: #83a598;
+      --r-regexp: #b8bb26;
+      --r-pseudo: #d3869b;
+      --r-title: #d3869b;
+      --r-code: #a89984;
+      --r-string: #b8bb26;
+      --r-deletion: #fb4934;
+      --r-add: #b8bb26;
+    }
+  }
+  & when (@rii_gii-code = Tokyo_Night) {
+    :root {
+      --r-code-bg: #1a1b26;
+      --r-code-color: #a9b1d6;
+      --r-comment: #565f89;
+      --r-tag: #f7768e;
+      --r-attribute: #e0af68;
+      --r-type: #7aa2f7;
+      --r-class: #7dcfff;
+      --r-regexp: #73daca;
+      --r-pseudo: #bb9af7;
+      --r-title: #bb9af7;
+      --r-code: #414868;
+      --r-string: #9ece6a;
+      --r-deletion: #f7768e;
+      --r-add: #73daca;
+    }
+  }
+  & when (@rii_gii-code = GitHub_Dark) {
+    :root {
+      --r-code-bg: #0d1117;
+      --r-code-color: #e6edf3;
+      --r-comment: #8b949e;
+      --r-tag: #ff7b72;
+      --r-attribute: #d29922;
+      --r-type: #79c0ff;
+      --r-class: #ffa657;
+      --r-regexp: #a5d6ff;
+      --r-pseudo: #c9d1d9;
+      --r-title: #79c0ff;
+      --r-code: #8b949e;
+      --r-string: #a5d6ff;
+      --r-deletion: #ff7b72;
+      --r-add: #58a6ff;
+    }
+  } */
+
+  /* & when (@rii_gii-daily = 1) { body::before { background: var(--rii_gii-img-daily) center / cover fixed no-repeat !important; } } */
+
+  /* body::before { filter: blur(@blur) brightness(@overlay); } */
+  /* & when (@rii_gii-custom-bg = 1) {
+    :root { --rii_gii-icon-accent: @rii_gii_icon; }
+    body::before {
+      background: @rii_gii-color url(@rii_gii-image) @rii_gii-imagePosX @rii_gii-imagePosY / @rii_gii-imageSize fixed @rii_gii-imageRepeat !important;
+    }
+    header,
+    nav[class*="_horizontal_wrapper_"], [class^="_burger_"] {
+      background: @rii_gii-ct-head !important;
+      border-color: @rii_gii-ct-head !important;
+    }
+  } */
+}
+
