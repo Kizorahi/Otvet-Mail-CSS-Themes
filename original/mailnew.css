@@ -1,4 +1,4 @@
-@-moz-document url-prefix("https://otvet.mail.ru/") {
+@-moz-document url-prefix("https://otvet.mail.ru/") {1
   :root {
     --rii_gii-bg: var(--rii_gii-content);
     --rii_gii-content: rgba(255, 255, 255, 0.70);
