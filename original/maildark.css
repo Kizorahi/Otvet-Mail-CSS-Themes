@@ -1,110 +1,166 @@
+/* ==UserStyle==
+@name         Otvet MailRu Theme Customizer 
+@namespace    otvet.mail.ru
+@author       royalblue (Rii Gii)
+@version      2.35
+@license      CC BY
+@homepageURL https://userstyles.world/style/23509
+@supportURL https://t.me/glass_of_rain_water
+@updateURL https://userstyles.world/api/style/23509.user.css
+@preprocessor less
+@var select rii_gii-theme "Тёмная тема" [
+"Automatic", "Dark", "VKUI", "Amoled", "Elegant_dark", "Reddit_Edition", "Void", "Romdo", "Toxic_glow", "Poisoned_forest", "Swamp",
+"Midnight_candy", "Cyber_rust", "Frostbite", "Volcanic_ash", "Galactic_void", "Emerald_dream", "Citrus", "Dark_rose", "Light_rose",
+"Neon_rose", "Momoiro", "Crimson_night", "Blood_moon", "Hell_glow", "Retro_gold", "Vintage_sepia", "Violetta", "Violet_sky", "Akae",
+"Ocean", "Amber_haze", "Cinnamon_sky", "Fire", "Cyberpunk"
+]
+@var select rii_gii-theme-light "Светлая тема" [
+"Disable", "Golden_lime", "Scarlet_Bird", "Ocean_gold", "Emerald_forest", "Mossy_cover", "Lavender", "Meadow",
+"Pink_dawn", "Purple_heart", "Peach", "Concrete", "Snow-white", "Pearl", "Sand_storm", "Amber_honey"
+]
+@var checkbox rii_gii-disable "Скрыть рекламу" 0
+@var checkbox rii_gii-rubbish "Скрыть нежелательные элементы\nСкрывает: Блок категории в постах; Видео по теме (VKVideo); Кнопка подписки в постах; Все флуд посты VKVideo (НЕбаг. при сильном флуде, лента может не подгружаться. На самом деле подгружается, но тут же посты исчезают. Если попытаться снова и снова, то загрузит когда закончится флуд. Обычно это не заметно); Блок ранга в боковой панели (на мобилках вообще вместе с шапкой съедают высоту);" 0
+@var checkbox rii_gii-hide "Раскрыть длинные ответы\nИли посты. В общем всё длинное. Я уже и сам запутался, то посты скрываются, то ответы" 1
+@var checkbox rii_gii-amoledPlus "Amoled+\nДолжна быть активна тема 'Amoled'" 0
+@var checkbox rii_gii-visited "Помечать посещённые посты" 0
+@var color rii_gii-visitedColor "Цвет посещённых постов" "#fba6a6"
+@var checkbox rii_gii-font-external "Внешний Шрифт" 0
+@var select rii_gii-font "" [
+"Lora", "IBM_Plex", "Sofia_Sans_Semi_Condensed", "Shantell_Sans",
+"Pattaya", "Orelega_One", "Poiret_One", "Chocolate_Classical_Sans",
+"Exo_2", "Chiron_GoRound_TC"
+]
+@var checkbox rii_gii-font-sys "Системный шрифт\nСписок шрифтов может быть неполным, если в браузере включена защита от цифровых отпечатков (fingerprinting). Браузер намеренно скрывает локальные шрифты" 0
+@var text rii_gii-font-sys-value "" "Calibri, Roboto, DejaVu Sans"
+@var checkbox rii_gii-filter-users--active "Скрыть посты пользователей" 0
+@var text rii_gii-filter-users "" "user1, user2, user3"
+@var checkbox rii_gii_ct "Своя тема" 0
+@var select rii_gii_theme_emulator "Эмуляция темы\nПерекрашивает некоторые иконки для соответствующей темы" ["Dark", "Light"]
+@var color rii_gii_ct_bg "Фон" "#222222"
+@var color rii_gii_ct_content "Основной блок" "#141414"
+@var color rii_gii_ct_otvet "Блок с ответами" "#1a1a1a"
+@var color rii_gii_ct_alpha "Кнопки/формы/скелет" "#ffffff54"
+@var color rii_gii_ct_rgb "Используется в небольших прозрачностях\nНе принимает прозрачность. По дефолту цвет такой же как и у кнопок" "#fff"
+@var color rii_gii_ct_noalpha "Разделители" "#363738"
+@var color rii_gii_ct_alpha_hover "Кнопки при наведении" "#ffffff80"
+@var color rii_gii_ct_white "Текст" "#fff"
+@var color rii_gii_ct_head "Шапка" "#292828"
+@var color rii_gii_ct_accent "Акцент кнопок" "#ffffff54"
+@var color rii_gii_ct_icon "Акцент иконок" "#fff"
+@var color rii_gii_ct_icon_inactive "Неактивные иконки" "#919399"
+@var color rii_gii_ct_modal "Модальное окно" "#242423"
+@var color rii_gii_ct_code "Блок кода" "#4e4e4e"
+@var color rii_gii_ct_link "Цвет ссылки" "#528fdf"
+@var color rii_gii_ct_logo "Логотип" #ffffff
+==/UserStyle== */
+
 @-moz-document url-prefix("https://otvet.mail.ru/") {
   :root {
     --rii_gii-bg: #222222;
-    --rii_gii-content: #141414; /* фон всего контента */
-    --rii_gii-answer: #1a1a1a; /* фон блока с комментариями */
-    --rii_gii-alpha: #ffffff54; /* в основном тонна кнопок */
-    --rii_gii-rgb: 255, 255, 255; /* используется для остальной прозрачности */
-    --rii_gii-noalpha: #373839; /* там где не нужна альфа */
-    --rii_gii-alpha-hover: #ffffff80; /* кнопки при наведении */
-    --rii_gii-white: #fff; /* текст */
-    --rii_gii-white-subhead: #828282; /* тект подзаголовок */
+    --rii_gii-content: #141414;
+    --rii_gii-answer: #1a1a1a;
+    --rii_gii-alpha: #ffffff54;
+    --rii_gii-rgb: 255, 255, 255;
+    --rii_gii-noalpha: #373839;
+    --rii_gii-alpha-hover: #ffffff80;
+    --rii_gii-white: #fff;
+    --rii_gii-white-subhead: #828282;
     --rii_gii-accent: var(--rii_gii-alpha);
     --rii_gii-accent-hover: var(--rii_gii-alpha-hover);
     --rii_gii-accent-tint: rgba(var(--rii_gii-rgb), 0.20);
-    --rii_gii-icon-accent: var(--rii_gii-white); /* динамический */
-    --rii_gii-icon-inactive: #919399; /* неактивные иконки */
-    --rii_gii-head: #292828; /* шапка */
-    --rii_gii-modal: #242423; /* модальное окно */
-    --rii_gii-code: #4e4e4e; /* блок кода */
-    --rii_gii-link: #5390df; /* цвет ссылки */
+    --rii_gii-icon-accent: var(--rii_gii-white);
+    --rii_gii-icon-inactive: #919399;
+    --rii_gii-head: #292828;
+    --rii_gii-modal: #242423;
+    --rii_gii-code: #4e4e4e;
+    --rii_gii-link: #5390df;
     --rii_gii-gold: #ffd700;
     --rii_gii-laminaria: #4E543E;
     --rii_gii-theme-display: "Тёмная";
-    --vkui--color_background: var(--rii_gii-bg) !important; /* фон */
-    --vkui--color_background_content: var(--rii_gii-content) !important; /* контент */
-    --vkui--otvet_color_background_answer: var(--rii_gii-answer) !important; /* блок ответов */
-    --vkui--color_field_background: var(--rii_gii-bg) !important; /* ввод*/
-    --vkui--color_background_nav_bar_otvetui: var(--rii_gii-head) !important; /* выбор в меню */
-    --vkui--color_text_secondary: var(--rii_gii-white-subhead) !important; /* текст в поиске [placeholder], нумерация строк блока кода */
-    --vkui--color_background_secondary: var(--rii_gii-bg) !important; /* бг опросов + поиска, задний фон иконок */
-    --vkui--color_background_accent: var(--rii_gii-accent) !important; /* акцент кнопки */
-    --vkui--color_background_accent--hover: var(--rii_gii-accent-hover) !important; /* hover accent */
-    --vkui--color_background_accent--active: var(--rii_gii-accent-hover) !important; /* active accent */
-    --vkui--color_background_secondary_alpha: var(--rii_gii-alpha) !important; /* большинство кнопок, уведомления, изм.проф, покинуть */
-    --vkui--color_background_secondary_alpha--hover: var(--rii_gii-alpha-hover) !important; /* кнопки/hover */
-    --vkui--color_background_tertiary: var(--rii_gii-noalpha) !important; /* уведомления/всплывающиеся */
-    --vkui--color_background_accent_tint_themed: var(--rii_gii-accent-tint) !important; /* кнопка создать пост именно в пространстве ВАЖНО, только если втупил в пространство!!! */
-    --vkui--color_background_accent_tint_alpha: var(--rii_gii-accent-tint) !important; /* кнопки "вступить[в пространстве]" */
-    --vkui--color_background_accent_tint_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important; /* hover выше */
+    --vkui--color_background: var(--rii_gii-bg) !important;
+    --vkui--color_background_content: var(--rii_gii-content) !important;
+    --vkui--otvet_color_background_answer: var(--rii_gii-answer) !important;
+    --vkui--color_field_background: var(--rii_gii-bg) !important;
+    --vkui--color_background_nav_bar_otvetui: var(--rii_gii-head) !important;
+    --vkui--color_text_secondary: var(--rii_gii-white-subhead) !important;
+    --vkui--color_background_secondary: var(--rii_gii-bg) !important;
+    --vkui--color_background_accent: var(--rii_gii-accent) !important;
+    --vkui--color_background_accent--hover: var(--rii_gii-accent-hover) !important;
+    --vkui--color_background_accent--active: var(--rii_gii-accent-hover) !important;
+    --vkui--color_background_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_secondary_alpha--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_tertiary: var(--rii_gii-noalpha) !important;
+    --vkui--color_background_accent_tint_themed: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_alpha: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important;
     --vkui--color_background_accent_tint_alpha--active: rgba(var(--rii_gii-rgb), 0.44) !important;
-    --vkui--color_background_accent_tint: var(--rii_gii-icon-accent) !important; /* иконка закрепа */
-    --vkui--color_text_primary_invariably: var(--rii_gii-white) !important; /* текст кнопки "показать всё" */
-    --vkui--color_text_primary_invariably--hover: var(--rii_gii-white) !important; /* смешно, но это текст при наведении */
+    --vkui--color_background_accent_tint: var(--rii_gii-icon-accent) !important;
+    --vkui--color_text_primary_invariably: var(--rii_gii-white) !important;
+    --vkui--color_text_primary_invariably--hover: var(--rii_gii-white) !important;
     --vkui--color_text_primary_invariably--active: var(--rii_gii-white) !important;
-    --vkui--color_background_contrast: var(--rii_gii-alpha) !important; /* кнопка "показать всё" */
+    --vkui--color_background_contrast: var(--rii_gii-alpha) !important;
     --vkui--color_background_contrast--active: var(--rii_gii-alpha-hover) !important;
-    --vkui--color_background_contrast--hover: var(--rii_gii-alpha-hover) !important; /* hover */
-    --vkui--color_background_contrast_secondary_alpha: var(--rii_gii-alpha) !important; /* кнопка закрыть модаль окно */
-    --vkui--color_background_modal--hover: var(--rii_gii-alpha) !important; /* эффект наведения блоков в: "варианты поиска", "уведомления" */
-    --vkui--color_background_modal--active: var(--rii_gii-alpha) !important; /* переход кнопками на варианты поиска */
-    --vkui--color_background_modal: var(--rii_gii-modal) !important; /* модальное окно */
-    --vkui--color_text_primary: var(--rii_gii-white) !important; /* большая часть текста */
-    --vkui--color_text_accent_themed: var(--rii_gii-link) !important; /* текст кнопок "вступить" */
-    --vkui--color_text_subhead: var(--rii_gii-white-subhead) !important; /* подзаголовок */
-    --vkui--color_text_tertiary: var(--rii_gii-white-subhead) !important; /* задать вопрос. p тект в форме */
-    --vkui--color_skeleton_from: var(--rii_gii-alpha) !important; /* предзагрузка */
-    --vkui--color_transparent--active: var(--rii_gii-alpha) !important; /* новая предзагрузка / фон предзагрузки */
-    --vkui--gradient_content86: #ffffffdb !important; /* градиент предзагрузки */
-    --vkui--color_separator_primary_alpha: var(--rii_gii-noalpha) !important; /* разделитель, основной */
-    --otvetui--color_separator_light: var(--rii_gii-noalpha) !important; /* разделитель */
+    --vkui--color_background_contrast--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_background_contrast_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal--hover: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal--active: var(--rii_gii-alpha) !important;
+    --vkui--color_background_modal: var(--rii_gii-modal) !important;
+    --vkui--color_text_primary: var(--rii_gii-white) !important;
+    --vkui--color_text_accent_themed: var(--rii_gii-link) !important;
+    --vkui--color_text_subhead: var(--rii_gii-white-subhead) !important;
+    --vkui--color_text_tertiary: var(--rii_gii-white-subhead) !important;
+    --vkui--color_skeleton_from: var(--rii_gii-alpha) !important;
+    --vkui--color_transparent--active: var(--rii_gii-alpha) !important;
+    --vkui--gradient_content86: #ffffffdb !important;
+    --vkui--color_separator_primary_alpha: var(--rii_gii-noalpha) !important;
+    --otvetui--color_separator_light: var(--rii_gii-noalpha) !important;
     --vkui--color_separator_primary: var(--rii_gii-noalpha) !important;
-    --vkui--color_field_border_alpha: var(--rii_gii-noalpha) !important; /* разделитель в модальном окне юзера + border опросов */
+    --vkui--color_field_border_alpha: var(--rii_gii-noalpha) !important;
     --vkui--color_stroke_border_alpha--hover: var(--rii_gii-alpha) !important;
-    --vkui--color_separator_secondary: var(--rii_gii-icon-inactive) !important; /* указатель дерева комментов */
-    --vkui--color_icon_primary: var(--rii_gii-white) !important; /* иконка уведомления (25jan вроде иконки форматирования текста) */
-    --vkui--color_icon_medium: var(--rii_gii-icon-inactive) !important; /* неактивные иконки боковой панели + иконки комментов */
-    --vkui--color_icon_secondary: var(--rii_gii-icon-inactive) !important; /* иконки окошка проф */
-    --vkui--color_icon_accent_themed: var(--rii_gii-white) !important; /* иконки при наведении */
-    --vkui--color_icon_accent: var(--rii_gii-icon-accent) !important; /* иконка выбрана в боковом меню, переключатель уведомлений */
-    --vkui--color_background_accent_themed: var(--rii_gii-accent) !important; /* 21 JUN: ГДЕ? НЕТ НИЧЕГО БОЛЬШЕ ДАВНО УЖЕ ДРУГИЕ ||||| кнопки, создать, zaлупа, вступить, показать n вопросом */
-    --vkui--color_background_accent_tint_themed_alpha: var(--rii_gii-accent-tint) !important; /* кнопка в модальном окне отчивки */
-    --vkui--color_background_accent_tint_themed_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important; /* похоже это hover кнопки отчивки */
+    --vkui--color_separator_secondary: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_primary: var(--rii_gii-white) !important;
+    --vkui--color_icon_medium: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_secondary: var(--rii_gii-icon-inactive) !important;
+    --vkui--color_icon_accent_themed: var(--rii_gii-white) !important;
+    --vkui--color_icon_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_background_accent_themed: var(--rii_gii-accent) !important;
+    --vkui--color_background_accent_tint_themed_alpha: var(--rii_gii-accent-tint) !important;
+    --vkui--color_background_accent_tint_themed_alpha--hover: rgba(var(--rii_gii-rgb), 0.34) !important;
     --vkui--color_background_accent_tint_themed_alpha--active: rgba(var(--rii_gii-rgb), 0.44) !important;
-    --vkui--color_background_secondary--hover: var(--rii_gii-alpha-hover) !important; /* кнопка отмена в изм проф */
+    --vkui--color_background_secondary--hover: var(--rii_gii-alpha-hover) !important;
     --vkui--color_background_secondary--active: var(--rii_gii-alpha-hover) !important;
-    --otvetui--color_background_action_button: var(--rii_gii-alpha) !important; /* активные кнопки в форматировании текста */
-    --vkui--color_background_tertiary--hover: var(--rii_gii-alpha-hover) !important; /* кнопка создать пост для незарег. юзерам мб что-то ещё */
-    --vkui--color_stroke_accent: var(--rii_gii-icon-accent) !important; /* border в задать вопрос активный */
-    --vkui--color_background_secondary_alpha--active: var(--rii_gii-alpha-hover) !important; /* кнопки при нажатии active */
+    --otvetui--color_background_action_button: var(--rii_gii-alpha) !important;
+    --vkui--color_background_tertiary--hover: var(--rii_gii-alpha-hover) !important;
+    --vkui--color_stroke_accent: var(--rii_gii-icon-accent) !important;
+    --vkui--color_background_secondary_alpha--active: var(--rii_gii-alpha-hover) !important;
     --vkui--color_background_warning_tint_themed: #57503ddb !important;
     --vkui--color_background_warning_tint_alpha: #57503ddb !important;
-    --vkui--color_background_contrast_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important; /* инфо блоки */
-    --vkui--color_background_modal_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important; /* инфо в задать вопрос, всплывающее уведомление о выборе хотя бы одной категории и уведомление ошибки */
+    --vkui--color_background_contrast_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important;
+    --vkui--color_background_modal_inverse: color-mix(in srgb, var(--rii_gii-modal), #000 15%) !important;
     --vkui--color_text_link_visited: var(--rii_gii-link) !important;
     --vkui--color_text_link: color-mix(in oklch, var(--rii_gii-link), #000 5%) !important;
-    --vkui--color_text_link_themed: var(--rii_gii-link) !important; /* внимание вопрос. и нах это надо */
-    --vkui--color_text_accent_inverse: var(--rii_gii-link) !important; /* я сука блять да сколько этих ссылок 800 триллиардов переменных */
-    --vkui--color_icon_accent--hover: var(--vkui--color_text_link) !important; /* в уведомлениях ссылки по типу "к правилом" при удалении ответа */
-    --vkui--color_text_accent: var(--rii_gii-link) !important; /* заебало. отменить голос */
+    --vkui--color_text_link_themed: var(--rii_gii-link) !important;
+    --vkui--color_text_accent_inverse: var(--rii_gii-link) !important;
+    --vkui--color_icon_accent--hover: var(--rii_gii-link) !important;
+    --vkui--color_text_accent: var(--rii_gii-link) !important;
     --vkui--color_accent_secondary: var(--rii_gii-accent) !important;
-    --vkui--color_background_negative_tint: var(--rii_gii-code) !important; /* варн input #feefeb40 */
-    --vkui--color_icon_tertiary_alpha: rgb(var(--rii_gii-rgb), 0.2) !important; /* обратный чекбокс */
-    --vkui--elevation3: 0 0 6px 0 rgba(var(--rii_gii-rgb), 0.02),0 6px 12px 0 rgba(var(--rii_gii-rgb), 0.02), 0 6px 20px 0 rgba(var(--rii_gii-rgb), 0.02),0 10px 36px 0 rgba(var(--rii_gii-rgb), 0.04) !important; /* тень popup окон */
+    --vkui--color_background_negative_tint: var(--rii_gii-code) !important;
+    --vkui--color_icon_tertiary_alpha: rgb(var(--rii_gii-rgb), 0.2) !important;
+    --vkui--elevation3: 0 0 6px 0 rgba(var(--rii_gii-rgb), 0.02),0 6px 12px 0 rgba(var(--rii_gii-rgb), 0.02), 0 6px 20px 0 rgba(var(--rii_gii-rgb), 0.02),0 10px 36px 0 rgba(var(--rii_gii-rgb), 0.04) !important;
     --vkui--elevation4: 0 2px 6px 0 rgba(var(--rii_gii-rgb), 0.03), 0 16px 48px 0 rgba(var(--rii_gii-rgb), 0.04), 0 24px 68px 0 rgba(var(--rii_gii-rgb), 0.08) !important;
-    --otvetui--color_secondary_alpha: var(--rii_gii-alpha) !important; /* банерь рекламы */
-    --vkui--color_background_sky: rgba(var(--rii_gii-rgb), 0.150) !important; /* новые вопросы */
-    --vkui--color_background_sky--hover: rgba(var(--rii_gii-rgb), 0.311) !important; /* hover */
-    --vkui--color_background_sky--active: rgba(var(--rii_gii-rgb), 0.367) !important; /* active */
-    --otvetui--color_sticker_counters_border: rgba(var(--rii_gii-rgb), 0.18) !important; /* задний фон стикера что нового */
-    --vkui--color_transparent--hover: rgba(var(--rii_gii-rgb), 0.15) !important; /* выбор в бок и проф меню hover */
-    --vkui--color_accent_gray: var(--rii_gii-white-subhead) !important; /* ссылка + иконка закрыть во всплывающей ошибке */
-    --otvetui--color_background_topic_card--active: rgba(var(--rii_gii-rgb), 0.04) !important; /* активные выбор категории мнения\знания */
-    --otvetui--color_icon_secondary--hover_contrast: color-mix(in oklch, var(--rii_gii-white-subhead), #fff 20%) !important; /* теги hover */
-    --otvetui--color_background_onboarding_swiper_bullet--active: var(--rii_gii-accent) !important; /* свайпер в "что нового" мусор */
-    --vkui--color_text_contrast: #fff !important; /* текст внутри акцентовых кнопок */
-    --vkui--color_text_contrast_themed: var(--rii_gii-white) !important; /* текст ошибок + инфо блоков */
-    --vkui--color_icon_contrast_themed: var(--rii_gii-icon-inactive) !important; /* кнопка "удалить изображение. hover м active не знаю где, но оставлю */
+    --otvetui--color_secondary_alpha: var(--rii_gii-alpha) !important;
+    --vkui--color_background_sky: rgba(var(--rii_gii-rgb), 0.150) !important;
+    --vkui--color_background_sky--hover: rgba(var(--rii_gii-rgb), 0.311) !important;
+    --vkui--color_background_sky--active: rgba(var(--rii_gii-rgb), 0.367) !important;
+    --otvetui--color_sticker_counters_border: rgba(var(--rii_gii-rgb), 0.18) !important;
+    --vkui--color_transparent--hover: rgba(var(--rii_gii-rgb), 0.15) !important;
+    --vkui--color_accent_gray: var(--rii_gii-white-subhead) !important;
+    --otvetui--color_background_topic_card--active: rgba(var(--rii_gii-rgb), 0.04) !important;
+    --otvetui--color_icon_secondary--hover_contrast: color-mix(in oklch, var(--rii_gii-white-subhead), #fff 20%) !important;
+    --otvetui--color_background_onboarding_swiper_bullet--active: var(--rii_gii-accent) !important;
+    --vkui--color_text_contrast: #fff !important;
+    --vkui--color_text_contrast_themed: var(--rii_gii-white) !important;
+    --vkui--color_icon_contrast_themed: var(--rii_gii-icon-inactive) !important;
     --vkui--color_icon_contrast_themed--hover: var(--rii_gii-icon-inactive) !important;
     --vkui--color_icon_contrast_themed--active: var(--rii_gii-icon-inactive) !important;
     --otvetui--color_progress_rang_blue: var(--rii_gii-accent) !important;
@@ -178,9 +234,9 @@
   }
   /************************ Interface ************************/
   header button[class*="_button_"][size="m"] { border-radius: 12px !important; }
-  [class^="_menuItem_"]:active:not([class*="_menuItem_active_"]) { background-color: var(--vkui--color_transparent--hover) !important; } /* Отключает актив при нажатии бокового меню */
+  [class^="_menuItem_"]:active:not([class*="_menuItem_active_"]) { background-color: var(--vkui--color_transparent--hover) !important; }
   [class*="_menuItem_active_"]:not([class*="_menuItem_mobile_active_"]) path:last-child { fill: var(--rii_gii-icon-accent) !important; }
-  ._popper_wu6jh_5 { overflow-x: hidden; } /* popup окно пользователей. Скрывает слишком большие ники */
+  ._popper_wu6jh_5 { overflow-x: hidden; }
 
   div[class*="_CollapsibleTextToggler_more_"] { background: linear-gradient(0deg, var(--rii_gii-content) 46.96%, #fff0) !important; }
   span[class*="_CollapsibleTextToggler_"] {
@@ -190,23 +246,23 @@
     background: var(--rii_gii-alpha) !important;
   }
   
-  nav[class*="_horizontal_wrapper_"] { background: var(--rii_gii-head) !important; } /* нижняя панель для мобилок */
-  div[class*="_AchieveBackground_"] { /* блок ученик, мастер и т.п */ 
+  nav[class*="_horizontal_wrapper_"] { background: var(--rii_gii-head) !important; }
+  div[class*="_AchieveBackground_"] { 
     --vkui--color_background_negative: #fd3131 !important;
     span {
       color: #fff !important;
       text-shadow: 0px 0.5px 5px #000;
     }
   }
-  [class^="_AwardsListsWrapper_"] > [class^="_Wrapper_"] { /* окно с отчивками в профиле, почему-то она как модальное */
+  [class^="_AwardsListsWrapper_"] > [class^="_Wrapper_"] {
     background: var(--rii_gii-content) !important;
     img:hover {
       filter: none !important;
       opacity: 0.8 !important;
     }
   }
-  button[class*="_Button_hover_"]:has(svg[data-icon="ShareOutline16"]) { background: var(--rii_gii-alpha-hover) !important; } /* ссаная кнопка поделиться, я её рот наоборот */
-  [class^="_SearchField_"] { background: var(--rii_gii-alpha) !important; } /* фуллтайм старый фон убили я вернул ок да */
+  button[class*="_Button_hover_"]:has(svg[data-icon="ShareOutline16"]) { background: var(--rii_gii-alpha-hover) !important; }
+  [class^="_SearchField_"] { background: var(--rii_gii-alpha) !important; }
   #HeaderSearch::placeholder { color: var(--rii_gii-white) !important; }
   blockquote::before { background: var(--rii_gii-icon-accent) !important; }
 
@@ -215,14 +271,28 @@
     color: var(--rii_gii-white) !important;
   }
 
-  ._FormField_modeSecondary_l1o40_85 { background: var(--rii_gii-alpha) !important; } /* форма "добавить ссылку" */
-  form[class*="_VideoForm_"] > span[class*="_InputWrapper_"] { background: var(--rii_gii-alpha) !important; } /* инпут вставить видео */
-  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
-  [class^="_Card_"] a[href="/profile/rii_gii"] { &, & span { color: var(--rii_gii-gold, #FF9F00) !important; } } /* https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif */
-  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 { background: url(../images/agiri.gif) center 0px / cover no-repeat !important; }
+  ._FormField_modeSecondary_l1o40_85 { background: var(--rii_gii-alpha) !important; }
+  form[class*="_VideoForm_"] > span[class*="_InputWrapper_"] { background: var(--rii_gii-alpha) !important; }
+  
+ 
+  [src="https://otvet.cdn-vk.net/pictures/missionHeader.svg"] { content: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) !important; }
+  
+  [class^="_Feed_"] > [class^="_TopicWrapper_"]:first-child [class*="_MainContent_"] {
+    &::before {
+      border-top: solid 3px var(--rii_gii-noalpha);
+      content: "Всё, Rii Gii больше нет. Ко мне больше не обращаться по поводу сисек, писек и прочих вопросов. Сиськи у матери, письки у бати, а вопросы придержи для себя. \A \A Оставляю Агири тут плавать, иногда буду навещать чтобы модеры не прогнали.";
+      line-height: 22px;
+      color: var(--rii_gii-white);
+      white-space: pre-wrap;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: solid 3px var(--rii_gii-noalpha);
+    }
+  }
+  
   [class*="_Notification_opened_"] [class*="_Notification_"]:hover { background: color-mix(in oklch, var(--rii_gii-modal), #c2b9b9 17%) !important; }
   [class*="_Notification_opened_"] ::before, [class*="_NotificationItem_"]::before { background: linear-gradient(var(--rii_gii-icon-accent), color-mix(in oklch, var(--rii_gii-icon-accent), #000 22%)) !important; }
-  .vkuiInternalRepliesList * { animation: none !important; } /* убирает анимацию при переходе на ответ с уведомлений. */
+  .vkuiInternalRepliesList * { animation: none !important; }
 
   main div[class*="_Controls_"] > div[class^="_Wrapper_"]:first-child {
     width: 100% !important;
@@ -238,7 +308,7 @@
     height: 40px !important;
   }
 
-  [class^="_Tappable_"][role="button"] { /* градиент "новые вопросы" */
+  [class^="_Tappable_"][role="button"] {
     [class^="_Inner_"] {
       background: linear-gradient(90deg, var(--vkui--color_background_sky), color-mix(in srgb, var(--vkui--color_background_sky), var(--rii_gii-accent) 30%)) !important;
       background-size: 200% 100% !important;
@@ -247,15 +317,15 @@
     &:hover [class^="_Inner_"] { background-position: 100% 0 !important; }
   }
   
-  [class*="_Space_"][class*="_Item_"] { /* анимация пространств при наведении */
+  [class*="_Space_"][class*="_Item_"] {
     transition: transform 0.2s ease !important;
     padding: 8px !important;
     margin: 0 -8px !important;
     &:hover { transform: translateY(-4px) !important; }
   }
 
-  [class*="_BannedWrapper_"] { border-top-color: var(--rii_gii-accent) !important; } /* Блок с информацией о бане ПОЛЬЗОВАТЕЛЯ */
-  [class*="_Achievement_"][class*="_Achievement_img"]:hover { /* анимация достижений при наведении */
+  [class*="_BannedWrapper_"] { border-top-color: var(--rii_gii-accent) !important; }
+  [class*="_Achievement_"][class*="_Achievement_img"]:hover {
     transform: scale(1.2) translateY(-2px) !important;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)) !important;
   }
@@ -297,7 +367,7 @@
     }
   }
 
-  [class^="_Union_"] path { fill: var(--rii_gii-icon-accent) !important; } [class^="_Dashes_"] path { stroke: var(--rii_gii-icon-accent) !important; } /* жёлтые иконки в окне проф */
+  [class^="_Union_"] path { fill: var(--rii_gii-icon-accent) !important; } [class^="_Dashes_"] path { stroke: var(--rii_gii-icon-accent) !important; }
   svg:is([data-icon="SunOutline20"], [data-icon="MoonOutline20"]) {
     --mask--moon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-icon="MoonOutline20"><path fill-rule="evenodd" d="M10.606 1.987a.75.75 0 0 1-.217.835 5.795 5.795 0 0 0 6.387 9.58.75.75 0 0 1 1.031.965A8.502 8.502 0 0 1 1.5 10a8.5 8.5 0 0 1 8.395-8.5.75.75 0 0 1 .711.487M8.004 3.288a7 7 0 1 0 7.421 11.137A7.295 7.295 0 0 1 8.004 3.288" clip-rule="evenodd"/></svg>');
     -webkit-mask: var(--mask--moon) center / contain no-repeat;
@@ -306,16 +376,16 @@
     g { fill: none !important; }
   }
   
-  [class*="_ReplyItemMy_"] { background: var(--rii_gii-accent) !important; } /* иконка ""Я"" в ответах */
-  svg[data-icon="MinusCircle16"] path {fill: var(--rii_gii-icon-inactive) !important;} /*скрыть ветку комментов */ 
-  [class^="_Card_"] [class^="_Divider_"] { /* разделитель. вопрос удалён */
+  [class*="_ReplyItemMy_"] { background: var(--rii_gii-accent) !important; }
+  svg[data-icon="MinusCircle16"] path {fill: var(--rii_gii-icon-inactive) !important;} 
+  [class^="_Card_"] [class^="_Divider_"] {
     path:first-child { fill: transparent !important; }
     path:last-child {
       fill: var(--rii_gii-icon-inactive) !important;
       fill-opacity: 0.6 !important;
     }
   }
-  footer li:first-child { /* мини лого */
+  footer li:first-child {
     a[href="/about"] :nth-child(2) path { fill: var(--rii_gii-white-subhead) !important; }
     &:hover a[href="/about"] :nth-child(2) path { fill: var(--rii_gii-white) !important; }
   }
@@ -324,7 +394,7 @@
     &:hover path { fill: var(--rii_gii-white) !important; }
   }
 
-  [class*="_ActionSheetItem_ellipsis_"] { /* меняет текст темы */
+  [class*="_ActionSheetItem_ellipsis_"] {
     &:has([class*="_CurrentTheme_"]) {
       span:nth-child(1) {
         visibility: hidden;
@@ -345,7 +415,7 @@
     }
   }
   
-  /* & when not (@rii_gii-disable = 1) {
+  & when not (@rii_gii-disable = 1) {
     [class^="mailru"] *:not(center) {
       background: color-mix(in oklch, var(--rii_gii-bg), #000 25%) !important;
       color: var(--rii_gii-white) !important;
@@ -367,39 +437,37 @@
     }
     div[data-name="adaptiveConstructorAd"] 
     [data-name="adWrapper"] span[data-label] span { color: var(--rii_gii-white-subhead) !important; }
-  } */
+  }
 
-  /* & when (@rii_gii-disable = 1) { */
+  & when (@rii_gii-disable = 1) {
     #app > div:nth-child(2) > :nth-child(1):not(header), [class^="adv-"],
     [class*="_ReplyListWrapper_"]:has([class^="adv-"]) {
       display: none !important;
     }
-  /* } */
+  }
 
-  /* & when (@rii_gii-rubbish = 1) { */
-    [class*="_Floating_"], /* категория при скроле в посте */
-    [class*="_VkVideoSwiper_"], /* видео по теме */
-    [class*="_PostUserSubscriptionButton_"], /* кнопка подписаться посты юзеров */
-    [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
-    a[href="/profile/dragon_0077"],
-    [class^="_DzenPost_"])),
-    :is(section[class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) /* отображение достижения справа */ {
+  & when (@rii_gii-rubbish = 1) {
+    [class*="_Floating_"],
+    [class*="_VkVideoSwiper_"],
+    [class*="_PostUserSubscriptionButton_"],
+    [class^="_Card_"]:has(a[href="/profile/vk_video"]),
+    :is(section[class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) {
       display: none !important;
     }
-  /* } */
+  }
 
-  /* & when (@rii_gii-hide = 1) { */
+  & when (@rii_gii-hide = 1) {
     [class^="_CollapsibleText_"] { max-height: 100% !important; }
-  /* } */
+  }
 
-  /* & when (@rii_gii-visited = 1) {
+  & when (@rii_gii-visited = 1) {
     ._CardGrid_1s5z8_1 a:visited:not(._UserUsername_1nwdr_1, ._ReplyItemNick_ypna7_1, ._PostItemTags_1nwdr_1 :is(a, span),
     ._Button_modeSecondary_bjs87_1._Button_appearanceNeutral_bjs87_1) span {
       color: @rii_gii-visitedColor !important;
     }
-  } */
+  }
 
-  /* & when (@rii_gii-filter-users--active = 1) {
+  & when (@rii_gii-filter-users--active = 1) {
     .rii_gii-filter-users--function(@list; @index: 1) when (@index <= length(@list)) {
     @username: extract(@list, @index);
   
@@ -409,9 +477,9 @@
     .rii_gii-filter-users--function(@list; (@index + 1));
     }
     .rii_gii-filter-users--function(@rii_gii-filter-users);
-  } */
+  }
 
-  /* & when (@rii_gii-font-external = 1) {
+  & when (@rii_gii-font-external = 1) {
     & when (@rii_gii-font = Lora) {
       @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
       :root { --rii_gii-face: "Lora"; }
@@ -463,9 +531,9 @@
       --otvetui--font_family_accent: @rii_gii-font-sys-value !important;
       --otvetui--font_family_base: @rii_gii-font-sys-value !important;
     }
-  } */
+  }
 
-  /* & when (@rii_gii-theme = VKUI) and (@rii_gii-theme-light = Disable) {
+  & when (@rii_gii-theme = VKUI) and (@rii_gii-theme-light = Disable) {
     :root {
       --rii_gii-bg: #2a2a2b;
       --rii_gii-content: #191919;
@@ -483,9 +551,9 @@
       --rii_gii-logo: #fff;
       --vkui--color_text_contrast: #2c2d2e !important;
     }
-  } */
+  }
 
-  /* & when (@rii_gii-theme = Amoled) and (@rii_gii-theme-light = Disable) {
+  & when (@rii_gii-theme = Amoled) and (@rii_gii-theme-light = Disable) {
     :root {
       --rii_gii-bg: #080808;
       --rii_gii-content: #000000;
@@ -514,9 +582,9 @@
         --rii_gii-theme-display: "Амолед+";
       } 
     }
-  } */
-  /* & when (@rii_gii-theme = Elegant_dark) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+  }
+  & when (@rii_gii-theme = Elegant_dark) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0a0c10;
       --rii_gii-content: #111316;
       --rii_gii-answer: #181b20;
@@ -536,10 +604,10 @@
       --rii_gii-link: #7aa9ff;
       --rii_gii-theme-display: "Элегантная тёмная";
       --vkui--color_background_nav_bar_otvetui: var(--rii_gii-content) !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Reddit_Edition) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Reddit_Edition) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0e1113;
       --rii_gii-content: #1a1d1f;
       --rii_gii-answer: #333d42;
@@ -563,10 +631,10 @@
       mask-image: none;
       -webkit-mask-image: none;
       background: url('data:image/svg+xml,<svg width="142" height="52" version="1.1" id="svg1" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><defs id="defs1"><radialGradient id="snoo-radial-gradient" cx="169.75" cy="92.19" r="50.98" fx="169.75" fy="92.19" gradientTransform="matrix(1 0 0 .87 0 11.64)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23feffff" id="stop1"/><stop offset=".4" stop-color="%23feffff" id="stop2"/><stop offset=".51" stop-color="%23f9fcfc" id="stop3"/><stop offset=".62" stop-color="%23edf3f5" id="stop4"/><stop offset=".7" stop-color="%23dee9ec" id="stop5"/><stop offset=".72" stop-color="%23d8e4e8" id="stop6"/><stop offset=".76" stop-color="%23ccd8df" id="stop7"/><stop offset=".8" stop-color="%23c8d5dd" id="stop8"/><stop offset=".83" stop-color="%23ccd6de" id="stop9"/><stop offset=".85" stop-color="%23d8dbe2" id="stop10"/><stop offset=".88" stop-color="%23ede3e9" id="stop11"/><stop offset=".9" stop-color="%23ffebef" id="stop12"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-2" cx="47.31" r="50.98" fx="47.31"/><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-3" cx="109.61" cy="85.59" r="153.78" fx="109.61" fy="85.59" gradientTransform="matrix(1 0 0 .7 0 25.56)"/><radialGradient id="snoo-radial-gradient-4" cx="-6.01" cy="64.68" r="12.85" fx="-6.01" fy="64.68" gradientTransform="matrix(1.07 0 0 1.55 81.08 27.26)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23f60" id="stop13"/><stop offset=".5" stop-color="%23ff4500" id="stop14"/><stop offset=".7" stop-color="%23fc4301" id="stop15"/><stop offset=".82" stop-color="%23f43f07" id="stop16"/><stop offset=".92" stop-color="%23e53812" id="stop17"/><stop offset="1" stop-color="%23d4301f" id="stop18"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient-4" id="snoo-radial-gradient-5" cx="-73.55" cy="64.68" r="12.85" fx="-73.55" fy="64.68" gradientTransform="matrix(-1.07 0 0 1.55 62.87 27.26)"/><radialGradient id="snoo-radial-gradient-6" cx="107.93" cy="166.96" r="45.3" fx="107.93" fy="166.96" gradientTransform="matrix(1 0 0 .66 0 57.4)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="%23172e35" id="stop19"/><stop offset=".29" stop-color="%230e1c21" id="stop20"/><stop offset=".73" stop-color="%23030708" id="stop21"/><stop offset="1" id="stop22"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="snoo-radial-gradient-7" cx="147.88" cy="32.94" r="39.77" fx="147.88" fy="32.94" gradientTransform="matrix(1 0 0 .98 0 .54)"/><radialGradient id="snoo-radial-gradient-8" cx="131.31" cy="73.08" r="32.6" fx="131.31" fy="73.08" gradientUnits="userSpaceOnUse"><stop offset=".48" stop-color="%237a9299" id="stop23"/><stop offset=".67" stop-color="%23172e35" id="stop24"/><stop offset=".75" id="stop25"/><stop offset=".82" stop-color="%23172e35" id="stop26"/></radialGradient><radialGradient xlink:href="%23snoo-radial-gradient" id="radialGradient4" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1 0 0 .87 0 11.64)" cx="169.75" cy="92.19" fx="169.75" fy="92.19" r="50.98"/><radialGradient xlink:href="%23snoo-radial-gradient-4" id="radialGradient5" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.07 0 0 1.55 81.08 27.26)" cx="-6.01" cy="64.68" fx="-6.01" fy="64.68" r="12.85"/><style id="style26"> .snoo-cls-11{stroke-width:0;fill:%23ffc49c} </style></defs><g id="g4" transform="translate(8.641 7.06) scale(.1697)"><path d="M108 0C48.35 0 0 48.35 0 108c0 29.82 12.09 56.82 31.63 76.37l-20.57 20.57C6.98 209.02 9.87 216 15.64 216H108c59.65 0 108-48.35 108-108S167.65 0 108 0Z" style="fill:%23ff4500;stroke-width:0" id="path26"/><circle cx="169.22" cy="106.98" r="25.22" style="fill:url(%23radialGradient4);stroke-width:0" id="circle26"/><circle cx="46.78" cy="106.98" r="25.22" style="fill:url(%23snoo-radial-gradient-2);stroke-width:0" id="circle27"/><ellipse cx="108.06" cy="128.64" rx="72" ry="54" style="fill:url(%23snoo-radial-gradient-3);stroke-width:0" id="ellipse27"/><path d="M86.78 123.48c-.42 9.08-6.49 12.38-13.56 12.38s-12.46-4.93-12.04-14.01c.42-9.08 6.49-15.02 13.56-15.02s12.46 7.58 12.04 16.66z" style="fill:url(%23radialGradient5);stroke-width:0" id="path27"/><path d="M129.35 123.48c.42 9.08 6.49 12.38 13.56 12.38s12.46-4.93 12.04-14.01c-.42-9.08-6.49-15.02-13.56-15.02s-12.46 7.58-12.04 16.66z" style="fill:url(%23snoo-radial-gradient-5);stroke-width:0" id="path28"/><ellipse cx="79.63" cy="116.37" class="snoo-cls-11" rx="2.8" ry="3.05" id="ellipse28"/><ellipse cx="146.21" cy="116.37" class="snoo-cls-11" rx="2.8" ry="3.05" id="ellipse29"/><path d="M108.06 142.92c-8.76 0-17.16.43-24.92 1.22-1.33.13-2.17 1.51-1.65 2.74 4.35 10.39 14.61 17.69 26.57 17.69s22.23-7.3 26.57-17.69c.52-1.23-.33-2.61-1.65-2.74-7.77-.79-16.16-1.22-24.92-1.22z" style="fill:url(%23snoo-radial-gradient-6);stroke-width:0" id="path29"/><circle cx="147.49" cy="49.43" r="17.87" style="fill:url(%23snoo-radial-gradient-7);stroke-width:0" id="circle29"/><path d="M107.8 76.92c-2.14 0-3.87-.89-3.87-2.27 0-16.01 13.03-29.04 29.04-29.04 2.14 0 3.87 1.73 3.87 3.87s-1.73 3.87-3.87 3.87c-11.74 0-21.29 9.55-21.29 21.29 0 1.38-1.73 2.27-3.87 2.27z" style="fill:url(%23snoo-radial-gradient-8);stroke-width:0" id="path30"/><path d="M62.82 122.65c.39-8.56 6.08-14.16 12.69-14.16 6.26 0 11.1 6.39 11.28 14.33.17-8.88-5.13-15.99-12.05-15.99-6.92 0-13.14 6.05-13.56 15.2-.42 9.15 4.97 13.83 12.04 13.83h.52c-6.44-.16-11.3-4.79-10.91-13.2zm90.48 0c-.39-8.56-6.08-14.16-12.69-14.16-6.26 0-11.1 6.39-11.28 14.33-.17-8.88 5.13-15.99 12.05-15.99 7.07 0 13.14 6.05 13.56 15.2.42 9.15-4.97 13.83-12.04 13.83h-.52c6.44-.16 11.3-4.79 10.91-13.2z" id="path31" style="fill:%23842123;stroke-width:0"/></g><g style="fill:%23fff;fill-opacity:1" id="g6" transform="matrix(.14717 0 0 .14717 52.884 12.85)"><path d="M71.62 45.92 59.61 74.48c-1.51-.76-5.11-1.61-8.51-1.61-3.4 0-6.81.85-10.12 2.46-6.53 3.31-11.35 9.93-11.35 19.48v52.3H-.26V45.35h29.04v14.28h.57c6.81-9.08 17.21-15.79 30.74-15.79 4.92 0 9.65.95 11.54 2.08z" id="path1" style="fill:%23fff;fill-opacity:1"/><path d="M65.84 96.52c0-29.41 20.15-52.68 50.32-52.68 27.33 0 46.91 19.96 46.91 48.05 0 4.92-.47 9.55-1.51 14H93.08c3.12 10.69 12.39 19.01 26.29 19.01 7.66 0 18.54-2.74 24.4-7.28l9.27 22.32c-8.61 5.86-21.75 8.7-33.29 8.7-32.25 0-53.91-20.81-53.91-52.11zm26.67-9.36h43.03c0-13.05-8.89-19.96-19.77-19.96-12.3 0-20.62 7.94-23.27 19.96z" id="path2" style="fill:%23fff;fill-opacity:1"/><path d="M419.53-.37c10.03 0 18.25 8.23 18.25 18.25s-8.23 18.25-18.25 18.25-18.25-8.23-18.25-18.25S409.51-.37 419.53-.37zm14.94 147.49h-29.89V45.35h29.89z" id="path3" style="fill:%23fff;fill-opacity:1"/><path d="M246 1.47 245.91 55h-.57c-8.23-7.85-17.12-11.07-28.75-11.07-28.66 0-47.67 23.08-47.67 52.3s17.78 52.4 46.72 52.4c12.11 0 23.55-4.16 30.93-13.62h.85v12.11h28.47V1.47Zm1.42 121.39h-.99l-6.67-6.93c-4.34 4.33-10.28 6.93-17.22 6.93-14.64 0-24.88-11.58-24.88-26.6 0-15.02 10.24-26.6 24.88-26.6 14.64 0 24.88 11.58 24.88 26.6z" id="path4" style="fill:%23fff;fill-opacity:1"/><path d="M360.15 1.47 360.06 55h-.57c-8.23-7.85-17.12-11.07-28.75-11.07-28.66 0-47.67 23.08-47.67 52.3s17.78 52.4 46.72 52.4c12.11 0 23.55-4.16 30.93-13.62h.85v12.11h28.47V1.47Zm1.28 121.39h-.99l-6.67-6.93c-4.34 4.33-10.28 6.93-17.22 6.93-14.64 0-24.88-11.58-24.88-26.6 0-15.02 10.24-26.6 24.88-26.6 14.64 0 24.88 11.58 24.88 26.6z" id="path5" style="fill:%23fff;fill-opacity:1"/><path d="M492.44 45.35h21.85v25.44h-21.85v76.33h-29.89V70.79H440.8V45.35h21.75V17.69h29.89z" id="path6" style="fill:%23fff;fill-opacity:1"/></g></svg>') 0px center / 142px no-repeat !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Void) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Void) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #030303;
       --rii_gii-content: #080808;
       --rii_gii-answer: #0d0d0d;
@@ -582,10 +650,10 @@
       --rii_gii-code: #181820;
       --rii_gii-link: #5566cc;
       --rii_gii-theme-display: "Пустота";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Romdo) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Romdo) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #050606;
       --rii_gii-content: #0d0f0f;
       --rii_gii-answer: #141717;
@@ -613,10 +681,10 @@
       --vkui--color_background_accent: #1f2424 !important;
       --vkui--color_background_accent_themed: #738073 !important;
       --vkui--color_text_contrast: #d5dad5 !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Toxic_glow) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Toxic_glow) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0d1411;
       --rii_gii-content: #12211a;
       --rii_gii-answer: #1e352a;
@@ -632,10 +700,10 @@
       --rii_gii-code: #3a4a3a;
       --rii_gii-link: #a3ff00;
       --rii_gii-theme-display: "Токсичное свечение";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Poisoned_forest) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Poisoned_forest) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #000a00;
       --rii_gii-content: #000000;
       --rii_gii-answer: #021202;
@@ -655,10 +723,10 @@
       --rii_gii-link: #00ff66;
       --rii_gii-theme-display: "Отравленный лес";
       --vkui--color_text_contrast: #004a27 !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Swamp) and (@rii_gii-theme-light = Disable) { */
-      /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Swamp) and (@rii_gii-theme-light = Disable) {
+      :root {
       --rii_gii-bg: #141810;
       --rii_gii-content: #0d100a;
       --rii_gii-answer: #181d14;
@@ -677,10 +745,10 @@
       --rii_gii-code: #2e3327;
       --rii_gii-link: #aed581;
       --rii_gii-theme-display: "Болото";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Midnight_candy) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Midnight_candy) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a0d1a;
       --rii_gii-content: #2a122a;
       --rii_gii-answer: #3a1e3a;
@@ -696,10 +764,10 @@
       --rii_gii-code: #4a3a4a;
       --rii_gii-link: #ff66ff;
       --rii_gii-theme-display: "Полночная конфетка";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Cyber_rust) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Cyber_rust) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a120d;
       --rii_gii-content: #2a2212;
       --rii_gii-answer: #3a321e;
@@ -715,10 +783,10 @@
       --rii_gii-code: #4a3a2a;
       --rii_gii-link: #ff8800;
       --rii_gii-theme-display: "Кибер-ржавчина";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Frostbite) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Frostbite) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0d1a22;
       --rii_gii-content: #122a33;
       --rii_gii-answer: #1e3a44;
@@ -734,10 +802,10 @@
       --rii_gii-code: #3a4a5a;
       --rii_gii-link: #00eeff;
       --rii_gii-theme-display: "Обморожение";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Volcanic_ash) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Volcanic_ash) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a1212;
       --rii_gii-content: #2a1e1e;
       --rii_gii-answer: #3a2a2a;
@@ -753,10 +821,10 @@
       --rii_gii-code: #423a3a;
       --rii_gii-link: #ff6600;
       --rii_gii-theme-display: "Вулканический пепел";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Galactic_void) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Galactic_void) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #05001a;
       --rii_gii-content: #0f002a;
       --rii_gii-answer: #1a003a;
@@ -772,10 +840,10 @@
       --rii_gii-code: #35354a;
       --rii_gii-link: #6600ff;
       --rii_gii-theme-display: "Галактическая пустота";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Emerald_dream) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Emerald_dream) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #001a10;
       --rii_gii-content: #002a1e;
       --rii_gii-answer: #003a2a;
@@ -791,10 +859,10 @@
       --rii_gii-code: #30443a;
       --rii_gii-link: #00ffcc;
       --rii_gii-theme-display: "Изумрудная мечта";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Citrus) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Citrus) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #4a5c1a;
       --rii_gii-content: #6a7c2a;
       --rii_gii-answer: #3a4c16;
@@ -813,10 +881,10 @@
       --rii_gii-code: #060d05;
       --rii_gii-link: var(--rii_gii-accent);
       --rii_gii-theme-display: "Цитрус";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Dark_rose) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Dark_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a0a12;
       --rii_gii-content: #22121a;
       --rii_gii-answer: #2a1a22;
@@ -832,10 +900,10 @@
       --rii_gii-code: #4a3a42;
       --rii_gii-link: #ff66cc;
       --rii_gii-theme-display: "Тёмная роза";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Light_rose) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Light_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #7a5a5a;
       --rii_gii-content: #8a6a6a;
       --rii_gii-answer: #705050;
@@ -854,10 +922,10 @@
       --rii_gii-code: #3a2020;
       --rii_gii-link: var(--rii_gii-accent);
       --rii_gii-theme-display: "Светлая роза";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Neon_rose) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Neon_rose) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #5a3a4a;
       --rii_gii-content: #6a4a5a;
       --rii_gii-answer: #503040;
@@ -876,10 +944,10 @@
       --rii_gii-code: #2a101a;
       --rii_gii-link: #ff005d;
       --rii_gii-theme-display: "Неоновая роза";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Momoiro) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Momoiro) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a0b0b;
       --rii_gii-content: #2a1212;
       --rii_gii-answer: #3a1e1e;
@@ -899,10 +967,10 @@
       --rii_gii-code: #1a0b0b;
       --rii_gii-link: #d85a5a;
       --rii_gii-theme-display: "Момоиро";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Crimson_night) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Crimson_night) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #120a0a;
       --rii_gii-content: #1a0f0f;
       --rii_gii-answer: #221414;
@@ -918,10 +986,10 @@
       --rii_gii-code: #443a3a;
       --rii_gii-link: #ff3333;
       --rii_gii-theme-display: "Багровая ночь";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Blood_moon) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Blood_moon) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0a0000;
       --rii_gii-content: #140000;
       --rii_gii-answer: #1e0000;
@@ -938,10 +1006,10 @@
       --rii_gii-link: #ff0033;
       --rii_gii-theme-display: "Кровавая луна";
       --vkui--color_icon_negative: #fd4a4a !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Hell_glow) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Hell_glow) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #330000;
       --rii_gii-content: #550000;
       --rii_gii-answer: #770000;
@@ -960,10 +1028,10 @@
       --rii_gii-code: #2a0000;
       --rii_gii-link: #ff5500;
       --rii_gii-theme-display: "Адское свечение";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Retro_gold) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Retro_gold) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #121005;
       --rii_gii-content: #221e0a;
       --rii_gii-answer: #2c2810;
@@ -979,10 +1047,10 @@
       --rii_gii-code: #443a1a;
       --rii_gii-link: #ffd700;
       --rii_gii-theme-display: "Ретро золото";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Vintage_sepia) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Vintage_sepia) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #18120a;
       --rii_gii-content: #201a0f;
       --rii_gii-answer: #282214;
@@ -998,9 +1066,9 @@
       --rii_gii-code: #302a1a;
       --rii_gii-link: #ccaa77;
       --rii_gii-theme-display: "Винтажный сепия";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Violetta) and (@rii_gii-theme-light = Disable) { */
+    }
+  }
+  & when (@rii_gii-theme = Violetta) and (@rii_gii-theme-light = Disable) {
     :root {
       --rii_gii-bg: #5c5ca3;
       --rii_gii-content: #7070ae;
@@ -1023,9 +1091,9 @@
       --rii_gii-link: var(--rii_gii-accent);
       --rii_gii-theme-display: "Виолетта";
     }
-  /* } */
-  /* & when (@rii_gii-theme = Violet_sky) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+  }
+  & when (@rii_gii-theme = Violet_sky) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #1a0522;
       --rii_gii-content: #2d0f3a;
       --rii_gii-answer: #421b52;
@@ -1044,10 +1112,10 @@
       --rii_gii-code: #4a2b5a;
       --rii_gii-link: #c084fc;
       --rii_gii-theme-display: "Фиолетовое небо";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Akae) and (@rii_gii-theme-light = Disable) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme = Akae) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #120f2a;
       --rii_gii-content: #1e1a3a;
       --rii_gii-answer: #2a254a;
@@ -1067,10 +1135,10 @@
       --rii_gii-code: #0d0a1a;
       --rii_gii-link: #ffb87a;
       --rii_gii-theme-display: "Акаэ";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Ocean) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Ocean) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #0a1128;
       --rii_gii-content: #0f193a;
       --rii_gii-answer: #121d42;
@@ -1090,10 +1158,10 @@
       --rii_gii-code: #0a1128;
       --rii_gii-link: #5da9ff;
       --rii_gii-theme-display: "Океан";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Amber_haze) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Amber_haze) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #7a6a4a;
       --rii_gii-content: #8a7a5a;
       --rii_gii-answer: #706040;
@@ -1112,10 +1180,10 @@
       --rii_gii-code: #3a2a10;
       --rii_gii-link: #ffa050;
       --rii_gii-theme-display: "Янтарный туман";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Cinnamon_sky) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Cinnamon_sky) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #2c1810;
       --rii_gii-content: #5a452c;
       --rii_gii-answer: #6a4d3b;
@@ -1133,10 +1201,10 @@
       --rii_gii-code: #3a2e1e;
       --rii_gii-link: #ffa36c;
       --rii_gii-theme-display: "Коричное небо";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Fire) and (@rii_gii-theme-light = Disable) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Fire) and (@rii_gii-theme-light = Disable) {
+    :root {
       --rii_gii-bg: #ff8f00;
       --rii_gii-content: #ff6f00;
       --rii_gii-answer: #e65100;
@@ -1156,10 +1224,10 @@
       --rii_gii-link: #fffb00;
       --rii_gii-theme-display: "Пожар";
       --otvetui--tooltip_color_text_negative: #ff0000 !important;
-    } */
-  /* } */
-  /* & when (@rii_gii-theme = Cyberpunk) and (@rii_gii-theme-light = Disable) { */
-      /* :root {
+    }
+  }
+  & when (@rii_gii-theme = Cyberpunk) and (@rii_gii-theme-light = Disable) {
+      :root {
       --rii_gii-bg: #0a0a12;
       --rii_gii-content: #05050a;
       --rii_gii-answer: #0f0f1a;
@@ -1178,10 +1246,10 @@
       --rii_gii-code: #222233;
       --rii_gii-link: #cc00cc;
       --rii_gii-theme-display: "Киберпанк";
-    } */
-  /* } */
+    }
+  }
 
-  /* .rii_gii-light() {
+  .rii_gii-light() {
     :root {
       --rii_gii-gold: initial;
       --vkui--color_background_nav_bar_otvetui: var(--rii_gii-content) !important;
@@ -1235,10 +1303,10 @@
       .rii_gii-light();
     }
     @media (prefers-color-scheme: dark) { :root { --rii_gii-theme-display: "[A] Тёмная"; } }
-  } */
+  }
    
-  /* & when (@rii_gii-theme-light = Golden_lime) { */
-/*     :root {
+  & when (@rii_gii-theme-light = Golden_lime) {
+    :root {
     --rii_gii-bg: #fffbf0;
     --rii_gii-content: #f8f4d8;
     --rii_gii-answer: #f0e8b8;
@@ -1258,10 +1326,10 @@
     --rii_gii-link: #689f38;
     --rii_gii-logo: #fff;
     --rii_gii-theme-display: "Золотой лайм";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Scarlet_Bird) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Scarlet_Bird) {
+    :root {
       --rii_gii-bg: #fff5f5;
       --rii_gii-content: #ffebee;
       --rii_gii-answer: #ffcdd2;
@@ -1281,10 +1349,10 @@
       --rii_gii-link: #b71c1c;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Алая птица";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Ocean_gold) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Ocean_gold) {
+    :root {
       --rii_gii-bg: #f0fbff;
       --rii_gii-content: #d8f4ff;
       --rii_gii-answer: #b3e8ff;
@@ -1304,10 +1372,10 @@
       --rii_gii-link: #003d77;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Океанское золото";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Emerald_forest) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Emerald_forest) {
+    :root {
       --rii_gii-bg: #f1f8f4;
       --rii_gii-content: #e0f0e8;
       --rii_gii-answer: #c8e6d1;
@@ -1326,10 +1394,10 @@
       --rii_gii-code: #f1f8f4;
       --rii_gii-link: #1b5e20;
       --rii_gii-theme-display: "Изумрудный лес";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Mossy_cover) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Mossy_cover) {
+    :root {
       --rii_gii-bg: #f0f4f0;
       --rii_gii-content: #e5ebe5;
       --rii_gii-answer: #d9e1d9;
@@ -1348,10 +1416,10 @@
       --rii_gii-code: #f0f4f0;
       --rii_gii-link: #3a5f3a;
       --rii_gii-theme-display: "Мшистый покров";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Lavender) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Lavender) {
+    :root {
       --rii_gii-bg: #f4f0f8;
       --rii_gii-content: #eae4f0;
       --rii_gii-answer: #e0d9e8;
@@ -1371,10 +1439,10 @@
       --rii_gii-link: #5a3a7a;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Лаванда";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Meadow) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Meadow) {
+    :root {
       --rii_gii-bg: #f0fff0;
       --rii_gii-content: #d8ffd8;
       --rii_gii-answer: #b3ffb3;
@@ -1393,10 +1461,10 @@
       --rii_gii-code: #f0fff0;
       --rii_gii-link: #006622;
       --rii_gii-theme-display: "Луг";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Pink_dawn) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Pink_dawn) {
+    :root {
       --rii_gii-bg: #fff0f5;
       --rii_gii-content: #ffd8e8;
       --rii_gii-answer: #ffb3d1;
@@ -1416,10 +1484,10 @@
       --rii_gii-link: #993366;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Розовый рассвет";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Purple_heart) { */
-/*     :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Purple_heart) {
+    :root {
       --rii_gii-bg: #f5f0ff;
       --rii_gii-content: #e8d8ff;
       --rii_gii-answer: #d1b3ff;
@@ -1439,10 +1507,10 @@
       --rii_gii-link: #5500aa;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Пурпурное сердце";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Peach) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Peach) {
+    :root {
       --rii_gii-bg: #ffe4cc;
       --rii_gii-content: #ffd5b3;
       --rii_gii-answer: #ffc699;
@@ -1461,10 +1529,10 @@
       --rii_gii-code: #fffaf0;
       --rii_gii-link: #ff8c42;
       --rii_gii-theme-display: "Персик";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Concrete) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Concrete) {
+    :root {
       --rii_gii-bg: #e5e7eb;
       --rii_gii-content: #d1d5db;
       --rii_gii-answer: #9ca3af;
@@ -1483,10 +1551,10 @@
       --rii_gii-code: #f9fafb;
       --rii_gii-link: #6b7280;
       --rii_gii-theme-display: "Бетон";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Snow-white) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Snow-white) {
+    :root {
       --rii_gii-bg: #fefefe;
       --rii_gii-content: #fafafa;
       --rii_gii-answer: #f5f5f5;
@@ -1505,10 +1573,10 @@
       --rii_gii-code: #fefefe;
       --rii_gii-link: #666666;
       --rii_gii-theme-display: "Белоснежная";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Pearl) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Pearl) {
+    :root {
       --rii_gii-bg: #ffffff;
       --rii_gii-content: #f2f2f2;
       --rii_gii-answer: #e8e8e8;
@@ -1528,10 +1596,10 @@
       --rii_gii-link: #1e7ab3;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Жемчужна";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Sand_storm) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Sand_storm) {
+    :root {
       --rii_gii-bg: #faf7f2;
       --rii_gii-content: #f2ede4;
       --rii_gii-answer: #e8ddd0;
@@ -1551,10 +1619,10 @@
       --rii_gii-link: #7a5d46;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Песчаный ветер";
-    } */
-  /* } */
-  /* & when (@rii_gii-theme-light = Amber_honey) { */
-    /* :root {
+    }
+  }
+  & when (@rii_gii-theme-light = Amber_honey) {
+    :root {
       --rii_gii-bg: #fff8e7;
       --rii_gii-content: #ffefc8;
       --rii_gii-answer: #ffe4a0;
@@ -1574,10 +1642,10 @@
       --rii_gii-link: #7a4d00;
       --rii_gii-logo: #fff;
       --rii_gii-theme-display: "Янтарный мёд";
-    } */
-  /* } */
+    }
+  }
                          
- /* & when (@rii_gii_ct = 1) {
+ & when (@rii_gii_ct = 1) {
     & when (@rii_gii_theme_emulator = Light) { .rii_gii-light(); }
     .hex-to-rgb(@rii_gii_ct_rgb) {
       @rgb: color(@rii_gii_ct_rgb);
@@ -1617,5 +1685,5 @@
       --rii_gii-theme-display: "Своя";
       transition: none;
     }
-  } */
+  }
 }
