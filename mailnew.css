@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name         Otvet MailRu New
 @namespace    otvet.mail.ru
-@author       Rii Gii
-@version      1.93
+@author       royalblue (Rii Gii)
+@version      1.94
 @license      CC BY
 @homepageURL https://userstyles.world/style/23690
 @supportURL https://t.me/glass_of_rain_water
+@updateURL https://userstyles.world/api/style/23690.user.css
 @preprocessor less
 @var checkbox rii_gii-dark "Тёмная тема" 0
 @var range overlay "Яркость фона" [91, 0, 100, 1, "%"]
@@ -136,11 +137,10 @@
   body { padding-right: 0px !important; }
   #app > div:nth-child(2) > :nth-child(1):not(header), [class^="adv-"],
   [class*="_ReplyListWrapper_"]:has([class^="adv-"]),
-  ._Wrapper_2k5g9_1,
+  [class*="_Floating_"],
   [class*="_VkVideoSwiper_"],
   [class*="_PostUserSubscriptionButton_"],
-  [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
-  [class^="_DzenPost_"])),
+  [class^="_Card_"]:has(a[href="/profile/vk_video"]),
   :is([class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) {
     display: none !important;
   }
@@ -274,19 +274,16 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: linear-gradient(130deg, #0a62d0 0%, #8126d3 35%, #d12550 70%, rgba(209, 37, 80, 0) 100%);
-      background-size: 300% 300%;
-      animation: smooth-flow 8s ease-in-out infinite;
+      background: linear-gradient(130deg, #0a62d0 0%, #8126d3 50%, #d12550 100%);
+      background-size: 200% 200%;
+      animation: seamless-flow 3s ease-in-out infinite alternate;
     }
   }
-
-  @keyframes smooth-flow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 50%; }
+  @keyframes seamless-flow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
   }
-  
-   
+
   ._Viewer_desktop_1bje9_2 {
     inset: 64px auto auto auto !important;
     position: fixed !important;
@@ -388,19 +385,21 @@
     -webkit-mask: var(--mask--sun);
     background: var(--vkui--color_icon_secondary);
   }
-  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
-  [class^="_Card_"] a[href="/profile/rii_gii"]:not([class*="_Avatar_"]) {
-    &, & span {
-      background: fuchsia !important;
-      color: #fff !important;
-      border-radius: 3px !important;
-      width: 52px;
-      text-align: center;
-      padding: 0 4px !important;
+
+  [src="https://otvet.cdn-vk.net/pictures/missionHeader.svg"] { content: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) !important; }
+  
+  [class^="_Feed_"] > [class^="_TopicWrapper_"]:first-child [class*="_MainContent_"] {
+    &::before {
+      border-top: solid 3px deeppink;
+      content: "Всё, Rii Gii больше нет. Ко мне больше не обращаться по поводу сисек, писек и прочих вопросов. Сиськи у матери, письки у бати, а вопросы придержи для себя. \A \A Оставляю Агири тут плавать, иногда буду навещать чтобы модеры не прогнали.";
+      line-height: 22px;
+      color: var(--rii_gii-white);
+      white-space: pre-wrap;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: solid 3px deeppink;
     }
   }
-
-  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 {background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) center 0px / cover no-repeat !important;}
 
   blockquote::before { background: deeppink !important; }
   [class*="_menuItem_"] > * { color: #fff !important; }
@@ -490,7 +489,7 @@
       inset: 0;
       background: rgb(34, 34, 34) var(--rii_gii-img-yon) no-repeat center 0px / cover fixed !important;
     }
-   
+
     header { background: #222 !important; }
     #app > div:nth-child(2) { background: #00000030 !important; }
     nav[class*="_horizontal_wrapper_"], [class^="_burger_"] { background: #222 !important; }
