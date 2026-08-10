@@ -103,8 +103,7 @@
   [class*="_Floating_"], /* категория при скроле в посте */
   [class*="_VkVideoSwiper_"], /* видео по теме */
   [class*="_PostUserSubscriptionButton_"], /* кнопка подписаться посты юзеров */
-  [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
-  [class^="_DzenPost_"])),
+  [class^="_Card_"]:has(a[href="/profile/vk_video"]),
   :is([class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) /* отображение достижения справа */ {
     display: none !important;
   }
@@ -349,19 +348,21 @@
     -webkit-mask: var(--mask--sun);
     background: var(--vkui--color_icon_secondary);
   }
-  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
-  [class^="_Card_"] a[href="/profile/rii_gii"]:not([class*="_Avatar_"]) {
-    &, & span {
-      background: fuchsia !important;
-      color: #fff !important;
-      border-radius: 3px !important;
-      width: 52px;
-      text-align: center;
-      padding: 0 4px !important;
+
+  [src="https://otvet.cdn-vk.net/pictures/missionHeader.svg"] { content: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) !important; }
+  
+  [class^="_Feed_"] > [class^="_TopicWrapper_"]:first-child [class*="_MainContent_"] {
+    &::before {
+      border-top: solid 3px deeppink;
+      content: "Всё, Rii Gii больше нет. Ко мне больше не обращаться по поводу сисек, писек и прочих вопросов. Сиськи у матери, письки у бати, а вопросы придержи для себя. \A \A Оставляю Агири тут плавать, иногда буду навещать чтобы модеры не прогнали.";
+      line-height: 22px;
+      color: var(--rii_gii-white);
+      white-space: pre-wrap;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: solid 3px deeppink;
     }
   }
-
-  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 {background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) center 0px / cover no-repeat !important;}
 
   blockquote::before { background: deeppink !important; }
   [class*="_menuItem_"] > * { color: #fff !important; } /* моб меню нижнее иконки +25dec */
