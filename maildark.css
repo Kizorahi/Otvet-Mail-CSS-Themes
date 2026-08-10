@@ -2,10 +2,11 @@
 @name         Otvet MailRu Theme Customizer 
 @namespace    otvet.mail.ru
 @author       Rii Gii
-@version      2.34
+@version      2.35
 @license      CC BY
 @homepageURL https://userstyles.world/style/23509
 @supportURL https://t.me/glass_of_rain_water
+@updateURL https://userstyles.world/api/style/23509.user.css
 @preprocessor less
 @var select rii_gii-theme "Тёмная тема" [
 "Automatic", "Dark", "VKUI", "Amoled", "Elegant_dark", "Reddit_Edition", "Void", "Romdo", "Toxic_glow", "Poisoned_forest", "Swamp",
@@ -18,7 +19,7 @@
 "Pink_dawn", "Purple_heart", "Peach", "Concrete", "Snow-white", "Pearl", "Sand_storm", "Amber_honey"
 ]
 @var checkbox rii_gii-disable "Скрыть рекламу" 0
-@var checkbox rii_gii-rubbish "Скрыть нежелательные элементы\nСкрывает: Блок категории в постах; Видео по теме (VKVideo); Кнопка подписки в постах; Все флуд посты VKVideo (НЕбаг. при сильном флуде, лента может не подгружаться. На самом деле подгружается, но тут же посты исчезают. Если попытаться снова и снова, то загрузит когда закончится флуд. Обычно это не заметно); Посты пользователя @dragon_0077 (тот что ддосит спрашивая что за налёт у него на языке); Посты Dzen; Блок ранга в боковой панели (на мобилках вообще вместе с шапкой съедают высоту);" 0
+@var checkbox rii_gii-rubbish "Скрыть нежелательные элементы\nСкрывает: Блок категории в постах; Видео по теме (VKVideo); Кнопка подписки в постах; Все флуд посты VKVideo (НЕбаг. при сильном флуде, лента может не подгружаться. На самом деле подгружается, но тут же посты исчезают. Если попытаться снова и снова, то загрузит когда закончится флуд. Обычно это не заметно); Блок ранга в боковой панели (на мобилках вообще вместе с шапкой съедают высоту);" 0
 @var checkbox rii_gii-hide "Раскрыть длинные ответы\nИли посты. В общем всё длинное. Я уже и сам запутался, то посты скрываются, то ответы" 1
 @var checkbox rii_gii-amoledPlus "Amoled+\nДолжна быть активна тема 'Amoled'" 0
 @var checkbox rii_gii-visited "Помечать посещённые посты" 0
@@ -140,7 +141,7 @@
     --vkui--color_text_link: color-mix(in oklch, var(--rii_gii-link), #000 5%) !important;
     --vkui--color_text_link_themed: var(--rii_gii-link) !important;
     --vkui--color_text_accent_inverse: var(--rii_gii-link) !important;
-    --vkui--color_icon_accent--hover: var(--vkui--color_text_link) !important;
+    --vkui--color_icon_accent--hover: var(--rii_gii-link) !important;
     --vkui--color_text_accent: var(--rii_gii-link) !important;
     --vkui--color_accent_secondary: var(--rii_gii-accent) !important;
     --vkui--color_background_negative_tint: var(--rii_gii-code) !important;
@@ -272,9 +273,23 @@
 
   ._FormField_modeSecondary_l1o40_85 { background: var(--rii_gii-alpha) !important; }
   form[class*="_VideoForm_"] > span[class*="_InputWrapper_"] { background: var(--rii_gii-alpha) !important; }
-  :is([class*="_UserUsername_"], [class*="_ReplyItemNick_"])[href="/profile/rii_gii"],
-  [class^="_Card_"] a[href="/profile/rii_gii"] { &, & span { color: var(--rii_gii-gold, #FF9F00) !important; } }
-  main:has(a[href^="/profile/rii_gii/answers"][role="tab"]) ._cover_1lmmw_11 { background: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) center 0px / cover no-repeat !important; }
+  
+ 
+  [src="https://otvet.cdn-vk.net/pictures/missionHeader.svg"] { content: url(https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHhubTFnZDh0bm50bXQ0djA3YTZyZmwzOXl2dGpuajFqNTUwOGNwdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Sml6t0zTSaDvN560NE/giphy.gif) !important; }
+  
+  [class^="_Feed_"] > [class^="_TopicWrapper_"]:first-child [class*="_MainContent_"] {
+    &::before {
+      border-top: solid 3px var(--rii_gii-noalpha);
+      content: "Всё, Rii Gii больше нет. Ко мне больше не обращаться по поводу сисек, писек и прочих вопросов. Сиськи у матери, письки у бати, а вопросы придержи для себя. \A \A Оставляю Агири тут плавать, иногда буду навещать чтобы модеры не прогнали.";
+      line-height: 22px;
+      color: var(--rii_gii-white);
+      white-space: pre-wrap;
+      padding: 10px 0;
+      margin-bottom: 10px;
+      border-bottom: solid 3px var(--rii_gii-noalpha);
+    }
+  }
+  
   [class*="_Notification_opened_"] [class*="_Notification_"]:hover { background: color-mix(in oklch, var(--rii_gii-modal), #c2b9b9 17%) !important; }
   [class*="_Notification_opened_"] ::before, [class*="_NotificationItem_"]::before { background: linear-gradient(var(--rii_gii-icon-accent), color-mix(in oklch, var(--rii_gii-icon-accent), #000 22%)) !important; }
   .vkuiInternalRepliesList * { animation: none !important; }
@@ -432,12 +447,10 @@
   }
 
   & when (@rii_gii-rubbish = 1) {
-    ._Wrapper_2k5g9_1,
+    [class*="_Floating_"],
     [class*="_VkVideoSwiper_"],
     [class*="_PostUserSubscriptionButton_"],
-    [class^="_Card_"]:has(:is(a[href="/profile/vk_video"],
-    a[href="/profile/dragon_0077"],
-    [class^="_DzenPost_"])),
+    [class^="_Card_"]:has(a[href="/profile/vk_video"]),
     :is(section[class*="_column_right_with_achievement_"], [class*="_AchievementProgress_mobile_"]) > :is(div:first-child, div[hide-on-scroll]) {
       display: none !important;
     }
